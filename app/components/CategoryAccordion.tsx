@@ -26,7 +26,7 @@ export default function CategoryAccordion({
         style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #252525 100%)' }}
       >
         <div className="flex items-center gap-3">
-          <h3 className="text-base font-bold text-white">{title}</h3>
+          <h3 className="text-base font-bold text-white text-left">{title}</h3>
           {badge && (
             <span className={`px-2 py-0.5 text-xs font-bold rounded-full`} style={
               badge.includes("入力済") 
