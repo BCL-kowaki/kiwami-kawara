@@ -244,6 +244,9 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <p className="text-xs text-center mt-6" style={{ color: '#ffffff' }}>
+                    ©2026 株式会社投資の"KAWARA"版.com
+                </p>
             </div>
         );
     }
@@ -406,6 +409,9 @@ export default function Home() {
                     </form>
                 </div>
                 </div>
+                <p className="text-xs text-center mt-6" style={{ color: '#ffffff' }}>
+                    ©2026 株式会社投資の"KAWARA"版.com
+                </p>
             </div>
         </div>
     );
