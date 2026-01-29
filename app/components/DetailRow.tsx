@@ -72,7 +72,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
           value={row.amount !== undefined && row.amount !== null ? String(row.amount) : ""}
           onChange={(e) => {
             const value = e.target.value;
-            const numValue = value === "" ? undefined : Math.round(parseFloat(value));
+            const numValue = value === "" ? undefined : Number(value);
             if (value === "" || (!isNaN(numValue!) && numValue! >= 0 && numValue! <= 100)) {
               onChange({
                 ...(row as any),
