@@ -21,9 +21,14 @@ function getSESClient() {
   });
 }
 
-// 割合を%単位に整形する関数
+// 割合を%単位に整形する関数（整数の場合は小数点なしで表示）
 function formatPercentage(amount: number): string {
-  return `${amount}%`;
+  // 整数かどうかをチェック
+  if (Number.isInteger(amount)) {
+    return `${amount}%`;
+  }
+  // 小数点以下1桁で丸める
+  return `${Math.round(amount * 10) / 10}%`;
 }
 
 function formatEmailBody(data: PortfolioSubmission): string {
