@@ -195,48 +195,53 @@ export default function Home() {
 
     if (formState === "submitted") {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #020617 100%)' }}>
-                <div className="bg-white/95 backdrop-blur-sm rounded-[2px] shadow-2xl p-5 max-w-md w-full text-center border border-white/20 animate-fade-in">
-                    <div className="mb-2 pt-6 pb-4">
-                        <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
-                            <svg
-                                className="w-10 h-10"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                style={{ color: '#1a1a1a' }}
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={3}
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+            <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden" style={{ background: '#0b0e1f' }}>
+                <NetworkBackground />
+                <div className="relative z-10 max-w-md w-full">
+                    <div className="p-[2px] rounded-[2px] shadow-2xl" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                        <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
+                            <div className="mb-2 pt-6 pb-4">
+                                <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                                    <svg
+                                        className="w-10 h-10"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        style={{ color: '#ffffff' }}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={3}
+                                            d="M5 13l4 4L19 7"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h1 className="text-xl font-extrabold bg-clip-text text-transparent mb-4 bg-gradient-to-r from-[#2db8f9] to-[#aa30ff]">
+                                ご入力ありがとうございました
+                            </h1>
+                            <div className="space-y-4 mb-6">
+                                <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
+                                    ご入力いただいた内容を確認いたしました。
+                                </p>
+                                <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#1a1a2a', borderColor: '#7b5cfa' }}>
+                                    <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
+                                        3営業日以内に
+                                    </p>
+                                    <p style={{ color: '#cccccc' }}>
+                                        ご登録いただいたメールアドレス宛に<br />
+                                        <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="pt-4" style={{ borderTop: '1px solid #3a3a3a' }}>
+                                <p className="text-sm" style={{ color: '#aaaaaa' }}>
+                                    ご不明な点がございましたら、<br />
+                                    お気軽にお問い合わせください。
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <h1 className="text-xl font-extrabold bg-clip-text text-transparent mb-4" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                        ご入力ありがとうございました
-                    </h1>
-                    <div className="space-y-4 mb-6">
-                        <p className="text-gray-700 text-sm leading-relaxed">
-                            ご入力いただいた内容を確認いたしました。
-                        </p>
-                        <div className="rounded-[2px] p-4 border text-sm" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%)', borderColor: '#7b5cfa' }}>
-                            <p className="text-gray-800 font-bold mb-1">
-                                3営業日以内に
-                            </p>
-                            <p className="text-gray-700">
-                                ご登録いただいたメールアドレス宛に<br />
-                                <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
-                            </p>
-                        </div>
-                    </div>
-                    <div className="pt-4 border-t border-gray-200">
-                        <p className="text-gray-600 text-sm">
-                            ご不明な点がございましたら、<br />
-                            お気軽にお問い合わせください。
-                        </p>
                     </div>
                 </div>
             </div>
