@@ -222,13 +222,13 @@ export default function Home() {
                         <p className="text-gray-700 text-sm leading-relaxed">
                             ご入力いただいた内容を確認いたしました。
                         </p>
-                        <div className="rounded-[2px] p-4 border text-sm" style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', borderColor: '#D4AF37' }}>
+                        <div className="rounded-[2px] p-4 border text-sm" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%)', borderColor: '#2483f8' }}>
                             <p className="text-gray-800 font-bold mb-1">
                                 3営業日以内に
                             </p>
                             <p className="text-gray-700">
                                 ご登録いただいたメールアドレス宛に<br />
-                                <span className="font-bold" style={{ color: '#B8860B' }}>結果のレポート</span>をお送りいたします。
+                                <span className="font-bold" style={{ color: '#1be7f5' }}>結果のレポート</span>をお送りいたします。
                             </p>
                         </div>
                     </div>
@@ -264,7 +264,7 @@ export default function Home() {
                                 </svg>
                             </div>
                         </div>
-                        <h1 className="text-2xl mb-3" style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: 900 }}>
+                        <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600" style={{ fontWeight: 900 }}>
                             超精密！<br />
                             資産運用AI分析"極"
                         </h1>
@@ -312,9 +312,9 @@ export default function Home() {
                             <CryptoCategory data={crypto} onChange={setCrypto} />
                         </CategoryAccordion>
 
-                        <div className="mt-6 pt-6" style={{ borderTop: '1px solid #D4AF37' }}>
+                        <div className="mt-6 pt-6" style={{ borderTop: '1px solid #2483f8' }}>
                             <h3 className="text-xl font-bold mb-5 flex items-center gap-2" style={{ color: '#ffffff' }}>
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#D4AF37' }}>
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#1be7f5' }}>
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                                 お客様情報
