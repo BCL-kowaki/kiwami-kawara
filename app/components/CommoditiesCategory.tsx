@@ -58,7 +58,7 @@ export default function CommoditiesCategory({
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-[2px] transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 100%)', color: '#ffffff' }}
+            style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #aa30ff 100%)', color: '#ffffff' }}
           >
             + 詳細行を追加
           </button>

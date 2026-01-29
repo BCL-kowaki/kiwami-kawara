@@ -30,7 +30,7 @@ export default function CategoryAccordion({
           {badge && (
             <span className={`px-2 py-0.5 text-xs font-bold rounded-full`} style={
               badge.includes("入力済") 
-                ? { background: 'linear-gradient(135deg, #1a2a3a, #2a3a4a)', color: '#1be7f5', border: '1px solid #2483f8' }
+                ? { background: 'linear-gradient(135deg, #1a1a3a, #2a2a4a)', color: '#2db8f9', border: '1px solid #7b5cfa' }
                 : { background: '#2a2a2a', color: '#888888', border: '1px solid #4a4a4a' }
             }>
               {badge}

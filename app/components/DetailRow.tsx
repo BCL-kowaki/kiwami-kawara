@@ -31,7 +31,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
   return (
     <div className="rounded-[2px] p-4 mb-3" style={{ background: '#1a1a1a', border: '1px solid #3a3a3a' }}>
       <div className="flex justify-between items-start mb-3">
-        <h4 className="font-semibold text-sm" style={{ color: '#1be7f5' }}>詳細 {rowIndex + 1}</h4>
+        <h4 className="font-semibold text-sm" style={{ color: '#2db8f9' }}>詳細 {rowIndex + 1}</h4>
         <button
           type="button"
           onClick={onDelete}
@@ -54,7 +54,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
             value={row.name || ""}
             onChange={(e) => onChange({ ...(row as any), name: e.target.value } as T)}
             placeholder={namePlaceholder}
-            className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-cyan-500 placeholder-gray-400"
+            className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
             style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
           />
         </div>
@@ -82,7 +82,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
             }
           }}
           placeholder={amountPlaceholder}
-          className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-cyan-500 placeholder-gray-400"
+          className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
           style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
         />
       </div>

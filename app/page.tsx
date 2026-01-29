@@ -198,7 +198,7 @@ export default function Home() {
             <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #020617 100%)' }}>
                 <div className="bg-white/95 backdrop-blur-sm rounded-[2px] shadow-2xl p-5 max-w-md w-full text-center border border-white/20 animate-fade-in">
                     <div className="mb-2 pt-6 pb-4">
-                        <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)' }}>
+                        <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
                             <svg
                                 className="w-10 h-10"
                                 fill="none"
@@ -215,20 +215,20 @@ export default function Home() {
                             </svg>
                         </div>
                     </div>
-                    <h1 className="text-xl font-extrabold bg-clip-text text-transparent mb-4" style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    <h1 className="text-xl font-extrabold bg-clip-text text-transparent mb-4" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                         ご入力ありがとうございました
                     </h1>
                     <div className="space-y-4 mb-6">
                         <p className="text-gray-700 text-sm leading-relaxed">
                             ご入力いただいた内容を確認いたしました。
                         </p>
-                        <div className="rounded-[2px] p-4 border text-sm" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%)', borderColor: '#2483f8' }}>
+                        <div className="rounded-[2px] p-4 border text-sm" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%)', borderColor: '#7b5cfa' }}>
                             <p className="text-gray-800 font-bold mb-1">
                                 3営業日以内に
                             </p>
                             <p className="text-gray-700">
                                 ご登録いただいたメールアドレス宛に<br />
-                                <span className="font-bold" style={{ color: '#1be7f5' }}>結果のレポート</span>をお送りいたします。
+                                <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
                             </p>
                         </div>
                     </div>
@@ -254,17 +254,17 @@ export default function Home() {
             <NetworkBackground />
             
             <div className="max-w-[640px] mx-auto relative z-10">
-                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)' }}>
+                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
                 <div className="backdrop-blur-sm rounded-[2px] p-4" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
                     <div className="text-center mb-4">
                         <div className="inline-block mb-4">
-                            <div className="w-16 h-16 rounded-[2px] flex items-center justify-center mx-auto shadow-lg" style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)' }}>
+                            <div className="w-16 h-16 rounded-[2px] flex items-center justify-center mx-auto shadow-lg" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
                                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                 </svg>
                             </div>
                         </div>
-                        <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600" style={{ fontWeight: 900 }}>
+                        <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#2db8f9] to-[#aa30ff]" style={{ fontWeight: 900 }}>
                             超精密！<br />
                             資産運用AI分析"極"
                         </h1>
@@ -312,9 +312,9 @@ export default function Home() {
                             <CryptoCategory data={crypto} onChange={setCrypto} />
                         </CategoryAccordion>
 
-                        <div className="mt-6 pt-6" style={{ borderTop: '1px solid #2483f8' }}>
+                        <div className="mt-6 pt-6" style={{ borderTop: '1px solid #7b5cfa' }}>
                             <h3 className="text-xl font-bold mb-5 flex items-center gap-2" style={{ color: '#ffffff' }}>
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#1be7f5' }}>
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#2db8f9' }}>
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                                 お客様情報
@@ -331,7 +331,7 @@ export default function Home() {
                                             value={familyName}
                                             onChange={(e) => setFamilyName(e.target.value)}
                                             required
-                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-cyan-500 transition-all placeholder-gray-400"
+                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
                                             style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
                                             placeholder="山田"
                                         />
@@ -341,7 +341,7 @@ export default function Home() {
                                             value={givenName}
                                             onChange={(e) => setGivenName(e.target.value)}
                                             required
-                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-cyan-500 transition-all placeholder-gray-400"
+                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
                                             style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
                                             placeholder="太郎"
                                         />
@@ -357,7 +357,7 @@ export default function Home() {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
-                                        className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-cyan-500 transition-all placeholder-gray-400"
+                                        className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
                                         style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
                                         placeholder="example@email.com"
                                     />
@@ -377,7 +377,7 @@ export default function Home() {
                                     type="submit"
                                     disabled={formState === "submitting"}
                                     className={`w-[90%] py-4 rounded-full font-bold text-base transition-all transform hover:scale-[0.98] hover:shadow-md hover:translate-y-0.5 active:scale-95 active:shadow-sm active:translate-y-1 shadow-lg text-white ${formState === "submitting" ? "bg-gray-400 cursor-not-allowed" : ""}`}
-                                    style={formState !== "submitting" ? { background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 50%, #1a65d6 100%)', color: '#1a1a1a' } : {}}
+                                    style={formState !== "submitting" ? { background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', color: '#1a1a1a' } : {}}
                                 >
                                     {formState === "submitting" ? (
                                         <span className="flex items-center justify-center gap-2">
