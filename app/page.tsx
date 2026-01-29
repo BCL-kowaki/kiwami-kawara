@@ -377,7 +377,7 @@ export default function Home() {
                                     type="submit"
                                     disabled={formState === "submitting"}
                                     className={`w-[90%] py-4 rounded-full font-bold text-base transition-all transform hover:scale-[0.98] hover:shadow-md hover:translate-y-0.5 active:scale-95 active:shadow-sm active:translate-y-1 shadow-lg text-white ${formState === "submitting" ? "bg-gray-400 cursor-not-allowed" : ""}`}
-                                    style={formState !== "submitting" ? { background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', color: '#1a1a1a' } : {}}
+                                    style={formState !== "submitting" ? { background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', color: '#ffffff' } : {}}
                                 >
                                     {formState === "submitting" ? (
                                         <span className="flex items-center justify-center gap-2">
