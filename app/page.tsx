@@ -254,7 +254,7 @@ export default function Home() {
             <NetworkBackground />
             
             <div className="max-w-[640px] mx-auto relative z-10">
-                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
                 <div className="backdrop-blur-sm rounded-[2px] p-4" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
                     <div className="text-center mb-4">
                         <div className="inline-block mb-4">
