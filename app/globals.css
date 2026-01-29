@@ -14,6 +14,18 @@ textarea {
   color: #111827; /* text-gray-900 */
 }
 
+/* オートコンプリート時の背景色を統一 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #2a2a2a inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 0 0 1000px #2a2a2a inset !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 input::placeholder,
 textarea::placeholder {
   color: #9ca3af; /* text-gray-400 */
