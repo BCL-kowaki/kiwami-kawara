@@ -282,19 +282,19 @@ export default function Home() {
                     )}
 
                     <form onSubmit={handleSubmit}>
-                        <CategoryAccordion title="1. 現金・預金" badge={cashStatus}>
+                        <CategoryAccordion title="1. ETF・投資信託（NISA）" badge={fundsStatus}>
+                            <FundsCategory data={funds} onChange={setFunds} />
+                        </CategoryAccordion>
+
+                        <CategoryAccordion title="2. 現金・預金" badge={cashStatus}>
                             <CashCategory data={cash} onChange={setCash} />
                         </CategoryAccordion>
 
-                        <CategoryAccordion title="2. 上場株" badge={listedStocksStatus}>
+                        <CategoryAccordion title="3. 上場株" badge={listedStocksStatus}>
                             <ListedStocksCategory
                                 data={listedStocks}
                                 onChange={setListedStocks}
                             />
-                        </CategoryAccordion>
-
-                        <CategoryAccordion title="3. ETF・投資信託" badge={fundsStatus}>
-                            <FundsCategory data={funds} onChange={setFunds} />
                         </CategoryAccordion>
 
                         <CategoryAccordion title="4. 債券" badge={bondsStatus}>

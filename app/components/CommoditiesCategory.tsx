@@ -47,36 +47,9 @@ export default function CommoditiesCategory({
             onChange={(updatedRow) => updateDetailRow(index, updatedRow)}
             onDelete={() => deleteDetailRow(index)}
             rowIndex={index}
-            showName={false}
-            categorySpecificFields={
-              <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
-                  種類（任意）
-                </label>
-                <select
-                  value={row.commodityType || ""}
-                  onChange={(e) =>
-                    updateDetailRow(index, {
-                      ...row,
-                      commodityType: e.target.value as
-                        | "GOLD"
-                        | "SILVER"
-                        | "PLATINUM"
-                        | "OTHER"
-                        | undefined,
-                    })
-                  }
-                  className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
-                  style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: row.commodityType ? 'white' : '#9ca3af' }}
-                >
-                  <option value="" style={{ background: '#2a2a2a', color: '#9ca3af' }}>選択してください</option>
-                  <option value="GOLD" style={{ background: '#2a2a2a', color: 'white' }}>金</option>
-                  <option value="SILVER" style={{ background: '#2a2a2a', color: 'white' }}>銀</option>
-                  <option value="PLATINUM" style={{ background: '#2a2a2a', color: 'white' }}>プラチナ</option>
-                  <option value="OTHER" style={{ background: '#2a2a2a', color: 'white' }}>その他</option>
-                </select>
-              </div>
-            }
+            showName={true}
+            nameLabel="種類（例：金、銀、プラチナ）"
+            namePlaceholder="例：金、銀、プラチナ"
           />
         ))}
 

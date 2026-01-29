@@ -70,6 +70,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                 <option value="EUR" style={{ background: '#2a2a2a', color: 'white' }}>EUR</option>
                 <option value="GBP" style={{ background: '#2a2a2a', color: 'white' }}>GBP</option>
                 <option value="AUD" style={{ background: '#2a2a2a', color: 'white' }}>AUD</option>
+                <option value="定期預金" style={{ background: '#2a2a2a', color: 'white' }}>定期預金</option>
               </select>
 
               <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>

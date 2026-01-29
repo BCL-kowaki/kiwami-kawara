@@ -61,7 +61,18 @@ function formatEmailBody(data: PortfolioSubmission): string {
     }
   };
 
-  body += `1・現金・預金\n\n`;
+  body += `1・ETF・投資信託（NISA）\n\n`;
+  if (data.funds.details.length > 0) {
+    data.funds.details.forEach((detail) => {
+      if (detail.amount !== undefined && detail.amount !== null) {
+        const name = detail.name || "（未入力）";
+        body += `・${name}：${formatPercentage(detail.amount)}\n`;
+      }
+    });
+  }
+  body += `\n\n`;
+
+  body += `2・現金・預金\n\n`;
   if (data.cash.details?.length > 0) {
     data.cash.details.forEach((detail: any) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -72,20 +83,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
   }
   body += `\n\n`;
 
-  body += `2・上場株\n\n`;
+  body += `3・上場株\n\n`;
   if (data.listedStocks.details.length > 0) {
     data.listedStocks.details.forEach((detail) => {
-      if (detail.amount !== undefined && detail.amount !== null) {
-        const name = detail.name || "（未入力）";
-        body += `・${name}：${formatPercentage(detail.amount)}\n`;
-      }
-    });
-  }
-  body += `\n\n`;
-
-  body += `3・ETF・投資信託\n\n`;
-  if (data.funds.details.length > 0) {
-    data.funds.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
         const name = detail.name || "（未入力）";
         body += `・${name}：${formatPercentage(detail.amount)}\n`;
@@ -109,8 +109,8 @@ function formatEmailBody(data: PortfolioSubmission): string {
   if (data.commodities.details.length > 0) {
     data.commodities.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
-        const typeLabel = commodityTypeLabel(detail.commodityType) || "（未入力）";
-        body += `・${typeLabel}：${formatPercentage(detail.amount)}\n`;
+        const name = detail.name || "（未入力）";
+        body += `・${name}：${formatPercentage(detail.amount)}\n`;
       }
     });
   }
