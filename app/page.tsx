@@ -288,7 +288,7 @@ export default function Home() {
                                         </p>
                                         <p style={{ color: '#cccccc' }}>
                                             ご登録いただいたメールアドレス宛に<br />
-                                            担当スタッフよりご連絡をさせていただきます。
+                                            担当スタッフよりご連絡させていただきます。
                                         </p>
                                     </div>
                                 </div>
