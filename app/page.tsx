@@ -218,7 +218,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                             </div>
-                            <h1 className="text-xl font-extrabold bg-clip-text text-transparent mb-4 bg-gradient-to-r from-[#2db8f9] to-[#aa30ff]">
+                            <h1 className="text-xl font-extrabold mb-4" style={{ color: '#ffffff' }}>
                                 ご入力ありがとうございました
                             </h1>
                             <div className="space-y-4 mb-6">
