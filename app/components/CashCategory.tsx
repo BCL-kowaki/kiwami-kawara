@@ -39,7 +39,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
         {data.details.map((row, index) => (
           <div key={index} className="rounded-[2px] p-4 mb-3" style={{ background: '#1a1a1a', border: '1px solid #3a3a3a' }}>
             <div className="flex justify-between items-start mb-3">
-              <h4 className="font-semibold text-sm" style={{ color: '#D4AF37' }}>内訳 {index + 1}</h4>
+              <h4 className="font-semibold text-sm" style={{ color: '#1be7f5' }}>内訳 {index + 1}</h4>
               <button
                 type="button"
                 onClick={() => deleteDetailRow(index)}
@@ -62,7 +62,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                     currency: e.target.value as Currency,
                   })
                 }
-                className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-yellow-500 mb-3"
+                className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-cyan-500 mb-3"
                 style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
               >
                 <option value="JPY" style={{ background: '#2a2a2a', color: 'white' }}>JPY</option>
@@ -94,7 +94,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                   }
                 }}
                 placeholder="例: 10"
-                className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-gray-400"
+                className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-cyan-500 placeholder-gray-400"
                 style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
               />
             </div>
@@ -106,7 +106,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-[2px] transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)', color: '#1a1a1a' }}
+            style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 100%)', color: '#ffffff' }}
           >
             + 内訳を追加
           </button>

@@ -71,8 +71,8 @@ export default function NetworkBackground() {
                     particle.x, particle.y, 0,
                     particle.x, particle.y, particle.radius * 2
                 );
-                gradient.addColorStop(0, "rgba(255, 215, 0, 0.9)");
-                gradient.addColorStop(1, "rgba(184, 134, 11, 0.3)");
+                gradient.addColorStop(0, "rgba(27, 231, 245, 0.9)");
+                gradient.addColorStop(1, "rgba(36, 131, 248, 0.3)");
                 ctx.fillStyle = gradient;
                 ctx.fill();
 
@@ -83,8 +83,8 @@ export default function NetworkBackground() {
                     particle.x, particle.y, 0,
                     particle.x, particle.y, particle.radius * 3
                 );
-                glowGradient.addColorStop(0, "rgba(255, 215, 0, 0.3)");
-                glowGradient.addColorStop(1, "rgba(255, 215, 0, 0)");
+                glowGradient.addColorStop(0, "rgba(27, 231, 245, 0.3)");
+                glowGradient.addColorStop(1, "rgba(27, 231, 245, 0)");
                 ctx.fillStyle = glowGradient;
                 ctx.fill();
             });
@@ -107,8 +107,8 @@ export default function NetworkBackground() {
                             particles[i].x, particles[i].y,
                             particles[j].x, particles[j].y
                         );
-                        lineGradient.addColorStop(0, `rgba(255, 215, 0, ${opacity})`);
-                        lineGradient.addColorStop(1, `rgba(184, 134, 11, ${opacity})`);
+                        lineGradient.addColorStop(0, `rgba(27, 231, 245, ${opacity})`);
+                        lineGradient.addColorStop(1, `rgba(36, 131, 248, ${opacity})`);
                         
                         ctx.strokeStyle = lineGradient;
                         ctx.lineWidth = 1;

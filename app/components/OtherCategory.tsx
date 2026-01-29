@@ -61,7 +61,7 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
                       investmentType: (e.target.value || undefined) as OtherInvestmentType | undefined,
                     })
                   }
-                  className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-yellow-500 text-sm"
+                  className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm"
                   style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: row.investmentType ? 'white' : '#9ca3af' }}
                 >
                   <option value="" style={{ background: '#2a2a2a', color: '#9ca3af' }}>選択してください</option>
@@ -82,7 +82,7 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-[2px] transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)', color: '#1a1a1a' }}
+            style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 100%)', color: '#ffffff' }}
           >
             + 詳細行を追加
           </button>

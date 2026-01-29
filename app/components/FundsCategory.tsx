@@ -53,7 +53,7 @@ export default function FundsCategory({ data, onChange }: FundsCategoryProps) {
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-[2px] transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #B8860B 100%)', color: '#1a1a1a' }}
+            style={{ background: 'linear-gradient(135deg, #1be7f5 0%, #2483f8 100%)', color: '#ffffff' }}
           >
             + 詳細行を追加
           </button>
