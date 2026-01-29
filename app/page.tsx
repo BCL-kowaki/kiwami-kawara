@@ -58,24 +58,24 @@ export default function Home() {
     const [email, setEmail] = useState<string>("");
 
     const isValidCashRow = (row: any) =>
-        row.sizeMode === "amount" &&
+        (row.sizeMode === "amount" || row.sizeMode === "percentage") &&
         !!row.currency &&
         row.amount !== undefined &&
         row.amount > 0;
 
     const isValidNamedAmountRow = (row: any) =>
         row.name?.trim() &&
-        row.sizeMode === "amount" &&
+        (row.sizeMode === "amount" || row.sizeMode === "percentage") &&
         row.amount !== undefined &&
         row.amount > 0;
 
     const isValidCommoditiesRow = (row: any) =>
-        row.sizeMode === "amount" && row.amount !== undefined && row.amount > 0;
+        (row.sizeMode === "amount" || row.sizeMode === "percentage") && row.amount !== undefined && row.amount > 0;
 
     const isValidOtherRow = (row: any) =>
         !!row.investmentType &&
         row.name?.trim() &&
-        row.sizeMode === "amount" &&
+        (row.sizeMode === "amount" || row.sizeMode === "percentage") &&
         row.amount !== undefined &&
         row.amount > 0;
 
