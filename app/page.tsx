@@ -195,56 +195,58 @@ export default function Home() {
 
     if (formState === "submitted") {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden" style={{ background: '#0b0e1f' }}>
+            <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: '#0b0e1f' }}>
                 <NetworkBackground />
-                <div className="relative z-10 max-w-md w-full">
-                    <div className="p-[2px] rounded-[2px] shadow-2xl" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
-                        <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
-                            <div className="mb-2 pt-6 pb-4">
-                                <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
-                                    <svg
-                                        className="w-10 h-10"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                        style={{ color: '#ffffff' }}
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={3}
-                                            d="M5 13l4 4L19 7"
-                                        />
-                                    </svg>
+                <div className="flex-1 flex items-center justify-center p-4">
+                    <div className="relative z-10 max-w-md w-full">
+                        <div className="p-[2px] rounded-[2px] shadow-2xl" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                            <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
+                                <div className="mb-2 pt-6 pb-4">
+                                    <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                                        <svg
+                                            className="w-10 h-10"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            style={{ color: '#ffffff' }}
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={3}
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                    </div>
                                 </div>
-                            </div>
-                            <h1 className="text-xl font-extrabold mb-4" style={{ color: '#ffffff' }}>
-                                ご入力ありがとうございました
-                            </h1>
-                            <div className="space-y-4 mb-6">
-                                <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
-                                    ご入力いただいた内容を確認いたしました。
-                                </p>
-                                <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#252535', borderColor: '#3a3a4a' }}>
-                                    <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
-                                        3営業日以内に
+                                <h1 className="text-xl font-extrabold mb-4" style={{ color: '#ffffff' }}>
+                                    ご入力ありがとうございました
+                                </h1>
+                                <div className="space-y-4 mb-6">
+                                    <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
+                                        ご入力いただいた内容を確認いたしました。
                                     </p>
-                                    <p style={{ color: '#cccccc' }}>
-                                        ご登録いただいたメールアドレス宛に<br />
-                                        <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
+                                    <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#252535', borderColor: '#3a3a4a' }}>
+                                        <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
+                                            3営業日以内に
+                                        </p>
+                                        <p style={{ color: '#cccccc' }}>
+                                            ご登録いただいたメールアドレス宛に<br />
+                                            <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="pt-1">
+                                    <p className="text-sm" style={{ color: '#aaaaaa' }}>
+                                        ご不明な点がございましたら、<br />
+                                        お気軽にお問い合わせください。
                                     </p>
                                 </div>
-                            </div>
-                            <div className="pt-1">
-                                <p className="text-sm" style={{ color: '#aaaaaa' }}>
-                                    ご不明な点がございましたら、<br />
-                                    お気軽にお問い合わせください。
-                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p className="text-xs text-center mt-6" style={{ color: '#ffffff' }}>
+                <p className="relative z-10 text-xs text-center py-4" style={{ color: '#ffffff' }}>
                     ©2026 株式会社投資の"KAWARA"版.com
                 </p>
             </div>
