@@ -74,7 +74,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
               </select>
 
               <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
-                割合（%）
+              総資産に対する割合（%）
               </label>
               <input
                 type="number"
