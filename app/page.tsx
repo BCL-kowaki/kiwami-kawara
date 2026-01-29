@@ -280,7 +280,7 @@ export default function Home() {
                                 </h1>
                                 <div className="space-y-4 mb-6">
                                     <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
-                                        ご入力いただいた内容を確認いたしました。
+                                        ご入力いただいた内容を元に分析いたします。
                                     </p>
                                     <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#252535', borderColor: '#3a3a4a' }}>
                                         <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
@@ -288,7 +288,7 @@ export default function Home() {
                                         </p>
                                         <p style={{ color: '#cccccc' }}>
                                             ご登録いただいたメールアドレス宛に<br />
-                                            <span className="font-bold" style={{ color: '#2db8f9' }}>結果のレポート</span>をお送りいたします。
+                                            担当スタッフよりご連絡をさせていただきます。
                                         </p>
                                     </div>
                                 </div>
