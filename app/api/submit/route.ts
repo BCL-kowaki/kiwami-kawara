@@ -262,7 +262,7 @@ export async function POST(request: NextRequest) {
     });
     const customerName = [data.familyName, data.givenName].filter(Boolean).join(" ");
     const adminSubject = `【資産運用AI分析】フォーム入力 ${customerName}様`;
-    const userSubject = `【投資のKAWARA版】資産運用AI分析 受付完了`;
+    const userSubject = `【投資のKAWARA版】資産運用AI分析の申請を承りました`;
 
     // メール送信結果を追跡
     let adminMailSent = false;
