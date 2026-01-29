@@ -146,7 +146,6 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
   let body = `${namePrefix}`;
   body += `この度は、投資のKAWARA版．ｃｏｍ「資産運用AI分析」に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
-  body += `以下の内容で、資産運用情報を確かに受け付けました。\n\n`;
   body += `━━━━━━━━━━━━━━━━━━\n`;
   body += `■ 今後の流れについて\n`;
   body += `━━━━━━━━━━━━━━━━━━\n\n`;
@@ -154,7 +153,8 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
   body += `② 分析が完了次第、担当者より改めてご連絡いたします。\n`;
   body += `③ レポートの詳細は個人情報が含まれる内容となるため、ご本人確認（SMS認証）を行わせていただきます。\n`;
   body += `④ ご本人確認後、レポートをご覧いただけます。\n\n`;
-  body += `※目安として【3営業日以内】にご連絡いたします。\n\n`;
+  body += `目安として3営業日以内にご連絡させていただきます。\n`;
+  body += `お楽しみにお待ちください。\n\n`;
   body += `━━━━━━━━━━━━━━━━━━\n`;
   body += `■ ご注意事項\n`;
   body += `━━━━━━━━━━━━━━━━━━\n\n`;
@@ -162,7 +162,7 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
   body += `・本メールへの返信ではお問い合わせを受け付けておりません。\n`;
   body += `・内容に心当たりがない場合は、本メールを破棄してください。\n\n`;
   body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `株式会社投資の"KAWARA"版．ｃｏｍ\n`;
+  body += `株式会社投資の"KAWARA"版．ｃｏｍ\n\n`;
   body += `（本メールは自動送信です）\n`;
 
   return body;
