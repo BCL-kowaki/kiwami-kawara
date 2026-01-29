@@ -247,7 +247,7 @@ export default function Home() {
         <div 
             className="min-h-screen py-8 px-4 relative overflow-hidden"
             style={{
-                background: 'linear-gradient(135deg, #020617 0%, #0a1628 50%, #020617 100%)',
+                background: '#0b0e1f',
             }}
         >
             {/* ネットワークアニメーション背景 */}
