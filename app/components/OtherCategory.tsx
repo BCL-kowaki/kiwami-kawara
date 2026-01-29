@@ -46,7 +46,7 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
             rowIndex={index}
             nameLabel="案件名"
             namePlaceholder="例：〇〇株式会社、△△ファンド"
-            amountLabel="割合（%）"
+            amountLabel="総資産に対する割合（%）"
             amountPlaceholder="例：10"
             categorySpecificFields={
               <div className="mb-3">

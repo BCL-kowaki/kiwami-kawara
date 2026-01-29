@@ -24,7 +24,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
   showName = true,
   nameLabel = "銘柄名・商品名",
   namePlaceholder = "例: 7203, VTI, BTC",
-  amountLabel = "割合（%）",
+  amountLabel = "総資産に対する割合（%）",
   amountPlaceholder = "例: 10",
 }: DetailRowProps<T>) {
 
