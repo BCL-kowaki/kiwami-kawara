@@ -1,4 +1,4 @@
-export type SizeMode = "amount";
+export type SizeMode = "amount" | "percentage";
 export type FormState = "editing" | "submitting" | "submitted" | "error";
 
 export type Currency = "JPY" | "USD" | "EUR" | "GBP" | "AUD";
