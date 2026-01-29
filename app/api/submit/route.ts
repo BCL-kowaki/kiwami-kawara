@@ -61,7 +61,7 @@ function formatEmailBody(data: PortfolioSubmission): string {
     }
   };
 
-  body += `1・ETF・投資信託（NISA）\n\n`;
+  body += `1・ETF・投資信託・NISA\n\n`;
   if (data.funds.details.length > 0) {
     data.funds.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {

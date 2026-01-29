@@ -282,7 +282,7 @@ export default function Home() {
                     )}
 
                     <form onSubmit={handleSubmit}>
-                        <CategoryAccordion title="1. ETF・投資信託（NISA）" badge={fundsStatus}>
+                        <CategoryAccordion title="1. ETF・投資信託・NISA" badge={fundsStatus}>
                             <FundsCategory data={funds} onChange={setFunds} />
                         </CategoryAccordion>
 
