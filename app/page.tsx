@@ -225,7 +225,7 @@ export default function Home() {
                                 <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
                                     ご入力いただいた内容を確認いたしました。
                                 </p>
-                                <div className="rounded-[2px] p-4 border text-sm">
+                                <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#252535', borderColor: '#3a3a4a' }}>
                                     <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
                                         3営業日以内に
                                     </p>
@@ -235,7 +235,7 @@ export default function Home() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="pt-4" style={{ borderTop: '1px solid #3a3a3a' }}>
+                            <div className="pt-1">
                                 <p className="text-sm" style={{ color: '#aaaaaa' }}>
                                     ご不明な点がございましたら、<br />
                                     お気軽にお問い合わせください。
