@@ -80,11 +80,11 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                 type="number"
                 min="0"
                 max="100"
-                step="0.1"
+                step="1"
                 value={row.amount !== undefined && row.amount !== null ? String(row.amount) : ""}
                 onChange={(e) => {
                   const value = e.target.value;
-                  const numValue = value === "" ? undefined : parseFloat(value);
+                  const numValue = value === "" ? undefined : Math.round(parseFloat(value));
                   if (value === "" || (!isNaN(numValue!) && numValue! >= 0 && numValue! <= 100)) {
                     updateDetailRow(index, {
                       ...row,
