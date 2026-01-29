@@ -114,6 +114,62 @@ export default function Home() {
         return { completed, total: 7 };
     }, [cash, listedStocks, funds, bonds, commodities, crypto, other]);
 
+    // 入力合計値を計算
+    const totalPercentage = useMemo(() => {
+        let total = 0;
+        
+        // 現金・預金
+        cash.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // 上場株
+        listedStocks.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // ETF・投資信託・NISA
+        funds.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // 債券
+        bonds.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // 貴金属・コモディティ
+        commodities.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // 暗号資産
+        crypto.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        // その他
+        other.details.forEach(row => {
+            if (row.amount !== undefined && row.amount !== null) {
+                total += row.amount;
+            }
+        });
+        
+        return Math.round(total * 10) / 10; // 小数点以下1桁に丸める
+    }, [cash, listedStocks, funds, bonds, commodities, crypto, other]);
+
     const filterRows = <T,>(details: T[], validator: (row: any) => boolean) =>
         details.filter(validator as any);
 
@@ -414,6 +470,21 @@ export default function Home() {
                 <p className="text-xs text-center mt-6" style={{ color: '#ffffff' }}>
                     ©2026 株式会社投資の"KAWARA"版.com
                 </p>
+            </div>
+
+            {/* 入力合計値フローティングポップアップ */}
+            <div 
+                className="fixed bottom-6 right-6 z-50 rounded-full shadow-2xl px-5 py-3"
+                style={{ 
+                    background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)',
+                }}
+            >
+                <div className="text-center">
+                    <p className="text-xs font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>入力合計値</p>
+                    <p className="text-xl font-bold" style={{ color: '#ffffff' }}>
+                        {totalPercentage}<span className="text-sm ml-1">%</span>
+                    </p>
+                </div>
             </div>
         </div>
     );
