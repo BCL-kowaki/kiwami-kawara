@@ -39,7 +39,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
         {data.details.map((row, index) => (
           <div key={index} className="rounded-[2px] p-4 mb-3" style={{ background: '#1a1a1a', border: '1px solid #3a3a3a' }}>
             <div className="flex justify-between items-start mb-3">
-              <h4 className="font-semibold text-sm" style={{ color: '#2db8f9' }}>内訳 {index + 1}</h4>
+              <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>内訳 {index + 1}</h4>
               <button
                 type="button"
                 onClick={() => deleteDetailRow(index)}
