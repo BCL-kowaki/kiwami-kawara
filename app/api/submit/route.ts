@@ -244,7 +244,6 @@ export async function POST(request: NextRequest) {
 
     // 管理者メールアドレス（複数宛先）
     const adminEmails = [
-      process.env.ADMIN_EMAIL || "mizuki.hirapro@gmail.com",
       "quest@kawaraban.co.jp",
       "y3awtd-hirayama-p@hdbronze.htdb.jp",
     ];
