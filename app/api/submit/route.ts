@@ -66,7 +66,7 @@ function formatEmailBody(data: PortfolioSubmission): string {
     }
   };
 
-  body += `1・ETF・投資信託・NISA\n\n`;
+  body += `1・ETF・投資信託・NISA\n`;
   if (data.funds.details.length > 0) {
     data.funds.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -75,9 +75,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n\n`;
+  body += `\n`;
 
-  body += `2・現金・預金\n\n`;
+  body += `2・現金・預金\n`;
   if (data.cash.details?.length > 0) {
     data.cash.details.forEach((detail: any) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -86,9 +86,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n\n`;
+  body += `\n`;
 
-  body += `3・上場株\n\n`;
+  body += `3・上場株\n`;
   if (data.listedStocks.details.length > 0) {
     data.listedStocks.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -97,9 +97,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n\n`;
+  body += `\n`;
 
-  body += `4・債券\n\n`;
+  body += `4・債券\n`;
   if (data.bonds.details.length > 0) {
     data.bonds.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -108,9 +108,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n\n`;
+  body += `\n`;
 
-  body += `5・貴金属・コモディティ\n\n`;
+  body += `5・貴金属・コモディティ\n`;
   if (data.commodities.details.length > 0) {
     data.commodities.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -119,9 +119,9 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n\n`;
+  body += `\n`;
 
-  body += `6・暗号資産\n\n`;
+  body += `6・暗号資産\n`;
   if (data.crypto.details.length > 0) {
     data.crypto.details.forEach((detail) => {
       if (detail.amount !== undefined && detail.amount !== null) {
@@ -130,7 +130,6 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-  body += `\n`;
 
   body += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
   body += `\n【JSONデータ】\n`;
