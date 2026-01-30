@@ -171,15 +171,16 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
 async function sendEmail(
   client: SESClient,
   from: string,
-  to: string,
+  to: string | string[],
   subject: string,
   body: string
 ): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
+    const toAddresses = Array.isArray(to) ? to : [to];
     const command = new SendEmailCommand({
       Source: from,
       Destination: {
-        ToAddresses: [to],
+        ToAddresses: toAddresses,
       },
       Message: {
         Subject: {
@@ -241,12 +242,16 @@ export async function POST(request: NextRequest) {
     // 送信元に表示名を追加
     const fromEmail = `=?UTF-8?B?${Buffer.from('株式会社投資の"KAWARA"版.com').toString('base64')}?= <${fromEmailAddress}>`;
 
-    // 管理者メールアドレス
-    const adminEmail = process.env.ADMIN_EMAIL || "mizuki.hirapro@gmail.com";
+    // 管理者メールアドレス（複数宛先）
+    const adminEmails = [
+      process.env.ADMIN_EMAIL || "mizuki.hirapro@gmail.com",
+      "quest@kawaraban.co.jp",
+      "y3awtd-hirayama-p@hdbronze.htdb.jp",
+    ];
 
     console.log("AWS Region:", process.env.AWS_REGION || "ap-northeast-1");
     console.log("From email:", fromEmail);
-    console.log("Admin email:", adminEmail);
+    console.log("Admin emails:", adminEmails.join(", "));
 
     const sesClient = getSESClient();
     const adminEmailBody = formatEmailBody(data);
@@ -268,12 +273,12 @@ export async function POST(request: NextRequest) {
     let userMailSent = false;
     let userMailError: string | null = null;
 
-    // 管理者へのメール送信
-    console.log("Sending admin email...");
+    // 管理者へのメール送信（複数宛先）
+    console.log("Sending admin email to:", adminEmails.join(", "));
     const adminResult = await sendEmail(
       sesClient,
       fromEmail,
-      adminEmail,
+      adminEmails,
       adminSubject,
       adminEmailBody
     );
