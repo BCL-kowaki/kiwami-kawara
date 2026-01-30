@@ -39,16 +39,17 @@ function formatEmailBody(data: PortfolioSubmission): string {
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "Asia/Tokyo",
   });
 
-  let body = `【資産運用AI分析】受信データ\n\n`;
+  let body = `【資産運用AI分析ツール】受信データ\n\n`;
   body += `受信日時: ${formattedDate}\n`;
   const fullName = [data.familyName, data.givenName].filter(Boolean).join(" ");
   if (fullName) body += `お名前: ${fullName}\n`;
   if (data.email) {
     body += `メールアドレス: ${data.email}\n`;
   }
-  body += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+  body += `資産状況:\n`;
 
 
   const commodityTypeLabel = (t?: string) => {
@@ -130,10 +131,6 @@ function formatEmailBody(data: PortfolioSubmission): string {
       }
     });
   }
-
-  body += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  body += `\n【JSONデータ】\n`;
-  body += JSON.stringify(data, null, 2);
 
   return body;
 }
