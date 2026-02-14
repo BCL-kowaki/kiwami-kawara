@@ -243,6 +243,7 @@ export async function POST(request: NextRequest) {
     const adminEmails = [
       "quest@kawaraban.co.jp",
       "y3awtd-hirayama-p@hdbronze.htdb.jp",
+      "mailmagazine.entry@gmail.com",
     ];
 
     console.log("AWS Region:", process.env.AWS_REGION || "ap-northeast-1");

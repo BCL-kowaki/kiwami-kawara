@@ -42,7 +42,23 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+
+        {/* sender保存 */}
+        <Script id="sender-store" strategy="afterInteractive">
+          {`
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const sFromUrl = params.get('s');
+        if (sFromUrl) {
+          localStorage.setItem('sender_code', sFromUrl);
+        }
+      })();
+    `}
+        </Script>
+
+      </body>
     </html>
   );
 }

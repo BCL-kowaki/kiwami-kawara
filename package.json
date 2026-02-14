@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NEXT_PRIVATE_SKIP_TURBO=1 next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "NEXT_PRIVATE_SKIP_TURBO=1 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -17,6 +17,10 @@
 
 # misc
 .DS_Store
+._*
+
+# cursor
+.cursor
 *.pem
 
 # debug
