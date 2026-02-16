@@ -4,7 +4,7 @@ import { useState, FormEvent, useCallback } from "react";
 import NetworkBackground from "../components/NetworkBackground";
 
 const DISCLAIMER_TEXT =
-  "このレポートはあくまでもAIが導き出した参考材料として取り扱う必要がある。このレポート内容を模倣して損失が出た場合は投資のKAWARA版は一切の責任を負わない。全て自己責任であり、投資助言を目的としたものではない。";
+  "本レポートはAIによる分析結果の参考資料です。内容に基づく投資判断およびその結果は、お客様ご自身の責任でお願いいたします。投資助言・勧誘を目的としたものではございません。";
 
 type Step = "form" | "phone" | "verify" | "done";
 
