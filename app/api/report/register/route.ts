@@ -20,25 +20,6 @@ function formatAdminBody(data: ReportRegistrationBody): string {
   return body;
 }
 
-function formatUserAutoReplyBody(data: ReportRegistrationBody): string {
-  let body = `${data.name} 様\n\n`;
-  body += `この度は、投資のKAWARA版「極」特別レポートのお申し込みいただき、\n`;
-  body += `誠にありがとうございます。\n\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n`;
-  body += `■ ご本人様確認（SMS認証）について\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `ご登録いただいたメールアドレス宛に、ご本人様確認（SMS認証）のご案内をお送りしております。\n`;
-  body += `認証完了後、2〜3日以内に担当スタッフよりご連絡させていただきます。\n\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n`;
-  body += `■ ご注意事項\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `・本メールは自動送信です。\n`;
-  body += `・本メールへの返信ではお問い合わせを受け付けておりません。\n\n`;
-  body += `株式会社投資の"KAWARA"版.ｃｏｍ \n`;
-  body += `（本メールは自動送信です）\n`;
-  return body;
-}
-
 export async function POST(request: NextRequest) {
   try {
     const data: ReportRegistrationBody = await request.json();
@@ -82,10 +63,8 @@ export async function POST(request: NextRequest) {
     const fromEmail = getFromEmail();
     const sesClient = getSESClient();
     const adminBody = formatAdminBody({ ...data, name, email, postalCode, address1, address2, disclaimerAccepted: true });
-    const userBody = formatUserAutoReplyBody({ ...data, name, email, postalCode, address1, address2, disclaimerAccepted: true });
 
     await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【特別レポート申込】${name} 様`, adminBody);
-    await sendEmail(sesClient, fromEmail, email, "【投資のKAWARA版】特別レポートのお申し込みを承りました", userBody);
 
     return NextResponse.json({ ok: true });
   } catch (err) {

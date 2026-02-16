@@ -10,7 +10,7 @@ const ADMIN_EMAILS = [
 ];
 
 function formatVerifiedAdminBody(name: string, email: string, address: string, phone: string): string {
-  let body = `【レポート申込】本人確認完了\n\n`;
+  let body = `【特別レポート申込】本人確認完了\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
@@ -22,6 +22,8 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
 
 function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
+  body += `この度は、投資のKAWARA版「極」特別レポートのお申し込みいただき、\n`;
+  body += `誠にありがとうございます。\n\n`;
   body += `ご本人様確認が完了しました。\n\n`;
   body += `登録情報確認後、担当スタッフより2〜3日以内にレポートを送付させていただきます。\n`;
   body += `今しばらくお待ちください。\n\n`;
@@ -77,7 +79,7 @@ export async function POST(request: NextRequest) {
       const adminBody = formatVerifiedAdminBody(pending.name, pending.email, pending.address, pending.phone);
       const userBody = formatUserCompletedBody(pending.name);
       await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【レポート申込】本人確認完了 ${pending.name} 様`, adminBody);
-      await sendEmail(sesClient, fromEmail, pending.email, "【投資のKAWARA版】ご本人様確認が完了しました", userBody);
+      await sendEmail(sesClient, fromEmail, pending.email, "【投資のKAWARA版】特別レポートのお申し込みを承りました", userBody);
     }
 
     return NextResponse.json({ ok: true });
