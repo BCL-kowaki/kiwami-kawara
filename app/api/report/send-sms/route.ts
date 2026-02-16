@@ -1,23 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import Twilio from "twilio";
-import { getPending, setPhoneOnly } from "@/lib/report-store";
+import { verifyReportToken, signReportToken } from "@/lib/report-token";
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, phone } = await request.json();
-    const normalizedEmail = (email || "").trim().toLowerCase();
+    const { token, phone } = await request.json();
     const normalizedPhone = (phone || "").trim().replace(/\s/g, "");
 
-    if (!normalizedEmail) {
-      return NextResponse.json({ ok: false, message: "メールアドレスが必要です。" }, { status: 400 });
+    if (!token || typeof token !== "string") {
+      return NextResponse.json({ ok: false, message: "セッションが無効です。最初からフォームに戻って登録してください。" }, { status: 400 });
     }
     if (!normalizedPhone) {
       return NextResponse.json({ ok: false, message: "電話番号を入力してください。" }, { status: 400 });
     }
 
-    const pending = await getPending(normalizedEmail);
-    if (!pending) {
-      return NextResponse.json({ ok: false, message: "申込が見つかりません。先にフォームから登録してください。" }, { status: 400 });
+    const payload = verifyReportToken(token);
+    if (!payload) {
+      return NextResponse.json({ ok: false, message: "セッションの有効期限が切れました。最初からフォームに戻って登録してください。" }, { status: 400 });
     }
 
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -41,9 +40,14 @@ export async function POST(request: NextRequest) {
       .services(verifyServiceSid)
       .verifications.create({ to: toE164, channel: "sms" });
 
-    await setPhoneOnly(normalizedEmail, normalizedPhone);
+    const newToken = signReportToken({
+      email: payload.email,
+      name: payload.name,
+      address: payload.address,
+      phone: normalizedPhone,
+    });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, token: newToken });
   } catch (err) {
     console.error("[report/send-sms]", err);
     const message = err instanceof Error ? err.message : "SMS送信に失敗しました。";

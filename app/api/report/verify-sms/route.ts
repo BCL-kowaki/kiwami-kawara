@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Twilio from "twilio";
-import { getPending } from "@/lib/report-store";
+import { verifyReportToken } from "@/lib/report-token";
 import { getSESClient, sendEmail, getFromEmail } from "@/lib/ses";
 
 const ADMIN_EMAILS = [
@@ -38,17 +38,19 @@ function formatUserCompletedBody(name: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, code } = await request.json();
-    const normalizedEmail = (email || "").trim().toLowerCase();
+    const { token, code } = await request.json();
     const codeStr = String(code || "").trim();
 
-    if (!normalizedEmail || !codeStr) {
-      return NextResponse.json({ ok: false, message: "メールアドレスと認証コードを入力してください。" }, { status: 400 });
+    if (!token || typeof token !== "string") {
+      return NextResponse.json({ ok: false, message: "セッションが無効です。最初からフォームに戻って登録してください。" }, { status: 400 });
+    }
+    if (!codeStr) {
+      return NextResponse.json({ ok: false, message: "認証コードを入力してください。" }, { status: 400 });
     }
 
-    const pending = await getPending(normalizedEmail);
-    if (!pending?.phone) {
-      return NextResponse.json({ ok: false, message: "申込または電話番号が見つかりません。先にSMS認証コードを送信してください。" }, { status: 400 });
+    const payload = verifyReportToken(token);
+    if (!payload?.phone) {
+      return NextResponse.json({ ok: false, message: "セッションの有効期限が切れました。電話番号入力からやり直してください。" }, { status: 400 });
     }
 
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -59,9 +61,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, message: "認証の設定がありません。" }, { status: 500 });
     }
 
-    const phoneE164 = pending.phone.startsWith("+")
-      ? pending.phone
-      : `+81${pending.phone.replace(/^0/, "")}`;
+    const phoneE164 = payload.phone.startsWith("+")
+      ? payload.phone
+      : `+81${payload.phone.replace(/^0/, "")}`;
 
     const client = Twilio(accountSid, authToken);
     const check = await client.verify.v2
@@ -80,10 +82,10 @@ export async function POST(request: NextRequest) {
     if (accessKeyId && secretAccessKey) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
-      const adminBody = formatVerifiedAdminBody(pending.name, pending.email, pending.address, pending.phone);
-      const userBody = formatUserCompletedBody(pending.name);
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【レポート申込】本人確認完了 ${pending.name} 様`, adminBody);
-      await sendEmail(sesClient, fromEmail, pending.email, "【投資のKAWARA版】特別レポートのお申し込みを承りました", userBody);
+      const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
+      const userBody = formatUserCompletedBody(payload.name);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【レポート申込】本人確認完了 ${payload.name} 様`, adminBody);
+      await sendEmail(sesClient, fromEmail, payload.email, "【投資のKAWARA版】特別レポートのお申し込みを承りました", userBody);
     }
 
     return NextResponse.json({ ok: true });

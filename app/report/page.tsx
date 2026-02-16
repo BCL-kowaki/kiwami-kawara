@@ -24,6 +24,7 @@ export default function ReportPage() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
+  const [reportToken, setReportToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -66,6 +67,7 @@ export default function ReportPage() {
         setError(json.message || "送信に失敗しました。");
         return;
       }
+      if (json.token) setReportToken(json.token);
       setStep("phone");
     } catch {
       setError("送信に失敗しました。時間をおいて再度お試しください。");
@@ -82,13 +84,14 @@ export default function ReportPage() {
       const res = await fetch("/api/report/send-sms", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), phone: phone.trim() }),
+        body: JSON.stringify({ token: reportToken, phone: phone.trim() }),
       });
       const json = await res.json();
       if (!json.ok) {
         setError(json.message || "SMS送信に失敗しました。");
         return;
       }
+      if (json.token) setReportToken(json.token);
       setStep("verify");
     } catch {
       setError("SMS送信に失敗しました。");
@@ -104,13 +107,14 @@ export default function ReportPage() {
       const res = await fetch("/api/report/send-sms", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), phone: phone.trim() }),
+        body: JSON.stringify({ token: reportToken, phone: phone.trim() }),
       });
       const json = await res.json();
       if (!json.ok) {
         setError(json.message || "再送信に失敗しました。");
         return;
       }
+      if (json.token) setReportToken(json.token);
       setError("");
     } catch {
       setError("再送信に失敗しました。");
@@ -127,7 +131,7 @@ export default function ReportPage() {
       const res = await fetch("/api/report/verify-sms", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), code: code.trim() }),
+        body: JSON.stringify({ token: reportToken, code: code.trim() }),
       });
       const json = await res.json();
       if (!json.ok) {
@@ -381,7 +385,7 @@ export default function ReportPage() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <button type="submit" disabled={loading} className={btnStyle} style={btnGradient}>
+                  <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
                     {loading ? "送信中..." : "認証コードを送信"}
                   </button>
                 </div>
@@ -411,7 +415,7 @@ export default function ReportPage() {
                   </p>
                 </div>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <button type="submit" disabled={loading} className={btnStyle} style={btnGradient}>
+                  <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
                     {loading ? "認証中..." : "認証する"}
                   </button>
                   <button
