@@ -205,7 +205,7 @@ export default function ReportPage() {
                   </p>
                   <div className="rounded-[2px] p-4 border text-sm" style={{ background: "#252535", borderColor: "#3a3a4a" }}>
                     <p style={{ color: "#cccccc" }}>
-                    ご登録内容確認後、2〜3日以内にご担当スタッフよりご連絡させていただきます。<br>
+                    ご登録内容確認後、2〜3日以内にご担当スタッフよりご連絡させていただきます。<br />
                     お届けまで今しばらくお待ちください。
                     </p>
                   </div>
