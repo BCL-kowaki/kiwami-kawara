@@ -135,6 +135,18 @@ export default function ReportPage() {
         return;
       }
       setStep("done");
+      // レポート申込完了イベント（GA4 / Google Ads）
+      try {
+        const sender = typeof window !== "undefined" ? localStorage.getItem("sender_code") || "(none)" : "(none)";
+        if (typeof window !== "undefined" && (window as { gtag?: (...args: unknown[]) => void }).gtag) {
+          (window as { gtag: (...args: unknown[]) => void }).gtag("event", "report_verify_complete", {
+            sender,
+            email_domain: (email.split("@")[1] || "").toLowerCase(),
+          });
+        }
+      } catch {
+        // ignore
+      }
     } catch {
       setError("認証に失敗しました。");
     } finally {
