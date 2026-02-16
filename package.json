@@ -26,6 +26,7 @@
     "react-dom": "^19.2.3",
     "resend": "^6.7.0",
     "tailwindcss": "^4.1.18",
+    "twilio": "^5.12.1",
     "typescript": "^5.9.3"
   }
 }

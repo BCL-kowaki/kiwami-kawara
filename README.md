@@ -119,6 +119,28 @@ npm run dev
 - **メール送信**: Resendを使用して社内宛にメール送信
 - **メール本文**: 整形されたテキスト形式 + JSONデータ
 
+## レポート申込（/report）
+
+`/report` で、AIレポート申込フォームを利用できます。
+
+**フロー**
+1. 名前・メール・住所（郵便番号で自動入力）・免責事項同意 → 登録
+2. 電話番号入力 → SMS認証コード送信（Twilio）
+3. 認証コード入力 → 本人確認完了
+4. 「登録情報確認後、スタッフより2〜3日以内にレポート送付」の案内表示
+
+**メール**: メインフォームと同様、AWS SES で管理者通知・顧客への自動返信を行います。
+
+**SMS認証（Twilio）**: `.env.local` に以下を設定してください。
+
+```env
+TWILIO_ACCOUNT_SID=your_account_sid
+TWILIO_AUTH_TOKEN=your_auth_token
+TWILIO_VERIFY_SERVICE_SID=VAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+- **Twilio Verify** を使用しているため、送信用の電話番号の取得は不要です。Twilioコンソールで「Verify」→「Services」からサービスを作成し、表示される **Service SID** を `TWILIO_VERIFY_SERVICE_SID` に設定してください。
+
 ## プロジェクト構造
 
 ```

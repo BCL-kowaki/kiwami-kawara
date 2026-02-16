@@ -10,7 +10,21 @@ interface Particle {
     radius: number;
 }
 
-export default function NetworkBackground() {
+const THEMES = {
+  default: {
+    particle: ["rgba(45, 184, 249, 0.9)", "rgba(170, 48, 255, 0.3)"],
+    glow: "rgba(123, 92, 250, 0.3)",
+    line: ["rgba(45, 184, 249, ", "rgba(170, 48, 255, "],
+  },
+  report: {
+    particle: ["rgba(243, 19, 19, 0.9)", "rgba(246, 236, 12, 0.4)"],
+    glow: "rgba(248, 3, 212, 0.35)",
+    line: ["rgba(243, 19, 19, ", "rgba(246, 236, 12, "],
+  },
+} as const;
+
+export default function NetworkBackground({ variant = "default" }: { variant?: "default" | "report" }) {
+    const theme = THEMES[variant];
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<Particle[]>([]);
     const animationRef = useRef<number>(0);
@@ -71,8 +85,8 @@ export default function NetworkBackground() {
                     particle.x, particle.y, 0,
                     particle.x, particle.y, particle.radius * 2
                 );
-                gradient.addColorStop(0, "rgba(45, 184, 249, 0.9)");
-                gradient.addColorStop(1, "rgba(170, 48, 255, 0.3)");
+                gradient.addColorStop(0, theme.particle[0]);
+                gradient.addColorStop(1, theme.particle[1]);
                 ctx.fillStyle = gradient;
                 ctx.fill();
 
@@ -83,8 +97,8 @@ export default function NetworkBackground() {
                     particle.x, particle.y, 0,
                     particle.x, particle.y, particle.radius * 3
                 );
-                glowGradient.addColorStop(0, "rgba(123, 92, 250, 0.3)");
-                glowGradient.addColorStop(1, "rgba(123, 92, 250, 0)");
+                glowGradient.addColorStop(0, theme.glow);
+                glowGradient.addColorStop(1, theme.glow.replace(/[\d.]+\)$/, "0)"));
                 ctx.fillStyle = glowGradient;
                 ctx.fill();
             });
@@ -107,8 +121,8 @@ export default function NetworkBackground() {
                             particles[i].x, particles[i].y,
                             particles[j].x, particles[j].y
                         );
-                        lineGradient.addColorStop(0, `rgba(45, 184, 249, ${opacity})`);
-                        lineGradient.addColorStop(1, `rgba(170, 48, 255, ${opacity})`);
+                        lineGradient.addColorStop(0, `${theme.line[0]}${opacity})`);
+                        lineGradient.addColorStop(1, `${theme.line[1]}${opacity})`);
                         
                         ctx.strokeStyle = lineGradient;
                         ctx.lineWidth = 1;
