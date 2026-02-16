@@ -10,11 +10,15 @@ const ADMIN_EMAILS = [
 ];
 
 function formatVerifiedAdminBody(name: string, email: string, address: string, phone: string): string {
+  const parts = address.split("｜");
+  const postalCode = parts[0] ?? "";
+  const addressLine = parts.slice(1).filter(Boolean).join(" ");
   let body = `【特別レポート申込】本人確認完了\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
-  body += `住所: ${address}\n`;
+  body += `郵便番号: ${postalCode}\n`;
+  body += `住所: ${addressLine}\n`;
   body += `電話番号: ${phone}\n`;
   body += `※2〜3日以内にレポートを送付してください。\n`;
   return body;

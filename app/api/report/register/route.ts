@@ -10,12 +10,13 @@ const ADMIN_EMAILS = [
 ];
 
 function formatAdminBody(data: ReportRegistrationBody): string {
-  const address = [data.postalCode, data.address1, data.address2].filter(Boolean).join("｜");
+  const addressLine = [data.address1, data.address2].filter(Boolean).join(" ");
   let body = `【特別レポート申込】受信データ\n\n`;
   body += `受信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${data.name}\n`;
   body += `メールアドレス: ${data.email}\n`;
-  body += `住所: ${address}\n`;
+  body += `郵便番号: ${data.postalCode || ""}\n`;
+  body += `住所: ${addressLine}\n`;
   body += `免責事項同意: ${data.disclaimerAccepted ? "同意" : "未同意"}\n`;
   return body;
 }
