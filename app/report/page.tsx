@@ -201,12 +201,12 @@ export default function ReportPage() {
                 </h1>
                 <div className="space-y-4 mb-6">
                   <p className="text-sm leading-relaxed text-left" style={{ color: "#eeeeee" }}>
-                    【1,000名突破記念】「極」が選んだ最優秀ポートフォリオレポートを、2〜3日以内にご担当スタッフよりご連絡させていただきます。
+                    【1,000名突破記念】AI「極」が選んだ最優秀ポートフォリオレポートのお申し込みありがとうございます。
                   </p>
                   <div className="rounded-[2px] p-4 border text-sm" style={{ background: "#252535", borderColor: "#3a3a4a" }}>
                     <p style={{ color: "#cccccc" }}>
-                      今しばらくお待ちください。<br />
-                      レポート到着後、ぜひご一読ください。
+                    ご登録内容確認後、2〜3日以内にご担当スタッフよりご連絡させていただきます。<br>
+                    お届けまで今しばらくお待ちください。
                     </p>
                   </div>
                 </div>
