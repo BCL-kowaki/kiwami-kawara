@@ -3,6 +3,7 @@ import { readFile, writeFile, mkdir } from "fs/promises";
 import path from "path";
 
 const CODE_EXPIRY_MS = 10 * 60 * 1000; // 10分
+const KV_STORE_KEY = "report:pending";
 
 let useMemoryStore = false;
 const memoryStore = new Map<string, PendingReportRegistration>();
@@ -12,7 +13,20 @@ function getStorePath(): string {
   return path.join(dir, ".data", "report-pending.json");
 }
 
+function useKv(): boolean {
+  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+}
+
 async function loadStore(): Promise<Record<string, PendingReportRegistration>> {
+  if (useKv()) {
+    try {
+      const { kv } = await import("@vercel/kv");
+      const data = await kv.get<Record<string, PendingReportRegistration>>(KV_STORE_KEY);
+      return data && typeof data === "object" ? data : {};
+    } catch {
+      return {};
+    }
+  }
   if (useMemoryStore) {
     return Object.fromEntries(memoryStore);
   }
@@ -27,6 +41,15 @@ async function loadStore(): Promise<Record<string, PendingReportRegistration>> {
 }
 
 async function saveStore(store: Record<string, PendingReportRegistration>): Promise<void> {
+  if (useKv()) {
+    try {
+      const { kv } = await import("@vercel/kv");
+      await kv.set(KV_STORE_KEY, store);
+    } catch (err) {
+      console.error("[report-store] KV save error:", err);
+    }
+    return;
+  }
   if (useMemoryStore) {
     memoryStore.clear();
     for (const [k, v] of Object.entries(store)) memoryStore.set(k, v);
