@@ -248,7 +248,7 @@ export default function ReportPage() {
               </h1>
               <p className="text-xs mt-3 leading-relaxed text-left" style={{ color: "#eee" }}>
                 {step === "form" && "1,000名の利用者の中からAI「極」が選出した「最も優れたポートフォリオ」の全貌を、特別レポートでお届けします。以下の項目をご入力のうえ、免責事項に同意して送信してください。"}
-                {step === "phone" && "認証コードをSMSでお送りします。電話番号を入力して次へ進んでください。"}
+                {step === "phone" && "公開するレポート情報は秘匿性が高いため、ご本人様確認を必須としております。SMSで認証コードをお送りしますので、電話番号を入力して次へ進んでください。"}
                 {step === "verify" && "SMSでお送りした6桁の認証コードを入力してください。"}
               </p>
             </div>
