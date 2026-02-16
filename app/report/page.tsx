@@ -203,9 +203,9 @@ export default function ReportPage() {
                   <p className="text-sm leading-relaxed text-left" style={{ color: "#eeeeee" }}>
                     【1,000名突破記念】AI「極」が選んだ最優秀ポートフォリオレポートのお申し込みありがとうございます。
                   </p>
-                  <div className="rounded-[2px] p-4 border text-sm" style={{ background: "#252535", borderColor: "#3a3a4a" }}>
+                  <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#252535", borderColor: "#3a3a4a" }}>
                     <p style={{ color: "#cccccc" }}>
-                    ご登録内容確認後、2〜3日以内にご担当スタッフよりご連絡させていただきます。<br />
+                    ご登録内容確認後、2〜3日以内に<br />担当スタッフよりご連絡させていただきます。<br />
                     お届けまで今しばらくお待ちください。
                     </p>
                   </div>
