@@ -4,12 +4,18 @@ import path from "path";
 
 const CODE_EXPIRY_MS = 10 * 60 * 1000; // 10分
 
+let useMemoryStore = false;
+const memoryStore = new Map<string, PendingReportRegistration>();
+
 function getStorePath(): string {
   const dir = process.cwd();
   return path.join(dir, ".data", "report-pending.json");
 }
 
 async function loadStore(): Promise<Record<string, PendingReportRegistration>> {
+  if (useMemoryStore) {
+    return Object.fromEntries(memoryStore);
+  }
   try {
     const filePath = getStorePath();
     const data = await readFile(filePath, "utf-8");
@@ -21,10 +27,26 @@ async function loadStore(): Promise<Record<string, PendingReportRegistration>> {
 }
 
 async function saveStore(store: Record<string, PendingReportRegistration>): Promise<void> {
-  const filePath = getStorePath();
-  const dir = path.dirname(filePath);
-  await mkdir(dir, { recursive: true });
-  await writeFile(filePath, JSON.stringify(store, null, 2), "utf-8");
+  if (useMemoryStore) {
+    memoryStore.clear();
+    for (const [k, v] of Object.entries(store)) memoryStore.set(k, v);
+    return;
+  }
+  try {
+    const filePath = getStorePath();
+    const dir = path.dirname(filePath);
+    await mkdir(dir, { recursive: true });
+    await writeFile(filePath, JSON.stringify(store, null, 2), "utf-8");
+  } catch (err) {
+    const code = err && typeof err === "object" && "code" in err ? (err as NodeJS.ErrnoException).code : "";
+    if (code === "ENOENT" || code === "EACCES" || code === "EROFS") {
+      useMemoryStore = true;
+      memoryStore.clear();
+      for (const [k, v] of Object.entries(store)) memoryStore.set(k, v);
+    } else {
+      throw err;
+    }
+  }
 }
 
 export async function setPending(

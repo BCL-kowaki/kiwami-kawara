@@ -286,7 +286,7 @@ export default function ReportPage() {
                       required
                       className={inputClass}
                       style={inputStyle}
-                      placeholder="100-0001"
+                      placeholder="1000001"
                       maxLength={8}
                     />
                     <p className="text-xs mt-1" style={{ color: "#9ca3af" }}>ハイフンなしでも入力できます。入力後、住所が自動で入ります。</p>
