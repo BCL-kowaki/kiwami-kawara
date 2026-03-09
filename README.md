@@ -181,6 +181,23 @@ npm run build
 npm start
 ```
 
+## レポート申込・SMS認証で 500 が出る場合
+
+本番（例: kiwami.kawaraban.co.jp）で `POST /api/report/send-sms` が 500 を返す場合、次を確認してください。
+
+1. **Vercel の環境変数（Production）**
+   - `TWILIO_ACCOUNT_SID` … Twilio の Account SID
+   - `TWILIO_AUTH_TOKEN` … Twilio の Auth Token
+   - `TWILIO_VERIFY_SERVICE_SID` … Twilio Verify のサービス SID（`VA...` で始まる）
+   - `REPORT_TOKEN_SECRET` … 16文字以上のランダム文字列（本番用）
+
+2. **Twilio Verify の利用**
+   - SMS 送信には「Twilio Verify」を使います。通常の Twilio 電話番号（`TWILIO_PHONE_NUMBER`）は不要です。
+   - Twilio コンソールで Verify → Services からサービスを作成し、その SID を `TWILIO_VERIFY_SERVICE_SID` に設定してください。
+
+3. **ログの確認**
+   - Vercel のダッシュボード → 該当デプロイ → Logs で、`[report/send-sms]` のエラーメッセージを確認すると原因を特定しやすくなります。
+
 ## 注意事項
 
 - ResendのAPIキーは必ず環境変数で管理してください

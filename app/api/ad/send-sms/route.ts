@@ -31,14 +31,12 @@ export async function POST(request: NextRequest) {
     const verifyServiceSid = process.env.TWILIO_VERIFY_SERVICE_SID;
 
     if (!accountSid || !authToken || !verifyServiceSid) {
-      console.error("[report/send-sms] Twilio env missing. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SERVICE_SID");
+      console.error("[ad/send-sms] Twilio env missing.");
       return NextResponse.json(
         { ok: false, message: "SMS送信の設定がありません。管理者にお問い合わせください。" },
         { status: 500 }
       );
     }
-    // 20003 の原因切り分け用（値は出さず長さのみ。Account SID=34, Auth Token=32 が正常）
-    console.error("[report/send-sms] Twilio creds length", { sidLen: accountSid.length, tokenLen: authToken.length });
 
     const toE164 = normalizedPhone.startsWith("+")
       ? normalizedPhone
@@ -52,7 +50,7 @@ export async function POST(request: NextRequest) {
     } catch (twilioErr: unknown) {
       const code = twilioErr && typeof twilioErr === "object" && "code" in twilioErr ? (twilioErr as { code?: number }).code : undefined;
       const status = twilioErr && typeof twilioErr === "object" && "status" in twilioErr ? (twilioErr as { status?: number }).status : undefined;
-      console.error("[report/send-sms] Twilio error", { code, status, message: twilioErr instanceof Error ? twilioErr.message : String(twilioErr) });
+      console.error("[ad/send-sms] Twilio error", { code, status, message: twilioErr instanceof Error ? twilioErr.message : String(twilioErr) });
       if (status === 404 || code === 20404) {
         return NextResponse.json({ ok: false, message: "SMS送信の設定（Verifyサービス）が見つかりません。管理者にお問い合わせください。" }, { status: 500 });
       }
@@ -74,7 +72,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true, token: newToken });
   } catch (err) {
-    console.error("[report/send-sms] Unexpected error", err);
+    console.error("[ad/send-sms] Unexpected error", err);
     return NextResponse.json(
       { ok: false, message: "SMS送信に失敗しました。時間をおいて再度お試しください。" },
       { status: 500 }
