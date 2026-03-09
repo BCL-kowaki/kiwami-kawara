@@ -140,7 +140,7 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
   const namePrefix = customerName ? `${customerName} 様\n\n` : "";
 
   let body = `${namePrefix}`;
-  body += `この度は、投資のKAWARA版．ｃｏｍ「資産運用AI分析」に\n`;
+  body += `この度は、投資のKAWARA版．ｃｏｍ 資産分析AIエンジン“極”に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
   body += `━━━━━━━━━━━━━━━━━━\n`;
   body += `■ 今後の流れについて\n`;

@@ -94,35 +94,6 @@ function formatAdminEmailBody(data: PortfolioSubmission): string {
   return body;
 }
 
-function formatUserEmailBody(data: PortfolioSubmission): string {
-  const customerName = [data.familyName, data.givenName].filter(Boolean).join(" ");
-  const namePrefix = customerName ? `${customerName} 様\n\n` : "";
-
-  let body = `${namePrefix}`;
-  body += `この度は、投資のKAWARA版．ｃｏｍ 資産分析AIエンジン“極”に\n`;
-  body += `お申し込みいただき、誠にありがとうございます。\n\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n`;
-  body += `■ 今後の流れについて\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `① ご入力いただいた内容をもとに、これからAIが精密な分析を行っていきます。\n`;
-  body += `② 分析が完了次第、担当者より改めてご連絡いたします。\n`;
-  body += `③ レポートの詳細は個人情報が含まれる内容となるため、ご本人様確認（SMS認証）を行わせていただきます。\n`;
-  body += `④ ご本人様確認後、レポートをご覧いただけます。\n\n`;
-  body += `目安として3営業日以内にご連絡させていただきます。\n`;
-  body += `お楽しみにお待ちください。\n\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n`;
-  body += `■ ご注意事項\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `・本メールは自動送信です。\n`;
-  body += `・本メールへの返信ではお問い合わせを受け付けておりません。\n`;
-  body += `・内容に心当たりがない場合は、本メールを破棄してください。\n\n`;
-  body += `━━━━━━━━━━━━━━━━━━\n\n`;
-  body += `株式会社投資の"KAWARA"版．ｃｏｍ\n\n`;
-  body += `（本メールは自動送信です）\n`;
-
-  return body;
-}
-
 export async function POST(request: NextRequest) {
   try {
     const data: PortfolioSubmission = await request.json();
@@ -156,20 +127,12 @@ export async function POST(request: NextRequest) {
     const fromEmail = getFromEmail();
     const sesClient = getSESClient();
     const adminEmailBody = formatAdminEmailBody(data);
-    const userEmailBody = formatUserEmailBody(data);
     const customerName = fullName;
     const adminSubject = `【広告経由】【資産運用AI分析】フォーム入力 ${customerName}様`;
-    const userSubject = `【投資のKAWARA版】資産分析AIエンジン“極”の申請を承りました`;
 
     // 管理者へのメール送信
     console.log("Sending admin email to:", ADMIN_EMAILS.join(", "));
     await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, adminSubject, adminEmailBody);
-
-    // ユーザーへの自動返信メール送信
-    if (emailAddr) {
-      console.log("Sending user email to:", emailAddr);
-      await sendEmail(sesClient, fromEmail, emailAddr, userSubject, userEmailBody);
-    }
 
     return NextResponse.json({ ok: true, token });
   } catch (error: any) {
