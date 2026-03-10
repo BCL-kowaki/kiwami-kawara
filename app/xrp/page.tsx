@@ -12,7 +12,7 @@ export default function XrpPage() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(true);
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [reportToken, setReportToken] = useState<string | null>(null);
