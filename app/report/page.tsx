@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useCallback } from "react";
+import { useState, FormEvent } from "react";
 import NetworkBackground from "../components/NetworkBackground";
 
 const DISCLAIMER_TEXT =
@@ -8,42 +8,16 @@ const DISCLAIMER_TEXT =
 
 type Step = "form" | "phone" | "verify" | "done";
 
-interface ZipcloudResult {
-  address1: string;
-  address2: string;
-  address3: string;
-}
-
 export default function ReportPage() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [reportToken, setReportToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const fetchAddress = useCallback(async (zip: string) => {
-    const normalized = zip.replace(/-/g, "");
-    if (normalized.length < 7) return;
-    const res = await fetch(
-      `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${encodeURIComponent(normalized)}`
-    );
-    const data = await res.json();
-    if (data.status === 200 && data.results?.[0]) {
-      const r: ZipcloudResult = data.results[0];
-      setAddress1([r.address1, r.address2, r.address3].filter(Boolean).join(""));
-    }
-  }, []);
-
-  const handlePostalCodeBlur = () => {
-    if (postalCode.trim()) fetchAddress(postalCode.trim());
-  };
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,9 +30,9 @@ export default function ReportPage() {
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
-          postalCode: postalCode.trim().replace(/-/g, ""),
-          address1: address1.trim(),
-          address2: address2.trim(),
+          postalCode: "",
+          address1: "",
+          address2: "",
           disclaimerAccepted,
         }),
       });
@@ -288,50 +262,6 @@ export default function ReportPage() {
                       className={inputClass}
                       style={inputStyle}
                       placeholder="example@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
-                      郵便番号 <span style={{ color: "#f87171" }}>（必須）</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={postalCode}
-                      onChange={(e) => setPostalCode(e.target.value.replace(/[^0-9-]/g, ""))}
-                      onBlur={handlePostalCodeBlur}
-                      required
-                      className={inputClass}
-                      style={inputStyle}
-                      placeholder="1000001"
-                      maxLength={8}
-                    />
-                    <p className="text-xs mt-1" style={{ color: "#9ca3af" }}>ハイフンなしでも入力できます。入力後、住所が自動で入ります。</p>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
-                      住所1（都道府県・市区町村・町域） <span style={{ color: "#f87171" }}>（必須）</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={address1}
-                      onChange={(e) => setAddress1(e.target.value)}
-                      required
-                      className={inputClass}
-                      style={inputStyle}
-                      placeholder="東京都千代田区千代田"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
-                      住所2（番地・建物名など）
-                    </label>
-                    <input
-                      type="text"
-                      value={address2}
-                      onChange={(e) => setAddress2(e.target.value)}
-                      className={inputClass}
-                      style={inputStyle}
-                      placeholder="1-1-1 〇〇ビル101"
                     />
                   </div>
                   <div className="rounded-[2px] p-4 border" style={{ background: "#1a1a1a", borderColor: "#4a4a4a" }}>
