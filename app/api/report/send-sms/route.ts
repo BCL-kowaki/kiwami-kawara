@@ -4,17 +4,10 @@ import { verifyReportToken, signReportToken } from "@/lib/report-token";
 
 export async function POST(request: NextRequest) {
   try {
-    let body: { token?: unknown; phone?: unknown };
-    try {
-      body = await request.json();
-    } catch {
-      return NextResponse.json({ ok: false, message: "リクエストの形式が正しくありません。" }, { status: 400 });
-    }
-    const token = typeof body?.token === "string" ? body.token : "";
-    const phone = body?.phone;
-    const normalizedPhone = (phone != null ? String(phone) : "").trim().replace(/\s/g, "");
+    const { token, phone } = await request.json();
+    const normalizedPhone = (phone || "").trim().replace(/\s/g, "");
 
-    if (!token) {
+    if (!token || typeof token !== "string") {
       return NextResponse.json({ ok: false, message: "セッションが無効です。最初からフォームに戻って登録してください。" }, { status: 400 });
     }
     if (!normalizedPhone) {
@@ -31,39 +24,21 @@ export async function POST(request: NextRequest) {
     const verifyServiceSid = process.env.TWILIO_VERIFY_SERVICE_SID;
 
     if (!accountSid || !authToken || !verifyServiceSid) {
-      console.error("[report/send-sms] Twilio env missing. Set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SERVICE_SID");
+      console.error("[report/send-sms] Twilio Verify env not set (need TWILIO_VERIFY_SERVICE_SID)");
       return NextResponse.json(
-        { ok: false, message: "SMS送信の設定がありません。管理者にお問い合わせください。" },
+        { ok: false, message: "SMS送信の設定がありません。" },
         { status: 500 }
       );
     }
-    // 20003 の原因切り分け用（値は出さず長さのみ。Account SID=34, Auth Token=32 が正常）
-    console.error("[report/send-sms] Twilio creds length", { sidLen: accountSid.length, tokenLen: authToken.length });
 
     const toE164 = normalizedPhone.startsWith("+")
       ? normalizedPhone
       : `+81${normalizedPhone.replace(/^0/, "")}`;
 
-    try {
-      const client = Twilio(accountSid, authToken);
-      await client.verify.v2
-        .services(verifyServiceSid)
-        .verifications.create({ to: toE164, channel: "sms" });
-    } catch (twilioErr: unknown) {
-      const code = twilioErr && typeof twilioErr === "object" && "code" in twilioErr ? (twilioErr as { code?: number }).code : undefined;
-      const status = twilioErr && typeof twilioErr === "object" && "status" in twilioErr ? (twilioErr as { status?: number }).status : undefined;
-      console.error("[report/send-sms] Twilio error", { code, status, message: twilioErr instanceof Error ? twilioErr.message : String(twilioErr) });
-      if (status === 404 || code === 20404) {
-        return NextResponse.json({ ok: false, message: "SMS送信の設定（Verifyサービス）が見つかりません。管理者にお問い合わせください。" }, { status: 500 });
-      }
-      if (status === 401 || code === 20003) {
-        return NextResponse.json({ ok: false, message: "SMS送信の認証に失敗しました。管理者にお問い合わせください。" }, { status: 500 });
-      }
-      return NextResponse.json(
-        { ok: false, message: "SMSの送信に一時的に失敗しました。しばらく経ってから再度お試しください。" },
-        { status: 500 }
-      );
-    }
+    const client = Twilio(accountSid, authToken);
+    await client.verify.v2
+      .services(verifyServiceSid)
+      .verifications.create({ to: toE164, channel: "sms" });
 
     const newToken = signReportToken({
       email: payload.email,
@@ -74,10 +49,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true, token: newToken });
   } catch (err) {
-    console.error("[report/send-sms] Unexpected error", err);
-    return NextResponse.json(
-      { ok: false, message: "SMS送信に失敗しました。時間をおいて再度お試しください。" },
-      { status: 500 }
-    );
+    console.error("[report/send-sms]", err);
+    const message = err instanceof Error ? err.message : "SMS送信に失敗しました。";
+    return NextResponse.json({ ok: false, message }, { status: 500 });
   }
 }

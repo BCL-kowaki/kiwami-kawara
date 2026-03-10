@@ -37,6 +37,12 @@ export async function POST(request: NextRequest) {
     if (!email) {
       return NextResponse.json({ ok: false, message: "メールアドレスを入力してください。" }, { status: 400 });
     }
+    if (!postalCode || postalCode.length < 7) {
+      return NextResponse.json({ ok: false, message: "有効な郵便番号を入力してください。" }, { status: 400 });
+    }
+    if (!address1) {
+      return NextResponse.json({ ok: false, message: "住所（都道府県・市区町村）を入力してください。" }, { status: 400 });
+    }
     if (!data.disclaimerAccepted) {
       return NextResponse.json({ ok: false, message: "免責事項に同意してください。" }, { status: 400 });
     }

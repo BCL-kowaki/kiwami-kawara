@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "超精密！資産運用AI分析エンジン「極」｜株式会社投資の\"KAWARA\"版.com",
+  title: "超精密！資産運用AI分析ツール「極」｜株式会社投資の\"KAWARA\"版.com",
   description: "資産運用AI診断フォーム",
 };
 
