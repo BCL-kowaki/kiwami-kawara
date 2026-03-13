@@ -322,13 +322,25 @@ export default function AdPage() {
                     </p>
                   </div>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 text-center">
+                  <p className="text-sm font-bold mb-2" style={{ color: "#ffffff" }}>
+                    公式LINEへご登録ください
+                  </p>
+                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#cccccc" }}>
+                    投資初心者にもやさしい投資に役立つ情報を<br />
+                    LINEでも配信中。<br />
+                    ぜひLINEでも受け取ってください。
+                  </p>
                   <a
                     href="https://z8nhy9aq.autosns.app/addfriend/s/QOPxASUTuR/@ytx0598v"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center w-full py-4 rounded-full font-bold text-base transition-all shadow-lg text-white"
-                    style={{ background: "#06C755" }}
+                    className="inline-flex items-center justify-center w-full py-4 rounded-full font-bold text-base transition-all text-white"
+                    style={{
+                      background: "linear-gradient(90deg, #1bf5e3 0%, #06c755 100%)",
+                      border: "4px solid #fff",
+                      boxShadow: "0 8px 20px rgba(6, 199, 85, 0.3)",
+                    }}
                   >
                     LINEの友達追加<span className="ml-1">▶</span>
                   </a>
