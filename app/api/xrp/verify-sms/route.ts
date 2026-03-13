@@ -29,7 +29,7 @@ function formatUserCompletedBody(name: string): string {
   body += `この度は、投資のKAWARA版 特別レポート\n`;
   body += `「XRPの仕組みに隠れた『上がりにくい理由』」に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
-  body += `ご本人様確認が完了しました。\n\n`;
+  body += `免責事項への同意承認が完了しました。\n\n`;
   body += `登録情報確認後、担当スタッフより2〜3日以内に\n`;
   body += `レポートを送付させていただきます。\n\n`;
   body += `今しばらくお待ちください。\n\n`;

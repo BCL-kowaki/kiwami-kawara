@@ -351,13 +351,13 @@ export default function AdPage() {
                   </div>
                 </div>
                 <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#2db8f9] to-[#aa30ff]" style={{ fontWeight: 900 }}>
-                  ご本人様確認
+                  免責承認
                 </h1>
                 <p className="text-xs mt-4 leading-relaxed" style={{ color: "#eeeeee" }}>
                   {step === "phone" &&
-                    "お客様の資産状況などの個人情報を含みますので、ご本人様確認として電話番号でのSMS認証を必須としております。認証コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
+                    "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
                   {step === "verify" &&
-                    "SMSでお送りした6桁の認証コードを入力してください。"}
+                    "SMSでお送りした6桁の承認コードを入力してください。"}
                 </p>
               </div>
 
@@ -384,13 +384,13 @@ export default function AdPage() {
                         placeholder="09012345678"
                       />
                       <p className="text-xs mt-1" style={{ color: "#9ca3af" }}>
-                        ハイフンなしで入力（例: 09012345678）。入力後、認証コードをSMSでお送りします。
+                        ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。
                       </p>
                     </div>
                   </div>
                   <div className="mt-6">
                     <button type="submit" disabled={loading || !adToken} className={btnStyle} style={btnGradient}>
-                      {loading ? "送信中..." : "認証コードを送信"}
+                      {loading ? "送信中..." : "承認コードを送信"}
                     </button>
                   </div>
                 </form>
@@ -401,7 +401,7 @@ export default function AdPage() {
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-semibold mb-2" style={labelStyle}>
-                        認証コード（6桁）
+                        承認コード（6桁）
                       </label>
                       <input
                         type="text"
@@ -415,12 +415,12 @@ export default function AdPage() {
                       />
                     </div>
                     <p className="text-xs" style={{ color: "#9ca3af" }}>
-                      認証コードが届かなかった方は、【再送信】ボタンを押してください。
+                      承認コードが届かなかった方は、【再送信】ボタンを押してください。
                     </p>
                   </div>
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
                     <button type="submit" disabled={loading || !adToken} className={btnStyle} style={btnGradient}>
-                      {loading ? "認証中..." : "認証する"}
+                      {loading ? "承認中..." : "承認する"}
                     </button>
                     <button
                       type="button"

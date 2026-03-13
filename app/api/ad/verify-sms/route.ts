@@ -23,7 +23,7 @@ function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
   body += `この度は、投資のKAWARA版 資産分析AIエンジン“極”にお申し込みいただき、\n`;
   body += `誠にありがとうございます。\n\n`;
-  body += `ご本人様確認が完了しました。\n\n`;
+  body += `免責事項への同意承認が完了しました。\n\n`;
   body += `登録情報確認後、担当スタッフより2〜3日以内にレポートを送付させていただきます。\n`;
   body += `今しばらくお待ちください。\n\n`;
   body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;

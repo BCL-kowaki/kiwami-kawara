@@ -222,8 +222,8 @@ export default function ReportPage() {
               </h1>
               <p className="text-xs mt-3 leading-relaxed text-left" style={{ color: "#eee" }}>
                 {step === "form" && "1,400名の利用者の中からAI「極」が選出した「最も優れたポートフォリオ」の全貌を、特別レポートでお届けします。以下の項目をご入力のうえ、免責事項に同意して送信してください。"}
-                {step === "phone" && "本レポートの内容は機密性が高いため、ご本人確認を必須としております。認証コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
-                {step === "verify" && "SMSでお送りした6桁の認証コードを入力してください。"}
+                {step === "phone" && "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
+                {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
               </p>
             </div>
 
@@ -311,12 +311,12 @@ export default function ReportPage() {
                       style={inputStyle}
                       placeholder="09012345678"
                     />
-                    <p className="text-xs mt-1" style={{ color: "#9ca3af" }}>ハイフンなしで入力（例: 09012345678）。入力後、認証コードをSMSでお送りします。</p>
+                    <p className="text-xs mt-1" style={{ color: "#9ca3af" }}>ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。</p>
                   </div>
                 </div>
                 <div className="mt-6">
                   <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
-                    {loading ? "送信中..." : "認証コードを送信"}
+                    {loading ? "送信中..." : "承認コードを送信"}
                   </button>
                 </div>
               </form>
@@ -327,7 +327,7 @@ export default function ReportPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={labelStyle}>
-                      認証コード（6桁）
+                      承認コード（6桁）
                     </label>
                     <input
                       type="text"
@@ -341,12 +341,12 @@ export default function ReportPage() {
                     />
                   </div>
                   <p className="text-xs" style={{ color: "#9ca3af" }}>
-                    認証コードが届かなかった方は、【再送信】ボタンを押してください。
+                    承認コードが届かなかった方は、【再送信】ボタンを押してください。
                   </p>
                 </div>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
-                    {loading ? "認証中..." : "認証する"}
+                    {loading ? "承認中..." : "承認する"}
                   </button>
                   <button
                     type="button"

@@ -245,9 +245,9 @@ export default function XrpPage() {
                   "SNSの熱狂だけを頼りに、XRPを握り続けていませんか？AIが感情を排除し構造だけを解剖した結果、「上がりにくい4つの理由」と現実的な価格帯が見えてきました。まだ確認していない方は、今すぐお受け取りください。以下をご入力のうえ、免責事項に同意してお申し込みください。"
                 }
                 {step === "phone" &&
-                  "本レポートには投資判断に関わる分析内容が含まれるため、ご本人確認を必須としております。認証コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"
+                  "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"
                 }
-                {step === "verify" && "SMSでお送りした6桁の認証コードを入力してください。"}
+                {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
               </p>
             </div>
 
@@ -335,12 +335,12 @@ export default function XrpPage() {
                       style={inputStyle}
                       placeholder="09012345678"
                     />
-                    <p className="text-xs mt-1" style={silverTextGradient}>ハイフンなしで入力（例: 09012345678）。入力後、認証コードをSMSでお送りします。</p>
+                    <p className="text-xs mt-1" style={silverTextGradient}>ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。</p>
                   </div>
                 </div>
                 <div className="mt-6">
                   <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
-                    {loading ? "送信中..." : "認証コードを送信"}
+                    {loading ? "送信中..." : "承認コードを送信"}
                   </button>
                 </div>
               </form>
@@ -351,7 +351,7 @@ export default function XrpPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      認証コード（6桁）
+                      承認コード（6桁）
                     </label>
                     <input
                       type="text"
@@ -365,12 +365,12 @@ export default function XrpPage() {
                     />
                   </div>
                   <p className="text-xs" style={silverTextGradient}>
-                    認証コードが届かなかった方は、【再送信】ボタンを押してください。
+                    承認コードが届かなかった方は、【再送信】ボタンを押してください。
                   </p>
                 </div>
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
                   <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
-                    {loading ? "認証中..." : "認証する"}
+                    {loading ? "承認中..." : "承認する"}
                   </button>
                   <button
                     type="button"
