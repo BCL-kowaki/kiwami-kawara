@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useMemo, useCallback } from "react";
+import { useState, useEffect, FormEvent, useMemo, useCallback } from "react";
 import NetworkBackground from "../components/NetworkBackground";
 import { FormState, PortfolioSubmission } from "@/types/portfolio";
 import CategoryAccordion from "../components/CategoryAccordion";
@@ -27,6 +27,14 @@ export default function AdPage() {
   const [step, setStep] = useState<Step>("portfolio");
   const [formState, setFormState] = useState<FormState>("editing");
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  // プレビュー用: ?preview=done でサンクスページを直接表示
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("preview") === "done") setStep("done");
+    }
+  }, []);
 
   // ポートフォリオ state
   const [cash, setCash] = useState<CashData>({
