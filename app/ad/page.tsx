@@ -314,7 +314,18 @@ export default function AdPage() {
                     </p>
                   </div>
                 </div>
-                <div className="pt-1">
+                <div className="mt-6">
+                  <a
+                    href="https://z8nhy9aq.autosns.app/addfriend/s/QOPxASUTuR/@ytx0598v"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-full py-4 rounded-full font-bold text-base transition-all shadow-lg text-white"
+                    style={{ background: "#06C755" }}
+                  >
+                    LINEの友達追加<span className="ml-1">▶</span>
+                  </a>
+                </div>
+                <div className="pt-4">
                   <p className="text-sm" style={{ color: "#aaaaaa" }}>
                     ご不明な点がございましたら、<br />
                     お気軽にお問い合わせください。
