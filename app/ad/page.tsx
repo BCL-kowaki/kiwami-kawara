@@ -323,10 +323,11 @@ export default function AdPage() {
                   </div>
                 </div>
                 <div className="mt-6 text-center">
-                  <p className="text-sm font-bold mb-2" style={{ color: "#ffffff" }}>
+                  <p className="text-xl font-bold mb-2" style={{ color: "#ffffff" }}>
                     公式LINEへご登録ください
                   </p>
-                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#cccccc" }}>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#ffffff" }}>
+                  投資の“KAWARA”版.comでは、<br />
                     投資初心者にもやさしい投資に役立つ情報を<br />
                     LINEでも配信中。<br />
                     ぜひLINEでも受け取ってください。
