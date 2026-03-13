@@ -13,7 +13,7 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
   const parts = address.split("｜");
   const postalCode = parts[0] ?? "";
   const addressLine = parts.slice(1).filter(Boolean).join(" ");
-  let body = `【個別メール経由】【特別レポート申込】本人確認完了（XRP）\n\n`;
+  let body = `【個別メール】【特別レポート申込】本人確認完了（XRP）\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       const sesClient = getSESClient();
       const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
       const userBody = formatUserCompletedBody(payload.name);
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【個別メール経由】【特別レポート申込】本人確認完了 ${payload.name} 様（XRP）`, adminBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【個別メール】【特別レポート申込】本人確認完了 ${payload.name} 様（XRP）`, adminBody);
       await sendEmail(sesClient, fromEmail, payload.email, "【投資のKAWARA版】XRP特別レポートのお申し込みを承りました", userBody);
     }
 

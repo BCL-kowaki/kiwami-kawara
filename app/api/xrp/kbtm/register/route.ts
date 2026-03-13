@@ -11,7 +11,7 @@ const ADMIN_EMAILS = [
 
 function formatAdminBody(data: ReportRegistrationBody): string {
   const addressLine = [data.address1, data.address2].filter(Boolean).join(" ");
-  let body = `【個別メール経由】【特別レポート申込】受信データ（XRP）\n\n`;
+  let body = `【個別メール】【特別レポート申込】受信データ（XRP）\n\n`;
   body += `受信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${data.name}\n`;
   body += `メールアドレス: ${data.email}\n`;
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
       const adminBody = formatAdminBody({ ...data, name, email, postalCode: "", address1: "", address2: "", disclaimerAccepted: true });
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【個別メール経由】【特別レポート申込】${name} 様（XRP）`, adminBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【個別メール】【特別レポート申込】${name} 様（XRP）`, adminBody);
     } else {
       console.log("[xrp/kbtm/register] AWS not set, skipping email. Data:", { name, email });
     }
