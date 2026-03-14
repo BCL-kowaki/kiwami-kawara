@@ -59,8 +59,7 @@ export default function AdPage() {
     details: [{ sizeMode: "percentage", investmentType: undefined, name: "", amount: undefined }],
   });
 
-  const [familyName, setFamilyName] = useState("");
-  const [givenName, setGivenName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   // SMS認証 state
@@ -128,14 +127,9 @@ export default function AdPage() {
     setFormState("submitting");
     setErrorMessage("");
 
-    if (!familyName.trim()) {
+    if (!name.trim()) {
       setFormState("editing");
-      setErrorMessage("苗字を入力してください。");
-      return;
-    }
-    if (!givenName.trim()) {
-      setFormState("editing");
-      setErrorMessage("名前を入力してください。");
+      setErrorMessage("お名前を入力してください。");
       return;
     }
     if (!email.trim()) {
@@ -147,8 +141,7 @@ export default function AdPage() {
     try {
       const payload: PortfolioSubmission = {
         submittedAt: new Date().toISOString(),
-        familyName: familyName.trim() || undefined,
-        givenName: givenName.trim() || undefined,
+        name: name.trim() || undefined,
         email: email.trim() || undefined,
         cash: { details: filterRows(cash.details, isValidCashRow) },
         listedStocks: { details: filterRows(listedStocks.details, isValidNamedAmountRow) },
@@ -556,26 +549,15 @@ export default function AdPage() {
                     <label className="block text-sm font-semibold mb-2" style={{ color: "#e5e5e5" }}>
                       お名前 <span className="text-xs font-normal" style={{ color: "#f87171" }}>（必須）</span>
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <input
-                        type="text"
-                        value={familyName}
-                        onChange={(e) => setFamilyName(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                        style={{ background: "#2a2a2a", border: "1px solid #4a4a4a", color: "white" }}
-                        placeholder="山田"
-                      />
-                      <input
-                        type="text"
-                        value={givenName}
-                        onChange={(e) => setGivenName(e.target.value)}
-                        required
-                        className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                        style={{ background: "#2a2a2a", border: "1px solid #4a4a4a", color: "white" }}
-                        placeholder="太郎"
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
+                      style={{ background: "#2a2a2a", border: "1px solid #4a4a4a", color: "white" }}
+                      placeholder="山田 太郎"
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={{ color: "#e5e5e5" }}>

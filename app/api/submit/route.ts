@@ -44,7 +44,7 @@ function formatEmailBody(data: PortfolioSubmission): string {
 
   let body = `【資産運用AI分析ツール】受信データ\n\n`;
   body += `受信日時: ${formattedDate}\n`;
-  const fullName = [data.familyName, data.givenName].filter(Boolean).join(" ");
+  const fullName = data.name || [data.familyName, data.givenName].filter(Boolean).join(" ");
   if (fullName) body += `お名前: ${fullName}\n`;
   if (data.email) {
     body += `メールアドレス: ${data.email}\n`;
@@ -136,7 +136,7 @@ function formatEmailBody(data: PortfolioSubmission): string {
 }
 
 function formatUserEmailBody(data: PortfolioSubmission): string {
-  const customerName = [data.familyName, data.givenName].filter(Boolean).join(" ");
+  const customerName = data.name || [data.familyName, data.givenName].filter(Boolean).join(" ");
   const namePrefix = customerName ? `${customerName} 様\n\n` : "";
 
   let body = `${namePrefix}`;
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
     const data: PortfolioSubmission = await request.json();
     console.log("=== フォーム送信受信 ===");
     console.log("Email:", data.email);
-    console.log("Name:", `${data.familyName} ${data.givenName}`);
+    console.log("Name:", data.name || `${data.familyName} ${data.givenName}`);
 
     // AWS認証情報のチェック
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
@@ -261,7 +261,7 @@ export async function POST(request: NextRequest) {
       hour: "2-digit",
       minute: "2-digit",
     });
-    const customerName = [data.familyName, data.givenName].filter(Boolean).join(" ");
+    const customerName = data.name || [data.familyName, data.givenName].filter(Boolean).join(" ");
     const adminSubject = `【資産運用AI分析】フォーム入力 ${customerName}様`;
     const userSubject = `【投資のKAWARA版】資産運用AI分析の申請を承りました`;
 

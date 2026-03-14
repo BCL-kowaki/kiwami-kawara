@@ -79,6 +79,7 @@ export interface OtherData {
 // 送信payload
 export interface PortfolioSubmission {
   submittedAt: string;
+  name?: string;
   familyName?: string;
   givenName?: string;
   email?: string;

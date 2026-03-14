@@ -53,8 +53,7 @@ export default function Home() {
         details: [{ sizeMode: "percentage", investmentType: undefined, name: "", amount: undefined }],
     });
 
-    const [familyName, setFamilyName] = useState<string>("");
-    const [givenName, setGivenName] = useState<string>("");
+    const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
 
     const isValidCashRow = (row: any) =>
@@ -179,14 +178,9 @@ export default function Home() {
         setErrorMessage("");
 
         // 必須項目のバリデーション
-        if (!familyName.trim()) {
+        if (!name.trim()) {
             setFormState("editing");
-            setErrorMessage("苗字を入力してください。");
-            return;
-        }
-        if (!givenName.trim()) {
-            setFormState("editing");
-            setErrorMessage("名前を入力してください。");
+            setErrorMessage("お名前を入力してください。");
             return;
         }
         if (!email.trim()) {
@@ -198,8 +192,7 @@ export default function Home() {
         try {
             const payload: PortfolioSubmission = {
                 submittedAt: new Date().toISOString(),
-                familyName: familyName.trim() || undefined,
-                givenName: givenName.trim() || undefined,
+                name: name.trim() || undefined,
                 email: email.trim() || undefined,
                 cash: { details: filterRows(cash.details, isValidCashRow) },
                 listedStocks: { details: filterRows(listedStocks.details, isValidNamedAmountRow) },
@@ -400,28 +393,16 @@ export default function Home() {
                                         <label className="block text-sm font-semibold mb-2" style={{ color: '#e5e5e5' }}>
                                             お名前 <span className="text-xs font-normal" style={{ color: '#f87171' }}>（必須）</span>
                                         </label>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <input
-                                                type="text"
-                                                id="familyName"
-                                                value={familyName}
-                                                onChange={(e) => setFamilyName(e.target.value)}
-                                                required
-                                                className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                                                style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
-                                                placeholder="山田"
-                                            />
-                                            <input
-                                                type="text"
-                                                id="givenName"
-                                                value={givenName}
-                                                onChange={(e) => setGivenName(e.target.value)}
-                                                required
-                                                className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                                                style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
-                                                placeholder="太郎"
-                                            />
-                                        </div>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            required
+                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
+                                            style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+                                            placeholder="山田 太郎"
+                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-semibold mb-2" style={{ color: '#e5e5e5' }}>

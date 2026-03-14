@@ -27,7 +27,7 @@ function formatAdminEmailBody(data: PortfolioSubmission): string {
 
   let body = `【広告経由】資産運用AI分析ツール 受信データ\n\n`;
   body += `受信日時: ${formattedDate}\n`;
-  const fullName = [data.familyName, data.givenName].filter(Boolean).join(" ");
+  const fullName = data.name || [data.familyName, data.givenName].filter(Boolean).join(" ");
   if (fullName) body += `お名前: ${fullName}\n`;
   if (data.email) body += `メールアドレス: ${data.email}\n`;
   body += `\n資産状況:\n`;
@@ -99,9 +99,9 @@ export async function POST(request: NextRequest) {
     const data: PortfolioSubmission = await request.json();
     console.log("=== 【広告経由】フォーム送信受信 ===");
     console.log("Email:", data.email);
-    console.log("Name:", `${data.familyName} ${data.givenName}`);
+    console.log("Name:", data.name || `${data.familyName} ${data.givenName}`);
 
-    const fullName = [data.familyName, data.givenName].filter(Boolean).join(" ");
+    const fullName = data.name || [data.familyName, data.givenName].filter(Boolean).join(" ");
     const emailAddr = (data.email || "").trim().toLowerCase();
 
     if (!fullName) {
