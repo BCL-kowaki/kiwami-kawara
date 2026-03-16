@@ -8,6 +8,7 @@ body {
   color: #111827; /* text-gray-900 */
 }
 
+/* ダークテーマ（デフォルト） */
 input,
 select,
 textarea {
@@ -15,7 +16,15 @@ textarea {
   background-color: #2a2a2a !important;
 }
 
-/* オートコンプリート時の背景色を統一 */
+/* ライトテーマ上書き */
+.theme-light input,
+.theme-light select,
+.theme-light textarea {
+  color: #1a1a1a !important;
+  background-color: #f2f2f2 !important;
+}
+
+/* オートコンプリート時の背景色を統一（ダーク） */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -32,8 +41,30 @@ select:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+/* オートコンプリート時の背景色（ライト） */
+.theme-light input:-webkit-autofill,
+.theme-light input:-webkit-autofill:hover,
+.theme-light input:-webkit-autofill:focus,
+.theme-light input:-webkit-autofill:active,
+.theme-light select:-webkit-autofill,
+.theme-light select:-webkit-autofill:hover,
+.theme-light select:-webkit-autofill:focus,
+.theme-light select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
+  caret-color: #1a1a1a !important;
+  background-color: #f2f2f2 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 input::placeholder,
 textarea::placeholder {
+  color: #9ca3af; /* text-gray-400 */
+}
+
+.theme-light input::placeholder,
+.theme-light textarea::placeholder {
   color: #9ca3af; /* text-gray-400 */
 }
 

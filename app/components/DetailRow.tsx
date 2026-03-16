@@ -1,6 +1,7 @@
 "use client";
 
 import { DetailRow as DetailRowType } from "@/types/portfolio";
+import { useTheme, getThemeStyles } from "./ThemeContext";
 
 interface DetailRowProps<T extends DetailRowType = DetailRowType> {
   row: T;
@@ -27,16 +28,18 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
   amountLabel = "総資産に対する割合（%）",
   amountPlaceholder = "例: 10",
 }: DetailRowProps<T>) {
+  const theme = useTheme();
+  const s = getThemeStyles(theme);
 
   return (
-    <div className="rounded-[2px] p-4 mb-3" style={{ background: '#1a1a1a', border: '1px solid #3a3a3a' }}>
+    <div className="rounded-[2px] p-4 mb-3" style={s.cardBg}>
       <div className="flex justify-between items-start mb-3">
-        <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>詳細 {rowIndex + 1}</h4>
+        <h4 className="font-semibold text-sm" style={s.headingColor}>詳細 {rowIndex + 1}</h4>
         <button
           type="button"
           onClick={onDelete}
           className="text-sm font-medium hover:opacity-80"
-          style={{ color: '#f87171' }}
+          style={s.deleteColor}
         >
           削除
         </button>
@@ -46,7 +49,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
 
       {showName && (
         <div className="mb-3">
-          <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
+          <label className="block text-sm font-medium mb-1" style={s.labelColor}>
             {nameLabel}
           </label>
           <input
@@ -55,13 +58,13 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
             onChange={(e) => onChange({ ...(row as any), name: e.target.value } as T)}
             placeholder={namePlaceholder}
             className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
-            style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+            style={s.inputBg}
           />
         </div>
       )}
 
       <div>
-        <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
+        <label className="block text-sm font-medium mb-1" style={s.labelColor}>
           {amountLabel}
         </label>
         <input
@@ -83,7 +86,7 @@ export default function DetailRow<T extends DetailRowType = DetailRowType>({
           }}
           placeholder={amountPlaceholder}
           className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
-          style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+          style={s.inputBg}
         />
       </div>
     </div>

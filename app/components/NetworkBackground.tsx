@@ -26,9 +26,14 @@ const THEMES = {
     glow: "rgba(230, 235, 240, 0.3)",
     line: ["rgba(255, 255, 255, ", "rgba(189, 195, 201, "],
   },
+  blue: {
+    particle: ["rgba(27, 231, 245, 0.9)", "rgba(36, 131, 248, 0.35)"],
+    glow: "rgba(36, 131, 248, 0.3)",
+    line: ["rgba(27, 231, 245, ", "rgba(36, 131, 248, "],
+  },
 } as const;
 
-export default function NetworkBackground({ variant = "default" }: { variant?: "default" | "report" | "silver" }) {
+export default function NetworkBackground({ variant = "default" }: { variant?: "default" | "report" | "silver" | "blue" }) {
     const theme = THEMES[variant];
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<Particle[]>([]);

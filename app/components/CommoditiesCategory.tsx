@@ -2,6 +2,7 @@
 
 import { CommoditiesData, CommodityDetail } from "@/types/portfolio";
 import DetailRow from "./DetailRow";
+import { useTheme, getThemeStyles } from "./ThemeContext";
 
 interface CommoditiesCategoryProps {
   data: CommoditiesData;
@@ -12,6 +13,9 @@ export default function CommoditiesCategory({
   data,
   onChange,
 }: CommoditiesCategoryProps) {
+  const theme = useTheme();
+  const s = getThemeStyles(theme);
+
   const addDetailRow = () => {
     if (data.details.length >= 20) return;
     onChange({
@@ -39,7 +43,7 @@ export default function CommoditiesCategory({
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-semibold mb-2" style={{ color: '#a0a0a0' }}>詳細（任意）</h4>
+        <h4 className="text-sm font-semibold mb-2" style={s.labelColor}>詳細（任意）</h4>
         {data.details.map((row, index) => (
           <DetailRow
             key={index}
@@ -58,13 +62,13 @@ export default function CommoditiesCategory({
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-full transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #aa30ff 100%)', color: '#ffffff' }}
+            style={s.addBtnBg}
           >
             + 銘柄・商品名を追加
           </button>
         )}
         {data.details.length >= 20 && (
-          <p className="mt-2 text-sm" style={{ color: '#666666' }}>
+          <p className="mt-2 text-sm" style={s.maxTextColor}>
             最大20行まで追加できます
           </p>
         )}

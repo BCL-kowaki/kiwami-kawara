@@ -1,6 +1,7 @@
 "use client";
 
 import { CashData, CashDetail, Currency } from "@/types/portfolio";
+import { useTheme, getThemeStyles } from "./ThemeContext";
 
 interface CashCategoryProps {
   data: CashData;
@@ -8,6 +9,9 @@ interface CashCategoryProps {
 }
 
 export default function CashCategory({ data, onChange }: CashCategoryProps) {
+  const theme = useTheme();
+  const s = getThemeStyles(theme);
+
   const addDetailRow = () => {
     if (data.details.length >= 20) return;
     onChange({
@@ -35,23 +39,23 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-semibold mb-2" style={{ color: '#a0a0a0' }}>内訳（任意）</h4>
+        <h4 className="text-sm font-semibold mb-2" style={s.labelColor}>内訳（任意）</h4>
         {data.details.map((row, index) => (
-          <div key={index} className="rounded-[2px] p-4 mb-3" style={{ background: '#1a1a1a', border: '1px solid #3a3a3a' }}>
+          <div key={index} className="rounded-[2px] p-4 mb-3" style={s.cardBg}>
             <div className="flex justify-between items-start mb-3">
-              <h4 className="font-semibold text-sm" style={{ color: '#ffffff' }}>内訳 {index + 1}</h4>
+              <h4 className="font-semibold text-sm" style={s.headingColor}>内訳 {index + 1}</h4>
               <button
                 type="button"
                 onClick={() => deleteDetailRow(index)}
                 className="text-sm font-medium hover:opacity-80"
-                style={{ color: '#f87171' }}
+                style={s.deleteColor}
               >
                 削除
               </button>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
+              <label className="block text-sm font-medium mb-1" style={s.labelColor}>
                 通貨
               </label>
               <select
@@ -63,17 +67,17 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                   })
                 }
                 className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 mb-3"
-                style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+                style={s.selectBg}
               >
-                <option value="JPY" style={{ background: '#2a2a2a', color: 'white' }}>JPY</option>
-                <option value="USD" style={{ background: '#2a2a2a', color: 'white' }}>USD</option>
-                <option value="EUR" style={{ background: '#2a2a2a', color: 'white' }}>EUR</option>
-                <option value="GBP" style={{ background: '#2a2a2a', color: 'white' }}>GBP</option>
-                <option value="AUD" style={{ background: '#2a2a2a', color: 'white' }}>AUD</option>
-                <option value="定期預金" style={{ background: '#2a2a2a', color: 'white' }}>定期預金</option>
+                <option value="JPY" style={s.optionBg}>JPY</option>
+                <option value="USD" style={s.optionBg}>USD</option>
+                <option value="EUR" style={s.optionBg}>EUR</option>
+                <option value="GBP" style={s.optionBg}>GBP</option>
+                <option value="AUD" style={s.optionBg}>AUD</option>
+                <option value="定期預金" style={s.optionBg}>定期預金</option>
               </select>
 
-              <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
+              <label className="block text-sm font-medium mb-1" style={s.labelColor}>
               総資産に対する割合（%）
               </label>
               <input
@@ -95,7 +99,7 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
                 }}
                 placeholder="例: 10"
                 className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-gray-400"
-                style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+                style={s.inputBg}
               />
             </div>
           </div>
@@ -106,13 +110,13 @@ export default function CashCategory({ data, onChange }: CashCategoryProps) {
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-full transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #aa30ff 100%)', color: '#ffffff' }}
+            style={s.addBtnBg}
           >
             + 内訳を追加
           </button>
         )}
         {data.details.length >= 20 && (
-          <p className="mt-2 text-sm" style={{ color: '#666666' }}>最大20行まで追加できます</p>
+          <p className="mt-2 text-sm" style={s.maxTextColor}>最大20行まで追加できます</p>
         )}
       </div>
     </div>

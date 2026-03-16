@@ -2,6 +2,7 @@
 
 import { OtherData, OtherDetail, OtherInvestmentType } from "@/types/portfolio";
 import DetailRow from "./DetailRow";
+import { useTheme, getThemeStyles } from "./ThemeContext";
 
 interface OtherCategoryProps {
   data: OtherData;
@@ -9,6 +10,9 @@ interface OtherCategoryProps {
 }
 
 export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
+  const theme = useTheme();
+  const s = getThemeStyles(theme);
+
   const addDetailRow = () => {
     if (data.details.length >= 20) return;
     onChange({
@@ -33,10 +37,12 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
     });
   };
 
+  const placeholderSelectStyle = { ...s.selectBg, color: '#9ca3af' };
+
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-semibold mb-2" style={{ color: '#a0a0a0' }}>詳細（任意）</h4>
+        <h4 className="text-sm font-semibold mb-2" style={s.labelColor}>詳細（任意）</h4>
         {data.details.map((row, index) => (
           <DetailRow
             key={index}
@@ -50,7 +56,7 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
             amountPlaceholder="例：10"
             categorySpecificFields={
               <div className="mb-3">
-                <label className="block text-sm font-medium mb-1" style={{ color: '#a0a0a0' }}>
+                <label className="block text-sm font-medium mb-1" style={s.labelColor}>
                   投資の種類（必須）
                 </label>
                 <select
@@ -62,15 +68,15 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
                     })
                   }
                   className="w-full px-3 py-2 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-                  style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: row.investmentType ? 'white' : '#9ca3af' }}
+                  style={row.investmentType ? s.selectBg : placeholderSelectStyle}
                 >
-                  <option value="" style={{ background: '#2a2a2a', color: '#9ca3af' }}>選択してください</option>
-                  <option value="未上場株（エンジェル投資・VC投資）" style={{ background: '#2a2a2a', color: 'white' }}>未上場株（エンジェル投資・VC投資）</option>
-                  <option value="事業投資（個人出資・共同事業など）" style={{ background: '#2a2a2a', color: 'white' }}>事業投資（個人出資・共同事業など）</option>
-                  <option value="私募ファンド・組合出資" style={{ background: '#2a2a2a', color: 'white' }}>私募ファンド・組合出資</option>
-                  <option value="貸付・社債（個人間貸付・企業向け貸付）" style={{ background: '#2a2a2a', color: 'white' }}>貸付・社債（個人間貸付・企業向け貸付）</option>
-                  <option value="持分投資・権利収入型投資" style={{ background: '#2a2a2a', color: 'white' }}>持分投資・権利収入型投資</option>
-                  <option value="その他（分類が分からない投資）" style={{ background: '#2a2a2a', color: 'white' }}>その他（分類が分からない投資）</option>
+                  <option value="" style={s.optionBg}>選択してください</option>
+                  <option value="未上場株（エンジェル投資・VC投資）" style={s.optionBg}>未上場株（エンジェル投資・VC投資）</option>
+                  <option value="事業投資（個人出資・共同事業など）" style={s.optionBg}>事業投資（個人出資・共同事業など）</option>
+                  <option value="私募ファンド・組合出資" style={s.optionBg}>私募ファンド・組合出資</option>
+                  <option value="貸付・社債（個人間貸付・企業向け貸付）" style={s.optionBg}>貸付・社債（個人間貸付・企業向け貸付）</option>
+                  <option value="持分投資・権利収入型投資" style={s.optionBg}>持分投資・権利収入型投資</option>
+                  <option value="その他（分類が分からない投資）" style={s.optionBg}>その他（分類が分からない投資）</option>
                 </select>
               </div>
             }
@@ -82,13 +88,13 @@ export default function OtherCategory({ data, onChange }: OtherCategoryProps) {
             type="button"
             onClick={addDetailRow}
             className="mt-2 px-4 py-2 rounded-full transition-colors text-sm font-medium"
-            style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #aa30ff 100%)', color: '#ffffff' }}
+            style={s.addBtnBg}
           >
             + 銘柄・商品名を追加
           </button>
         )}
         {data.details.length >= 20 && (
-          <p className="mt-2 text-sm" style={{ color: '#666666' }}>
+          <p className="mt-2 text-sm" style={s.maxTextColor}>
             最大20行まで追加できます
           </p>
         )}
