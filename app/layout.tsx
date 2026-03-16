@@ -41,6 +41,15 @@ export default function RootLayout({
             gtag('config', 'G-R0QS0BSSG1');
           `}
         </Script>
+        {/* SiTEST */}
+        <Script id="sitest" strategy="afterInteractive">
+          {`(function (PID) {
+    var script = document.createElement("script");
+    script.src = "https://tracking.sitest.jp/tag?p=" + PID + "&u=" + encodeURIComponent(location.origin + location.pathname + location.search);
+    script.async = true;
+    document.head.appendChild(script);
+})("p663c4537de394");`}
+        </Script>
       </head>
       <body suppressHydrationWarning>
         {children}

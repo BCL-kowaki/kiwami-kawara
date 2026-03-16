@@ -28,11 +28,13 @@ export default function AdPage() {
   const [formState, setFormState] = useState<FormState>("editing");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  // プレビュー用: ?preview=done でサンクスページを直接表示
+  // URLパラメータ処理: ?preview=done, ?mail=xxx
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
       if (params.get("preview") === "done") setStep("done");
+      const mailParam = params.get("mail");
+      if (mailParam) setEmail(mailParam);
     }
   }, []);
 
