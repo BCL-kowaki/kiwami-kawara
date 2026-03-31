@@ -27,7 +27,8 @@ function formatUserCompletedBody(name: string): string {
   body += `登録情報確認後、担当スタッフより2〜3日以内にレポートを送付させていただきます。\n`;
   body += `今しばらくお待ちください。\n\n`;
   body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;
-  body += `（本メールは自動送信です）\n`;
+  body += `（本メールは自動送信です）\n\n`;
+  body += `© 投資の"KAWARA"版．ｃｏｍ\n`;
   return body;
 }
 

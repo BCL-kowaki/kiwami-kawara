@@ -159,7 +159,8 @@ function formatUserEmailBody(data: PortfolioSubmission): string {
   body += `・内容に心当たりがない場合は、本メールを破棄してください。\n\n`;
   body += `━━━━━━━━━━━━━━━━━━\n\n`;
   body += `株式会社投資の"KAWARA"版．ｃｏｍ\n\n`;
-  body += `（本メールは自動送信です）\n`;
+  body += `（本メールは自動送信です）\n\n`;
+  body += `© 投資の"KAWARA"版．ｃｏｍ\n`;
 
   return body;
 }
