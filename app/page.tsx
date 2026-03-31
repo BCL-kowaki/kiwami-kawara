@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, useMemo } from "react";
 import NetworkBackground from "./components/NetworkBackground";
+import { ThemeProvider } from "./components/ThemeContext";
 import { FormState, PortfolioSubmission } from "@/types/portfolio";
 import CategoryAccordion from "./components/CategoryAccordion";
 import CashCategory from "./components/CashCategory";
@@ -252,22 +253,30 @@ export default function Home() {
         }
     };
 
+    // スタイル定数
+    const inputStyle = { background: "#f2f2f2", border: "1px solid #d1d5db", color: "#1a1a1a" };
+    const btnGradient = { background: "linear-gradient(90deg, #1be7f5 0%, #2483f8 100%)", color: "#ffffff" };
+    const borderGradient = { background: "linear-gradient(90deg, #1be7f5 0%, #2483f8 100%)" };
+    const submitBtnGradient = { background: "linear-gradient(90deg, #ff6186 0%, #f51b93 100%)", color: "#ffffff" };
+    const cardStyle = { background: "#ffffff", boxShadow: "0 1px 3px rgba(0,0,0,0.08)" };
+    const labelStyle = { color: "#374151" };
+
     if (formState === "submitted") {
         return (
-            <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: '#0b0e1f' }}>
-                <NetworkBackground />
+            <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: "#000000" }}>
+                <NetworkBackground variant="blue" />
                 <div className="flex-1 flex items-center justify-center p-4">
                     <div className="relative z-10 max-w-md w-full">
-                        <div className="p-[2px] rounded-[2px] shadow-2xl" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
-                            <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
+                        <div className="p-[2px] rounded-[2px] shadow-2xl" style={borderGradient}>
+                            <div className="rounded-[2px] p-5 text-center" style={cardStyle}>
                                 <div className="mb-2 pt-6 pb-4">
-                                    <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                                    <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={btnGradient}>
                                         <svg
                                             className="w-10 h-10"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
-                                            style={{ color: '#ffffff' }}
+                                            style={{ color: "#ffffff" }}
                                         >
                                             <path
                                                 strokeLinecap="round"
@@ -278,25 +287,25 @@ export default function Home() {
                                         </svg>
                                     </div>
                                 </div>
-                                <h1 className="text-xl font-extrabold mb-4" style={{ color: '#ffffff' }}>
+                                <h1 className="text-xl font-extrabold mb-4" style={{ color: "#1a1a1a" }}>
                                     ご入力ありがとうございました
                                 </h1>
                                 <div className="space-y-4 mb-6">
-                                    <p className="text-sm leading-relaxed" style={{ color: '#eeeeee' }}>
+                                    <p className="text-sm leading-relaxed" style={{ color: "#4b5563" }}>
                                         ご入力いただいた内容を元に分析いたします。
                                     </p>
-                                    <div className="rounded-[2px] p-4 border text-sm" style={{ background: '#252535', borderColor: '#3a3a4a' }}>
-                                        <p className="font-bold mb-1" style={{ color: '#ffffff' }}>
+                                    <div className="rounded-[2px] p-4 border text-sm" style={{ background: "#f3f4f6", borderColor: "#e5e7eb" }}>
+                                        <p className="font-bold mb-1" style={{ color: "#1a1a1a" }}>
                                             3営業日以内に
                                         </p>
-                                        <p style={{ color: '#cccccc' }}>
+                                        <p style={{ color: "#6b7280" }}>
                                             ご登録いただいたメールアドレス宛に<br />
                                             担当スタッフよりご連絡させていただきます。
                                         </p>
                                     </div>
                                 </div>
                                 <div className="pt-1">
-                                    <p className="text-sm" style={{ color: '#aaaaaa' }}>
+                                    <p className="text-sm" style={{ color: "#9ca3af" }}>
                                         ご不明な点がございましたら、<br />
                                         お気軽にお問い合わせください。
                                     </p>
@@ -305,48 +314,47 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <p className="relative z-10 text-xs text-center py-4" style={{ color: '#ffffff' }}>
-                    ©2026 株式会社投資の"KAWARA"版.com
+                <p className="relative z-10 text-xs text-center py-4" style={{ color: "#ffffff" }}>
+                    &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
                 </p>
             </div>
         );
     }
 
     return (
+        <ThemeProvider theme="light">
         <div
             className="min-h-screen py-8 px-4 relative overflow-hidden"
-            style={{
-                background: '#0b0e1f',
-            }}
+            style={{ background: "#000000" }}
         >
             {/* ネットワークアニメーション背景 */}
-            <NetworkBackground />
+            <NetworkBackground variant="blue" />
 
             <div className="max-w-[640px] mx-auto relative z-10">
-                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={{ background: 'linear-gradient(90deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
-                    <div className="backdrop-blur-sm rounded-[2px] p-4" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%)' }}>
+                <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={borderGradient}>
+                    <div className="rounded-[2px] p-4" style={cardStyle}>
                         <div className="text-center mb-4">
                             <div className="inline-block mb-4">
-                                <div className="w-16 h-16 rounded-[2px] flex items-center justify-center mx-auto shadow-lg" style={{ background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)' }}>
+                                <div className="w-16 h-16 rounded-[2px] flex items-center justify-center mx-auto shadow-lg" style={btnGradient}>
                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                     </svg>
                                 </div>
                             </div>
-                            <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#2db8f9] to-[#aa30ff]" style={{ fontWeight: 900 }}>
+                            <h1 className="text-2xl mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#1be7f5] to-[#2483f8]" style={{ fontWeight: 900 }}>
                                 超精密！<br />
-                                資産運用AI分析"極"
+                                資産運用AI分析&quot;極&quot;
                             </h1>
-                            <p className="text-xs mt-4 leading-relaxed" style={{ color: '#eeeeee' }}>
+                            <p className="text-xs mt-4 leading-relaxed" style={{ color: "#4b5563" }}>
                                 あなたの資産の詳細を入力ください。<br />
                                 各項目、総資産の割合（%）で数値を入力ください。<br />
-                                <span style={{ color: '#eeeeee' }}>*正確に100％とならなくても問題ありません。</span>
+                                <span style={{ color: "#4b5563" }}>*正確に100％とならなくても問題ありません。</span>
                             </p>
                         </div>
 
                         {formState === "error" && (
-                            <div className="mb-6 p-4 rounded-[2px] animate-pulse" style={{ background: '#2a1a1a', borderLeft: '4px solid #ef4444' }}>
-                                <p className="font-medium" style={{ color: '#fca5a5' }}>{errorMessage}</p>
+                            <div className="mb-6 p-4 rounded-[2px] animate-pulse" style={{ background: "#fef2f2", borderLeft: "4px solid #ef4444" }}>
+                                <p className="font-medium" style={{ color: "#dc2626" }}>{errorMessage}</p>
                             </div>
                         )}
 
@@ -381,17 +389,17 @@ export default function Home() {
                                 <CryptoCategory data={crypto} onChange={setCrypto} />
                             </CategoryAccordion>
 
-                            <div className="mt-6 pt-6" style={{ borderTop: '1px solid #7b5cfa' }}>
-                                <h3 className="text-xl font-bold mb-5 flex items-center gap-2" style={{ color: '#ffffff' }}>
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#2db8f9' }}>
+                            <div className="mt-6 pt-6" style={{ borderTop: "1px solid #e5e7eb" }}>
+                                <h3 className="text-xl font-bold mb-5 flex items-center gap-2" style={{ color: "#1a1a1a" }}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "#2483f8" }}>
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                     お客様情報
                                 </h3>
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-semibold mb-2" style={{ color: '#e5e5e5' }}>
-                                            お名前 <span className="text-xs font-normal" style={{ color: '#f87171' }}>（必須）</span>
+                                        <label className="block text-sm font-semibold mb-2" style={labelStyle}>
+                                            お名前 <span className="text-xs font-normal" style={{ color: "#ef4444" }}>（必須）</span>
                                         </label>
                                         <input
                                             type="text"
@@ -399,14 +407,14 @@ export default function Home() {
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
-                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                                            style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-blue-400 transition-all placeholder-gray-400"
+                                            style={inputStyle}
                                             placeholder="山田 太郎"
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-semibold mb-2" style={{ color: '#e5e5e5' }}>
-                                            メールアドレス <span className="text-xs font-normal" style={{ color: '#f87171' }}>（必須）</span>
+                                        <label htmlFor="email" className="block text-sm font-semibold mb-2" style={labelStyle}>
+                                            メールアドレス <span className="text-xs font-normal" style={{ color: "#ef4444" }}>（必須）</span>
                                         </label>
                                         <input
                                             type="email"
@@ -414,8 +422,8 @@ export default function Home() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
-                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-purple-500 transition-all placeholder-gray-400"
-                                            style={{ background: '#2a2a2a', border: '1px solid #4a4a4a', color: 'white' }}
+                                            className="w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-blue-400 transition-all placeholder-gray-400"
+                                            style={inputStyle}
                                             placeholder="example@email.com"
                                         />
                                     </div>
@@ -423,8 +431,8 @@ export default function Home() {
                             </div>
 
                             <div className="mt-6 mb-6">
-                                <div className="mx-auto max-w-2xl text-left rounded-[2px] px-5 py-4 mb-6" style={{ background: '#1a1a1a', border: '1px solid #4a4a4a' }}>
-                                    <p className="text-xs leading-relaxed" style={{ color: '#eeeeee' }}>
+                                <div className="mx-auto max-w-2xl text-left rounded-[2px] px-5 py-4 mb-6" style={{ background: "#f9fafb", border: "1px solid #e5e7eb" }}>
+                                    <p className="text-xs leading-relaxed" style={{ color: "#6b7280" }}>
                                         ※本サービスは投資助言・売買推奨を目的としたものではありません。<br />
                                         入力された情報をもとに、現在の資産状況を整理・可視化するための分析レポートを作成します。
                                     </p>
@@ -434,7 +442,7 @@ export default function Home() {
                                         type="submit"
                                         disabled={formState === "submitting"}
                                         className={`w-[90%] py-4 rounded-full font-bold text-base transition-all transform hover:scale-[0.98] hover:shadow-md hover:translate-y-0.5 active:scale-95 active:shadow-sm active:translate-y-1 shadow-lg text-white ${formState === "submitting" ? "bg-gray-400 cursor-not-allowed" : ""}`}
-                                        style={formState !== "submitting" ? { background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)', color: '#ffffff' } : {}}
+                                        style={formState !== "submitting" ? submitBtnGradient : {}}
                                     >
                                         {formState === "submitting" ? (
                                             <span className="flex items-center justify-center gap-2">
@@ -458,25 +466,24 @@ export default function Home() {
                         </form>
                     </div>
                 </div>
-                <p className="text-xs text-center mt-6" style={{ color: '#ffffff' }}>
-                    ©2026 株式会社投資の"KAWARA"版.com
+                <p className="text-xs text-center mt-6" style={{ color: "#ffffff" }}>
+                    &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
                 </p>
             </div>
 
             {/* 入力合計値フローティングポップアップ */}
             <div
                 className="fixed bottom-6 right-6 z-50 rounded-full shadow-2xl px-5 py-3"
-                style={{
-                    background: 'linear-gradient(135deg, #2db8f9 0%, #7b5cfa 50%, #aa30ff 100%)',
-                }}
+                style={{ background: "linear-gradient(90deg, #1be7f5 0%, #2483f8 100%)" }}
             >
                 <div className="text-center">
-                    <p className="text-xs font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>入力合計値</p>
-                    <p className="text-xl font-bold" style={{ color: '#ffffff' }}>
+                    <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>入力合計値</p>
+                    <p className="text-xl font-bold" style={{ color: "#ffffff" }}>
                         {totalPercentage}<span className="text-sm ml-1">%</span>
                     </p>
                 </div>
             </div>
         </div>
+        </ThemeProvider>
     );
 }
