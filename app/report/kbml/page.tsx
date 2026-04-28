@@ -174,7 +174,7 @@ export default function ReportKbmlPage() {
                 </h1>
                 <div className="space-y-4 mb-6">
                   <p className="text-sm leading-relaxed text-left" style={{ color: "#eeeeee" }}>
-                    【1,400名突破記念】AI「極」が選んだ最優秀ポートフォリオレポートのお申し込みありがとうございます。
+                    【2,100名突破記念】AI「極」が選んだ最優秀ポートフォリオレポートのお申し込みありがとうございます。
                   </p>
                   <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#252535", borderColor: "#3a3a4a" }}>
                     <p style={{ color: "#cccccc" }}>
@@ -213,14 +213,14 @@ export default function ReportKbmlPage() {
                   className="inline-block px-3 py-1 rounded-full text-xs font-bold"
                   style={{ background: "rgba(248, 3, 212, 0.2)", color: "#fff", border: "1px solid rgba(248, 3, 212, 0.5)" }}
                 >
-                  1,400名突破記念
+                  2,100名突破記念
                 </span>
               </div>
               <h1 className="text-xl sm:text-2xl mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#f31313] via-[#f803d4] to-[#f6ec0c]" style={{ fontWeight: 900 }}>
                 AI「極」が選んだ<br />最優秀ポートフォリオレポート<br />公開します！
               </h1>
               <p className="text-xs mt-3 leading-relaxed text-left" style={{ color: "#eee" }}>
-                {step === "form" && "1,400名の利用者の中からAI「極」が選出した「最も優れたポートフォリオ」の全貌を、特別レポートでお届けします。以下の項目をご入力のうえ、免責事項に同意して送信してください。"}
+                {step === "form" && "2,100名の利用者の中からAI「極」が選出した「最も優れたポートフォリオ」の全貌を、特別レポートでお届けします。以下の項目をご入力のうえ、免責事項に同意して送信してください。"}
                 {step === "phone" && "本レポートの内容は機密性が高いため、ご本人確認を必須としております。認証コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
                 {step === "verify" && "SMSでお送りした6桁の認証コードを入力してください。"}
               </p>

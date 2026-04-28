@@ -227,25 +227,27 @@ export default function BtcPage() {
               </div>
 
               {/* タイトル */}
-              <h1
-                className="text-base sm:text-2xl mb-2"
-                style={{
-                  fontWeight: 900,
-                  background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                &ldquo;今&rdquo;！BTC価格の歴史的な分水嶺。<br />暴騰か暴落か。<br />精密AIが導き出した極端な未来とは？
-              </h1>
+              {step === "form" && (
+                <h1
+                  className="text-base sm:text-2xl mb-2"
+                  style={{
+                    fontWeight: 900,
+                    background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  &ldquo;今&rdquo;！BTC価格の歴史的な分水嶺。<br />暴騰か暴落か。<br />精密AIが導き出した極端な未来とは？
+                </h1>
+              )}
               {/* コピー */}
               <p className="text-xs mt-3 leading-relaxed text-left text-white">
                 {step === "form" &&
-                  "現在のBTCは「リスク資産」か「安全資産」か、アイデンティティそのものが揺れている歴史的な分水嶺にあります。AIが数百の俗説を排除し、構造だけを冷徹に解剖した結果、上昇（直登）と下落（滑落）── 2つの極端な未来シナリオが浮かび上がりました。まだ確認していない方は、今すぐお受け取りください。以下をご入力のうえ、免責事項に同意してお申し込みください。"
+                  "現在のBTCは歴史的な分水嶺にあります。SNSや経済誌などで主張される幾多もの価格上昇と価格下落の俗説の中から「構造だけ」を“AI極”が冷徹に解剖した結果、近未来に迫る暴騰と暴落の極端な未来シナリオが浮かび上がりました。まだ当レポートの内容を確認していない方は、今すぐお受け取りください。以下をご入力のうえ、免責事項に同意してお申し込みください。"
                 }
                 {step === "phone" &&
-                  "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"
+                  "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認とSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"
                 }
                 {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
               </p>
@@ -288,23 +290,6 @@ export default function BtcPage() {
                       placeholder="example@email.com"
                     />
                   </div>
-                  <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
-                    <p className="text-xs leading-relaxed mb-4" style={silverTextGradient}>
-                      {DISCLAIMER_TEXT}
-                    </p>
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={disclaimerAccepted}
-                        onChange={(e) => setDisclaimerAccepted(e.target.checked)}
-                        className="mt-1 rounded border-gray-600"
-                        style={{ accentColor: "#BDC3C9" }}
-                      />
-                      <span className="text-sm" style={silverTextGradient}>
-                        上記免責事項に同意する <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須）</span>
-                      </span>
-                    </label>
-                  </div>
                 </div>
                 <div className="mt-6">
                   <button
@@ -322,6 +307,31 @@ export default function BtcPage() {
             {step === "phone" && (
               <form onSubmit={handleSendSms}>
                 <div className="space-y-4">
+                  <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
+                    <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎免責事項</p>
+                    <p className="text-xs leading-relaxed mb-4" style={silverTextGradient}>
+                      {DISCLAIMER_TEXT}
+                    </p>
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <span
+                        onClick={() => setDisclaimerAccepted(!disclaimerAccepted)}
+                        className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-[3px] border-2 flex items-center justify-center transition-all"
+                        style={{
+                          borderColor: disclaimerAccepted ? "#ffffff" : "#555555",
+                          background: disclaimerAccepted ? "#ffffff" : "transparent",
+                        }}
+                      >
+                        {disclaimerAccepted && (
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="#000000" viewBox="0 0 24 24" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </span>
+                      <span className="text-sm" style={silverTextGradient}>
+                        上記免責事項に同意する <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須）</span>
+                      </span>
+                    </label>
+                  </div>
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
                       電話番号 <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須・SMS受信可能な番号）</span>
@@ -339,7 +349,7 @@ export default function BtcPage() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
+                  <button type="submit" disabled={loading || !reportToken || !disclaimerAccepted} className={btnStyle} style={btnGradient}>
                     {loading ? "送信中..." : "承認コードを送信"}
                   </button>
                 </div>
