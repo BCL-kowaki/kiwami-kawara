@@ -248,7 +248,7 @@ export default function NegPage() {
               )}
               {/* コピー */}
               {step === "form" && (
-                <div className="text-sm sm:text-base mt-4 leading-relaxed text-left text-white space-y-3">
+                <div className="text-sm sm:text-base mt-4 leading-loose text-left text-white space-y-4">
                   <p>
                     本音を教えてください。
                     <br className="sm:hidden" />
