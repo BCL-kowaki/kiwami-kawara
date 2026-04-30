@@ -11,13 +11,13 @@ const ADMIN_EMAILS = [
 
 function formatAdminBody(data: ReportRegistrationBody): string {
   const addressLine = [data.address1, data.address2].filter(Boolean).join(" ");
-  let body = `【特別レポート申込】受信データ（BTC）\n\n`;
+  let body = `【配信サービス申込】受信データ（“ほったらかし投資”情報配信サービス）\n\n`;
   body += `受信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${data.name}\n`;
   body += `メールアドレス: ${data.email}\n`;
   body += `郵便番号: ${data.postalCode || ""}\n`;
   body += `住所: ${addressLine}\n`;
-  body += `免責事項同意: ${data.disclaimerAccepted ? "同意" : "未同意"}\n`;
+  body += `情報の取扱いに関する注意事項同意: ${data.disclaimerAccepted ? "同意" : "未同意"}\n`;
   return body;
 }
 
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, message: "メールアドレスを入力してください。" }, { status: 400 });
     }
     if (!data.disclaimerAccepted) {
-      return NextResponse.json({ ok: false, message: "免責事項に同意してください。" }, { status: 400 });
+      return NextResponse.json({ ok: false, message: "情報の取扱いに関する注意事項に同意してください。" }, { status: 400 });
     }
 
     const token = signReportToken({ email, name, address: "" });
@@ -46,14 +46,14 @@ export async function POST(request: NextRequest) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
       const adminBody = formatAdminBody({ ...data, name, email, postalCode: "", address1: "", address2: "", disclaimerAccepted: true });
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【特別レポート申込】${name} 様（BTC）`, adminBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【配信サービス申込】${name} 様（“ほったらかし投資”情報配信サービス）`, adminBody);
     } else {
-      console.log("[btc/register] AWS not set, skipping email. Data:", { name, email });
+      console.log("[neg/register] AWS not set, skipping email. Data:", { name, email });
     }
 
     return NextResponse.json({ ok: true, token });
   } catch (err) {
-    console.error("[btc/register]", err);
+    console.error("[neg/register]", err);
     const message = err instanceof Error ? err.message : "不明なエラー";
     return NextResponse.json({ ok: false, message }, { status: 500 });
   }
