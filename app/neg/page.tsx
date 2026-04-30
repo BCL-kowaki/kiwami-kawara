@@ -251,6 +251,7 @@ export default function NegPage() {
                 <div className="text-sm sm:text-base mt-4 leading-relaxed text-left text-white space-y-3">
                   <p>
                     本音を教えてください。
+                    <br className="sm:hidden" />
                     <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>
                       「相場系投資って疲れませんか？」
                     </strong>
@@ -262,6 +263,7 @@ export default function NegPage() {
                   </p>
                   <p>
                     実際のところ、、
+                    <br className="sm:hidden" />
                     <strong className="font-bold underline decoration-2 underline-offset-4">
                       「相場系投資って心身ともに疲れませんか？」
                     </strong>
