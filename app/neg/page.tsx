@@ -231,28 +231,99 @@ export default function NegPage() {
               {/* タイトル */}
               {step === "form" && (
                 <h1
-                  className="text-base sm:text-2xl mb-2"
+                  className="text-lg sm:text-4xl mb-3 leading-snug"
                   style={{
                     fontWeight: 900,
-                    background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)",
+                    background: "linear-gradient(90deg, #93c5fd 0%, #3b82f6 50%, #60a5fa 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
+                    wordBreak: "keep-all",
                   }}
                 >
-                  もう相場には疲れた！<br />そんなあなたのための&ldquo;ほったらかし投資&rdquo;<br />情報配信サービス
+                  <span className="inline-block whitespace-nowrap">もう相場には疲れた！</span><br />
+                  <span className="inline-block whitespace-nowrap">そんなあなたのための&ldquo;ほったらかし投資&rdquo;</span><br />
+                  <span className="inline-block whitespace-nowrap">情報配信サービス</span>
                 </h1>
               )}
               {/* コピー */}
-              <p className="text-xs mt-3 leading-relaxed text-left text-white whitespace-pre-line">
-                {step === "form" &&
-                  "本音を教えてください。「相場系投資って疲れませんか？」\n\n日々の価格変動やニュース、SNSの情報に振り回され、「いつ売買すべきか分からない」「思うように成果が出ない」「含み損に不安を抱えている」と感じながら、、、。\n\n実際のところ、、「相場系投資って心身ともに疲れませんか？」\n\n「トランプがまた戦争始めた！」\n「日本の金利が上がって株価落ちそう、、」\n「AIバブル崩壊するかも、、」\n「BTCは上がるとインフルエンサーが言ってたのに！」\n「XRPは金融革命じゃなかったの？！」\n「ゴールド落ちてるじゃん！安全資産じゃなかったの？！」\n\nこのように、本来見極めるべき“投資そのものの構造”を見落として自分でも気づいていない大きなリスクを抱えてしまっているケースも少なくありません。\n\nそこで今回、KAWARA版では、相場に依存しない“非相場系投資”、つまり精神的な負荷がかかりにくい“ほったらかし投資”に関する情報配信サービスを開始いたしました。\n\n投資のKAWARA版.comには約12万人の会員様がいらっしゃいます。そして毎日、数十件を超える投資トラブルのご相談や技術的なサポートをご提供しています。\n\nそんな中でたくさんの「詐欺」や「運用失敗」などネガティブなご相談を受ける中で、「運用成功した」「利回りが得られた」「複利でガンガン回している」といった成功事例も多々あるんです。\n\n12万人を超える会員様から得られた「過去に成功した投資事例」や「現在進行形の成功投資事例」などポジティブな情報をお届けします！\n\n「こんな投資あるの？！」と思われるような特殊事例も満載です。\n\nまだ情報を受け取っていない方は、この機会にぜひこうした表に出てこない特別な情報をご確認ください。以下をご入力いただき、注意事項に同意のうえお申し込みください。"
-                }
-                {step === "phone" &&
-                  "本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。\n\nなお、SMS認証が完了するまで配信は開始されませんので、あらかじめご了承ください。"
-                }
-                {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
-              </p>
+              {step === "form" && (
+                <div className="text-sm sm:text-base mt-4 leading-relaxed text-left text-white space-y-3">
+                  <p>
+                    本音を教えてください。
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>
+                      「相場系投資って疲れませんか？」
+                    </strong>
+                  </p>
+                  <p>
+                    日々の価格変動やニュース、SNSの情報に振り回され、
+                    <strong className="font-bold">「いつ売買すべきか分からない」「思うように成果が出ない」「含み損に不安を抱えている」</strong>
+                    と感じながら、、、。
+                  </p>
+                  <p>
+                    実際のところ、、
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>
+                      「相場系投資って心身ともに疲れませんか？」
+                    </strong>
+                  </p>
+                  <ul className="space-y-1 pl-1" style={{ color: "#dbeafe" }}>
+                    <li>「トランプがまた戦争始めた！」</li>
+                    <li>「日本の金利が上がって株価落ちそう、、」</li>
+                    <li>「AIバブル崩壊するかも、、」</li>
+                    <li>「BTCは上がるとインフルエンサーが言ってたのに！」</li>
+                    <li>「XRPは金融革命じゃなかったの？！」</li>
+                    <li>「ゴールド落ちてるじゃん！安全資産じゃなかったの？！」</li>
+                  </ul>
+                  <p>
+                    このように、本来見極めるべき
+                    <strong className="font-bold underline decoration-2 underline-offset-4">&ldquo;投資そのものの構造&rdquo;</strong>
+                    を見落として
+                    <strong className="font-bold">自分でも気づいていない大きなリスク</strong>
+                    を抱えてしまっているケースも少なくありません。
+                  </p>
+                  <p>
+                    そこで今回、KAWARA版では、
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>相場に依存しない&ldquo;非相場系投資&rdquo;</strong>
+                    、つまり
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>精神的な負荷がかかりにくい&ldquo;ほったらかし投資&rdquo;</strong>
+                    に関する情報配信サービスを開始いたしました。
+                  </p>
+                  <p>
+                    投資のKAWARA版.comには
+                    <strong className="font-bold">約12万人の会員様</strong>
+                    がいらっしゃいます。そして毎日、数十件を超える投資トラブルのご相談や技術的なサポートをご提供しています。
+                  </p>
+                  <p>
+                    そんな中でたくさんの「詐欺」や「運用失敗」などネガティブなご相談を受ける中で、
+                    <strong className="font-bold">「運用成功した」「利回りが得られた」「複利でガンガン回している」</strong>
+                    といった成功事例も多々あるんです。
+                  </p>
+                  <p>
+                    12万人を超える会員様から得られた
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>「過去に成功した投資事例」</strong>
+                    や
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>「現在進行形の成功投資事例」</strong>
+                    などポジティブな情報をお届けします！
+                  </p>
+                  <p>
+                    <strong className="font-bold">「こんな投資あるの？！」</strong>
+                    と思われるような特殊事例も満載です。
+                  </p>
+                  <p>
+                    まだ情報を受け取っていない方は、この機会にぜひこうした
+                    <strong className="font-bold underline decoration-2 underline-offset-4">表に出てこない特別な情報</strong>
+                    をご確認ください。以下をご入力いただき、注意事項に同意のうえお申し込みください。
+                  </p>
+                </div>
+              )}
+              {(step === "phone" || step === "verify") && (
+                <p className="text-sm mt-4 leading-relaxed text-left text-white whitespace-pre-line">
+                  {step === "phone" &&
+                    "本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。\n\nなお、SMS認証が完了するまで配信は開始されませんので、あらかじめご了承ください。"
+                  }
+                  {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
+                </p>
+              )}
             </div>
 
             {error && (
