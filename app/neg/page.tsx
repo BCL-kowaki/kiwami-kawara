@@ -336,6 +336,51 @@ export default function NegPage() {
 
             {step === "form" && (
               <form onSubmit={handleFormSubmit}>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                      お名前 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className={inputClass}
+                      style={inputStyle}
+                      placeholder="山田 太郎"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                      メールアドレス <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className={inputClass}
+                      style={inputStyle}
+                      placeholder="example@email.com"
+                    />
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className={btnStyle}
+                    style={btnGradient}
+                  >
+                    {loading ? "送信中..." : "ほったらかし投資情報を受け取る"}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {step === "phone" && (
+              <form onSubmit={handleSendSms}>
                 <div className="space-y-4 mb-4">
                   <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
                     <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎免責事項</p>
@@ -402,51 +447,6 @@ export default function NegPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      お名前 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                      className={inputClass}
-                      style={inputStyle}
-                      placeholder="山田 太郎"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      メールアドレス <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
-                    </label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className={inputClass}
-                      style={inputStyle}
-                      placeholder="example@email.com"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6">
-                  <button
-                    type="submit"
-                    disabled={loading || !topDisclaimerChecked || !ndaChecked}
-                    className={btnStyle}
-                    style={btnGradient}
-                  >
-                    {loading ? "送信中..." : "ほったらかし投資情報を受け取る"}
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {step === "phone" && (
-              <form onSubmit={handleSendSms}>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
                       電話番号 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須・SMS受信可能な番号）</span>
                     </label>
                     <input
@@ -462,7 +462,7 @@ export default function NegPage() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
+                  <button type="submit" disabled={loading || !reportToken || !topDisclaimerChecked || !ndaChecked} className={btnStyle} style={btnGradient}>
                     {loading ? "送信中..." : "承認コードを送信"}
                   </button>
                 </div>
