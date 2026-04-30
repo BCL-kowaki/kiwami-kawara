@@ -13,25 +13,26 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
   const parts = address.split("｜");
   const postalCode = parts[0] ?? "";
   const addressLine = parts.slice(1).filter(Boolean).join(" ");
-  let body = `【特別レポート申込】本人確認完了（BTC）\n\n`;
+  let body = `【配信サービス申込】本人確認完了（“ほったらかし投資”情報配信サービス）\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
   body += `郵便番号: ${postalCode}\n`;
   body += `住所: ${addressLine}\n`;
   body += `電話番号: ${phone}\n`;
-  body += `※2〜3日以内にレポートを送付してください。\n`;
+  body += `※当該アドレス宛に配信を開始してください。\n`;
   return body;
 }
 
 function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
-  body += `この度は、投資のKAWARA版BTC特別レポートに\n`;
+  body += `この度は、投資のKAWARA版「“ほったらかし投資”情報配信サービス」に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
-  body += `免責事項への同意承認が完了しました。\n\n`;
-  body += `登録情報確認後、担当スタッフより2〜3日以内に\n`;
-  body += `レポートを送付させていただきます。\n\n`;
-  body += `今しばらくお待ちください。\n\n`;
+  body += `情報の取扱いに関する注意事項へのご同意、\n`;
+  body += `およびSMS認証によるご本人確認が完了いたしました。\n\n`;
+  body += `今後、ご登録いただいたメールアドレス宛に\n`;
+  body += `順次情報を配信してまいりますので、配信開始まで\n`;
+  body += `いましばらくお待ちください。\n\n`;
   body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;
   body += `（本メールは自動送信です）\n\n`;
   body += `© 投資の"KAWARA"版．ｃｏｍ\n`;
@@ -86,13 +87,13 @@ export async function POST(request: NextRequest) {
       const sesClient = getSESClient();
       const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
       const userBody = formatUserCompletedBody(payload.name);
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【特別レポート申込】本人確認完了 ${payload.name} 様（BTC）`, adminBody);
-      await sendEmail(sesClient, fromEmail, payload.email, `【投資のKAWARA版】BTC特別レポートのお申し込みを承りました`, userBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【配信サービス申込】本人確認完了 ${payload.name} 様（“ほったらかし投資”情報配信サービス）`, adminBody);
+      await sendEmail(sesClient, fromEmail, payload.email, `【投資のKAWARA版】“ほったらかし投資”情報配信サービスのお申し込みを承りました`, userBody);
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[btc/verify-sms]", err);
+    console.error("[neg/verify-sms]", err);
     const message = err instanceof Error ? err.message : "認証処理に失敗しました。";
     return NextResponse.json({ ok: false, message }, { status: 500 });
   }
