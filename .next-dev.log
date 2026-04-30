@@ -1,0 +1,24 @@
+
+> tetris-app@1.0.0 dev
+> NEXT_PRIVATE_SKIP_TURBO=1 next dev --port 3000
+
+▲ Next.js 16.1.2 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.13.92:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 348ms
+ GET / 200 in 486ms (compile: 387ms, render: 99ms)
+ GET / 200 in 34ms (compile: 5ms, render: 29ms)
+✓ Compiled in 46ms
+✓ Compiled in 36ms
+✓ Compiled in 63ms
+✓ Compiled in 16ms
+✓ Compiled in 23ms
+✓ Compiled in 13ms
+✓ Compiled in 21ms
+✓ Compiled in 15ms
+✓ Compiled in 18ms
+✓ Compiled in 15ms
+[?25h
