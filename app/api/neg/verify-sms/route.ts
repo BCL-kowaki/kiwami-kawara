@@ -30,12 +30,10 @@ function formatUserCompletedBody(name: string): string {
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
   body += `情報の取扱いに関する注意事項へのご同意、\n`;
   body += `およびSMS認証によるご本人確認が完了いたしました。\n\n`;
-  body += `今後、ご登録いただいたメールアドレス宛に\n`;
-  body += `順次情報を配信してまいりますので、配信開始まで\n`;
+  body += `今後、順次情報を配信してまいりますので、配信開始まで\n`;
   body += `いましばらくお待ちください。\n\n`;
   body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;
-  body += `（本メールは自動送信です）\n\n`;
-  body += `© 投資の"KAWARA"版．ｃｏｍ\n`;
+  body += `（本メールは自動送信です）\n`;
   return body;
 }
 
