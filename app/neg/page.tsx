@@ -135,7 +135,7 @@ export default function NegPage() {
 
   // カラーテーマ: 黒ベース × シルバーテキストグラデーション × ピンク赤ボタン
   const silverBorder = "linear-gradient(270deg, #FFFFFF 0%, #BDC3C9 51%, #FFFFFF 100%)";
-  const btnRedGradient = "linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%)";
+  const btnRedGradient = "linear-gradient(90deg, #ec4899 0%, #f472b6 100%)";
 
   // テキストグラデーション用の共通スタイル
   const silverTextGradient = {
@@ -234,7 +234,7 @@ export default function NegPage() {
                   className="text-lg sm:text-4xl mb-3 leading-snug"
                   style={{
                     fontWeight: 900,
-                    background: "linear-gradient(90deg, #93c5fd 0%, #3b82f6 50%, #60a5fa 100%)",
+                    background: "linear-gradient(90deg, #ec4899 0%, #f472b6 50%, #ec4899 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -251,7 +251,7 @@ export default function NegPage() {
                 <div className="text-sm sm:text-base mt-4 leading-relaxed text-left text-white space-y-3">
                   <p>
                     本音を教えてください。
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>
                       「相場系投資って疲れませんか？」
                     </strong>
                   </p>
@@ -262,11 +262,11 @@ export default function NegPage() {
                   </p>
                   <p>
                     実際のところ、、
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>
+                    <strong className="font-bold underline decoration-2 underline-offset-4">
                       「相場系投資って心身ともに疲れませんか？」
                     </strong>
                   </p>
-                  <ul className="space-y-1 pl-1" style={{ color: "#dbeafe" }}>
+                  <ul className="space-y-1 pl-1 text-white">
                     <li>「トランプがまた戦争始めた！」</li>
                     <li>「日本の金利が上がって株価落ちそう、、」</li>
                     <li>「AIバブル崩壊するかも、、」</li>
@@ -283,9 +283,9 @@ export default function NegPage() {
                   </p>
                   <p>
                     そこで今回、KAWARA版では、
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>相場に依存しない&ldquo;非相場系投資&rdquo;</strong>
+                    <strong className="font-bold underline decoration-2 underline-offset-4">相場に依存しない&ldquo;非相場系投資&rdquo;</strong>
                     、つまり
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>精神的な負荷がかかりにくい&ldquo;ほったらかし投資&rdquo;</strong>
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>精神的な負荷がかかりにくい&ldquo;ほったらかし投資&rdquo;</strong>
                     に関する情報配信サービスを開始いたしました。
                   </p>
                   <p>
@@ -300,9 +300,9 @@ export default function NegPage() {
                   </p>
                   <p>
                     12万人を超える会員様から得られた
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>「過去に成功した投資事例」</strong>
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「過去に成功した投資事例」</strong>
                     や
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#60a5fa" }}>「現在進行形の成功投資事例」</strong>
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「現在進行形の成功投資事例」</strong>
                     などポジティブな情報をお届けします！
                   </p>
                   <p>
@@ -361,7 +361,7 @@ export default function NegPage() {
                         )}
                       </span>
                       <span className="text-sm" style={silverTextGradient}>
-                        上記免責事項に同意する <span style={{ color: "#60a5fa", WebkitTextFillColor: "#60a5fa" }}>（必須）</span>
+                        上記免責事項に同意する <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
                       </span>
                     </label>
                   </div>
@@ -392,7 +392,7 @@ export default function NegPage() {
                         )}
                       </span>
                       <span className="text-sm" style={silverTextGradient}>
-                        上記秘密保持契約に同意する <span style={{ color: "#60a5fa", WebkitTextFillColor: "#60a5fa" }}>（必須）</span>
+                        上記秘密保持契約に同意する <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
                       </span>
                     </label>
                   </div>
@@ -400,7 +400,7 @@ export default function NegPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      お名前 <span style={{ color: "#60a5fa", WebkitTextFillColor: "#60a5fa" }}>（必須）</span>
+                      お名前 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
                     </label>
                     <input
                       type="text"
@@ -414,7 +414,7 @@ export default function NegPage() {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      メールアドレス <span style={{ color: "#60a5fa", WebkitTextFillColor: "#60a5fa" }}>（必須）</span>
+                      メールアドレス <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
                     </label>
                     <input
                       type="email"
@@ -445,7 +445,7 @@ export default function NegPage() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      電話番号 <span style={{ color: "#60a5fa", WebkitTextFillColor: "#60a5fa" }}>（必須・SMS受信可能な番号）</span>
+                      電話番号 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須・SMS受信可能な番号）</span>
                     </label>
                     <input
                       type="tel"
