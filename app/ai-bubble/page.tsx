@@ -86,7 +86,7 @@ export default function AiBubblePage() {
                 </div>
                 <h1 className="text-xl font-extrabold mb-4" style={{ color: "#ffffff" }}>登録が完了しました</h1>
                 <div className="space-y-4 mb-6">
-                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>KAWARA版特別レポート「"歴史に例外なし"AIバブル崩壊の予兆」のお申し込みありがとうございます。</p>
+                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>KAWARA版特別レポート「"歴史に例外なし"アイバブル崩壊の予兆」のお申し込みありがとうございます。</p>
                   <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
                     <p style={{ color: "#cccccc" }}>ご登録内容確認後、2～3日以内に<br />担当スタッフよりご連絡させていただきます。<br />お届けまで今しばらくお待ちください。</p>
                   </div>
@@ -114,12 +114,26 @@ export default function AiBubblePage() {
               <h1 className="text-xl sm:text-2xl mb-1" style={{ fontWeight: 900, background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 "歴史に例外なし"AIバブル崩壊の予兆
               </h1>
-              <p className="text-sm mb-2" style={{ color: "#BDC3C9" }}>人類は400年間、同じ崖から落ち続けている。</p>
-              <p className="text-xs mt-3 leading-relaxed text-left text-white">
-                {step === "form" && <>「これからはAIの時代だ」「今のうちに乗らなければ」そう感じるのは、投賄家として極めて自然なことです。<br /><br />しかし、過去400年。チューリップから世界恐慰、ドットコム、他亮㛌通貨に至るまで――何度も同じ「熱狂と崩壊の構造」を繰り返しています。<br /><br />本レポートでは、世界中の投賄家や中央銀行が参照してきた“バブル5段階モデル”に照らし合わせて、AIバブルの“現在地”を分析します。<br /><br />まだ当レポートの内容を確認していない方は、今すぐお受け取りください。以下をご入力のうえ、免責事項に同意してお申し込みください。</>}
+              <p className="text-sm mb-3" style={{ color: "#BDC3C9" }}>人類は400年間、同じ崖から落ち続けている。</p>
+              <div className="text-xs mt-3 leading-relaxed text-left" style={{ color: "#e0e0e0" }}>
+                {step === "form" && (
+                  <>
+                    <p>「これからはAIの時代だ」「今のうちに乗らなければ」<br />そう感じるのは、投賄家として極めて自然なことです。</p>
+                    <p className="mt-3">しかし、過去400年。<br />チューリップから世界恐慰、ドットコム、他亮㛌通貨に至るまで――<br />何度も同じ「熱狂と崩壊の構造」を繰り返しています。</p>
+                    <p className="mt-3">バブルが起こる毎に、人々は熱狂し、専門家でさえも<br />『今回はこれまでのバブルとは違う』<br />と語り始め、<span style={{ color: "#ffffff", fontWeight: 700 }}>本質的な崩壊の予兆は見逃されてきました。</span></p>
+                    <p className="mt-3">本レポートでは、<br />世界中の投賄家や中央銀行が参照してきた<br />“バブル5段階モデル”に照らし合わせて、<br />AIバブルの“現在地”を分析します。</p>
+                    <ul className="mt-3 space-y-1" style={{ listStyle: "none", padding: 0 }}>
+                      <li>・AIは本物の技術だ」という正しい確信が、なぜ投賄の失敗を招くのか？</li>
+                      <li>・万有引力の法則を見つけたニュートンが、計算できなかった「人々の狂気」の正体。</li>
+                      <li>・ドットコム・バブルの覇者「シスコ」が、売上を伸ばしながら株侧80％下落後、回復に21年を要した理由。</li>
+                    </ul>
+                    <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>熱狂のたびに言われる『今回はこれまでのバブルとは違う』という言葉、<br />あなたは本当に、そう思いますか？</p>
+                    <p className="mt-3">まだ当レポートの内容を確認していない方は、AIバブルの“現在地”をご確認ください。<br />以下をご入力のうえ、免責事項に同意してお申し込みください。</p>
+                  </>
+                )}
                 {step === "phone" && "本レポートには投賄判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
                 {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
-              </p>
+              </div>
             </div>
             {error && <div className="mb-6 p-4 rounded-[2px] animate-pulse" style={{ background: "#1a1010", borderLeft: "4px solid #ef4444" }}><p className="font-medium" style={{ color: "#fca5a5" }}>{error}</p></div>}
             {step === "form" && (
