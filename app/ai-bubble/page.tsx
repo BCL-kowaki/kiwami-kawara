@@ -11,7 +11,7 @@ type Step = "form" | "phone" | "verify" | "done";
 export default function AiBubblePage() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("")
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(true);
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
@@ -86,7 +86,7 @@ export default function AiBubblePage() {
                 </div>
                 <h1 className="text-xl font-extrabold mb-4" style={{ color: "#ffffff" }}>登録が完了しました</h1>
                 <div className="space-y-4 mb-6">
-                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>KAWARA版特別レポート「"歴史に例外なし"アイバブル崩壊の予兆」のお申し込みありがとうございます。</p>
+                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>KAWARA版特別レポート「"歴史に例外なし"AIバブル崩壊の予兆」のお申し込みありがとうございます。</p>
                   <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
                     <p style={{ color: "#cccccc" }}>ご登録内容確認後、2～3日以内に<br />担当スタッフよりご連絡させていただきます。<br />お届けまで今しばらくお待ちください。</p>
                   </div>
