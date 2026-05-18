@@ -111,11 +111,11 @@ export default function AiBubblePage() {
               <div className="inline-block mb-3">
                 <span className="inline-block px-3 py-1 rounded-full text-xs font-bold" style={{ background: "rgba(189, 195, 201, 0.1)", color: "#FFFFFF", border: "1px solid rgba(189, 195, 201, 0.35)" }}>KAWARA版特別レポート</span>
               </div>
-              <h1 className="text-xl sm:text-2xl mb-1" style={{ fontWeight: 900, background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                "歴史に例外なし"AIバブル崩壊の予兆
+              <h1 className="text-2xl sm:text-3xl mb-1" style={{ fontWeight: 900, background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                "歴史に例外なし"<br />AIバブル崩壊の予兆
               </h1>
               <p className="text-sm mb-3" style={{ color: "#BDC3C9" }}>人類は400年間、同じ崖から落ち続けている。</p>
-              <div className="text-lg mt-3 leading-relaxed text-left" style={{ color: "#e0e0e0" }}>
+              <div className="text-base mt-3 leading-relaxed text-left" style={{ color: "#e0e0e0" }}>
                 {step === "form" && (
                   <>
                     <p>当特別レポートは下記の資産を保有されている方にとって特に重要です。</p>
