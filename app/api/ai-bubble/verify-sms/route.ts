@@ -26,16 +26,16 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
 
 function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
-  body += `この度は、投賄のKAWARA版 特別レポート\n`;
+  body += `この度は、投資のKAWARA版 特別レポート\n`;
   body += `「"歴史に例外なし"AIバブル崩壊の予兆」に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
   body += `免責事項への同意承認が完了しました。\n\n`;
   body += `登録情報確認後、担当スタッフより2～3日以内に\n`;
   body += `レポートを送付させていただきます。\n\n`;
   body += `今しばらくお待ちください。\n\n`;
-  body += `株式会社投賄の"かわらばん"．ｃｏｍ\n`;
+  body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;
   body += `（本メールは自動送信です）\n\n`;
-  body += `© 投賄の"かわらばん"．ｃｏｍ\n`;
+  body += `© 投資の"KAWARA"版．ｃｏｍ\n`;
   return body;
 }
 
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
       const userBody = formatUserCompletedBody(payload.name);
       await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【特別レポート申込】本人確認完了 ${payload.name} 様（AIバブル崩壊の予兆）`, adminBody);
-      await sendEmail(sesClient, fromEmail, payload.email, "【投賄のKAWARA版】AIバブル崩壊の予兆 特別レポートのお申し込みを承りました", userBody);
+      await sendEmail(sesClient, fromEmail, payload.email, "【投資のKAWARA版】AIバブル崩壊の予兆 特別レポートのお申し込みを承りました", userBody);
     }
     return NextResponse.json({ ok: true });
   } catch (err) {
