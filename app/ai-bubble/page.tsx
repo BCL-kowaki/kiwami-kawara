@@ -115,7 +115,7 @@ export default function AiBubblePage() {
                 "歴史に例外なし"AIバブル崩壊の予兆
               </h1>
               <p className="text-sm mb-3" style={{ color: "#BDC3C9" }}>人類は400年間、同じ崖から落ち続けている。</p>
-              <div className="text-2xl mt-3 leading-relaxed text-left" style={{ color: "#e0e0e0" }}>
+              <div className="text-lg mt-3 leading-relaxed text-left" style={{ color: "#e0e0e0" }}>
                 {step === "form" && (
                   <>
                     <p>当特別レポートは下記の資産を保有されている方にとって特に重要です。</p>
