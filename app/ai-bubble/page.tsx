@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import NetworkBackground from "../components/NetworkBackground";
 
 const DISCLAIMER_TEXT =
-  "本レポートはAIによる分析結果の参考資料です。投賄の判断およびその責任はお客様ご自身にございます。特定の銘柄の推奨や投賄助言を目的としたものではございません。";
+  "本レポートはAIによる分析結果の参考資料です。投資の判断およびその責任はお客様ご自身にございます。特定の銘柄の推奨や投資助言を目的としたものではございません。";
 
 type Step = "form" | "phone" | "verify" | "done";
 
@@ -132,7 +132,7 @@ export default function AiBubblePage() {
                     <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>AIバブル崩壊は、歴史上でも指折りの大惨事となる可能性があります。</p>
                     <p className="mt-4" style={{ color: "#ffffff", fontWeight: 700 }}>こんなことを考えている人だらけです。</p>
                     <p className="mt-3">「これからはAIの時代だ」「今のうちに乗らなければ」そう感じるのは、投資家として極めて自然なことです。</p>
-                    <p className="mt-3">しかし、過去400年。<br />チューリップから世界恐慰、鉄道、ドットコム、仮想通貨に至るまで――<br />何度も同じ「熱狂と崩壊の構造」を繰り返しています。</p>
+                    <p className="mt-3">しかし、過去400年。<br />チューリップから世界恐慌、鉄道、ドットコム、仮想通貨に至るまで――<br />何度も同じ「熱狂と崩壊の構造」を繰り返しています。</p>
                     <p className="mt-3">バブルが起こる毎に、人々は熱狂し、専門家でさえも『今回はこれまでのバブルとは違う』<br />と語り始め、<span style={{ color: "#ffffff", fontWeight: 700 }}>本質的な崩壊の予兆は見逃されてきました。</span></p>
                     <p className="mt-3">歴史上、人々の熱狂によりバブル化した市場が弾けなかった事例は0です。<br /><br />もう一度言います。<span style={{ color: "#ffffff", fontWeight: 700 }}>『バブルが弾けなかった事例は0です。』</span></p>
                     <p className="mt-3">本レポートでは、<br />世界中の投資家や中央銀行が参照してきた<br />“バブル5段階モデル”に照らし合わせて、<br />AIバブルの“現在地”を分析します。</p>
@@ -203,7 +203,7 @@ export default function AiBubblePage() {
             )}
           </div>
         </div>
-        <p className="text-xs text-center mt-6" style={silverTextGradient}>&copy;2026 株式会社投賄の&quot;KAWARA&quot;版.com</p>
+        <p className="text-xs text-center mt-6" style={silverTextGradient}>&copy;2026 株式会社投資の&quot;KAWARA&quot;版.com</p>
       </div>
     </div>
   );
