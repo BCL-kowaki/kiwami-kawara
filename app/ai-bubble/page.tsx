@@ -96,7 +96,7 @@ export default function AiBubblePage() {
             </div>
           </div>
         </div>
-        <p className="relative z-10 text-xs text-center py-4" style={{ color: "#888888" }}>&copy;2026 株式会社投賄の&quot;KAWARA&quot;版.com</p>
+        <p className="relative z-10 text-xs text-center py-4" style={{ color: "#888888" }}>&copy;2026 株式会社投資の&quot;KAWARA&quot;版.com</p>
       </div>
     );
   }
@@ -123,7 +123,7 @@ export default function AiBubblePage() {
                       <li>✅上位50位以内の暗号資産</li>
                       <li>✅ゴールド・シルバーなどの貴金属</li>
                       <li>✅上場株式銘柄</li>
-                      <li>✅日経平均やNASDAQ、S&amp;P500などの大型インデックス</li>
+                      <li>✅日経平均やNASDAQ、<br />　S&amp;P500などの大型インデックス</li>
                       <li>✅AI関連株式</li>
                       <li>✅株式系投資信託（NISA含む）</li>
                     </ul>
@@ -131,22 +131,22 @@ export default function AiBubblePage() {
                     <p className="mt-3">特に、投機熱が加熱している暗号通貨やゴールドは真っ先にAIバブル崩壊の逆風に飲み込まれます。</p>
                     <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>AIバブル崩壊は、歴史上でも指折りの大惨事となる可能性があります。</p>
                     <p className="mt-4" style={{ color: "#ffffff", fontWeight: 700 }}>こんなことを考えている人だらけです。</p>
-                    <p className="mt-3">「これからはAIの時代だ」「今のうちに乗らなければ」<br />そう感じるのは、投賄家として極めて自然なことです。</p>
+                    <p className="mt-3">「これからはAIの時代だ」「今のうちに乗らなければ」そう感じるのは、投資家として極めて自然なことです。</p>
                     <p className="mt-3">しかし、過去400年。<br />チューリップから世界恐慰、鉄道、ドットコム、仮想通貨に至るまで――<br />何度も同じ「熱狂と崩壊の構造」を繰り返しています。</p>
-                    <p className="mt-3">バブルが起こる毎に、人々は熱狂し、専門家でさえも<br />『今回はこれまでのバブルとは違う』<br />と語り始め、<span style={{ color: "#ffffff", fontWeight: 700 }}>本質的な崩壊の予兆は見逃されてきました。</span></p>
-                    <p className="mt-3">歴史上、人々の熱狂によりバブル化した市場が弾けなかった事例は0です。<br />もう一度言います。<span style={{ color: "#ffffff", fontWeight: 700 }}>『バブルが弾けなかった事例は0です。』</span></p>
-                    <p className="mt-3">本レポートでは、<br />世界中の投賄家や中央銀行が参照してきた<br />“バブル5段階モデル”に照らし合わせて、<br />AIバブルの“現在地”を分析します。</p>
+                    <p className="mt-3">バブルが起こる毎に、人々は熱狂し、専門家でさえも『今回はこれまでのバブルとは違う』<br />と語り始め、<span style={{ color: "#ffffff", fontWeight: 700 }}>本質的な崩壊の予兆は見逃されてきました。</span></p>
+                    <p className="mt-3">歴史上、人々の熱狂によりバブル化した市場が弾けなかった事例は0です。<br /><br />もう一度言います。<span style={{ color: "#ffffff", fontWeight: 700 }}>『バブルが弾けなかった事例は0です。』</span></p>
+                    <p className="mt-3">本レポートでは、<br />世界中の投資家や中央銀行が参照してきた<br />“バブル5段階モデル”に照らし合わせて、<br />AIバブルの“現在地”を分析します。</p>
                     <ul className="mt-3 space-y-1" style={{ listStyle: "none", padding: 0 }}>
                       <li>・今、AIバブルは山登りでいうところの「何合目」なのか？</li>
-                      <li>・「AIは本物の技術だ」という正しい確信が、なぜ投賄の失敗を招くのか？</li>
+                      <li>・「AIは本物の技術だ」という正しい確信が、なぜ投資の失敗を招くのか？</li>
                       <li>・万有引力の法則を見つけたニュートンが、計算できなかった「人々の狂気」の正体とは？</li>
                       <li>・ドットコム・バブルの覇者「シスコ」が、収益を伸ばしたにも関わらず株価80％下落後、回復に21年を要した理由とは？</li>
                     </ul>
-                    <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>熱狂のたびに言われる『今回はこれまでのバブルとは違う』という言葉、<br />あなたは本当に、そう思いますか？</p>
+                    <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>熱狂のたびに言われる『今回はこれまでのバブルとは違う』という言葉、<br /><br />あなたは本当に、そう思いますか？</p>
                     <p className="mt-3">まだ当レポートの内容を確認していない方は、AIバブルの“現在地”をご確認ください。<br />以下をご入力のうえ、免責事項に同意してお申し込みください。</p>
                   </>
                 )}
-                {step === "phone" && "本レポートには投賄判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
+                {step === "phone" && "本レポートには投資判断に関わる分析内容が含まれるため、免責事項への同意確認としてSMS承認を必須としております。承認コードをSMSでお送りしますので、電話番号を入力して次へ進んでください。"}
                 {step === "verify" && "SMSでお送りした6桁の承認コードを入力してください。"}
               </div>
             </div>
