@@ -111,7 +111,7 @@ export default function AiBubblePage() {
               <div className="inline-block mb-3">
                 <span className="inline-block px-3 py-1 rounded-full text-xs font-bold" style={{ background: "rgba(189, 195, 201, 0.1)", color: "#FFFFFF", border: "1px solid rgba(189, 195, 201, 0.35)" }}>KAWARA版特別レポート</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl mb-4 mt-2 leading-tight" style={{ fontWeight: 900, background: "linear-gradient(90deg, #ffb3c5 0%, #faa3d0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <h1 className="text-3xl sm:text-5xl mb-4 mt-2 leading-tight" style={{ fontWeight: 900, background: "linear-gradient(90deg, #ff8aa5 0%, #f75fb1 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 "歴史に例外なし"<br />AIバブル崩壊の予兆
               </h1>
               <p className="text-sm mb-3" style={{ color: "#BDC3C9" }}>人類は400年間、同じ崖から落ち続けている。</p>
@@ -130,7 +130,7 @@ export default function AiBubblePage() {
                     <p className="mt-3">なぜなら、AIバブルが崩壊すると、これらの資産クラスは大打撃を受ける可能性が極めて高いからです。</p>
                     <p className="mt-3">特に、投機熱が加熱している暗号通貨やゴールドは真っ先にAIバブル崩壊の逆風に飲み込まれます。</p>
                     <p className="mt-3" style={{ color: "#ffffff", fontWeight: 600 }}>AIバブル崩壊は、歴史上でも指折りの大惨事となる可能性があります。</p>
-                    <p className="mt-4" style={{ background: "linear-gradient(90deg, #ffb3c5 0%, #faa3d0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontWeight: 700 }}>こんなことを考えている人だらけです。</p>
+                    <p className="mt-4" style={{ background: "linear-gradient(90deg, #ff8aa5 0%, #f75fb1 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontWeight: 700 }}>こんなことを考えている人だらけです。</p>
                     <p className="mt-3">「これからはAIの時代だ」「今のうちに乗らなければ」そう感じるのは、投資家として極めて自然なことです。</p>
                     <p className="mt-3">しかし、過去400年。<br />チューリップから世界恐慌、鉄道、ドットコム、仮想通貨に至るまで――<br />何度も同じ「熱狂と崩壊の構造」を繰り返しています。</p>
                     <p className="mt-3">バブルが起こる毎に、人々は熱狂し、専門家でさえも『今回はこれまでのバブルとは違う』<br />と語り始め、<span style={{ color: "#ffffff", fontWeight: 700 }}>本質的な崩壊の予兆は見逃されてきました。</span></p>
