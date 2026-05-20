@@ -149,6 +149,20 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
                   KAWARA版特別コンテンツ
                 </span>
               </div>
+              <h1
+                className="text-lg sm:text-2xl font-black mb-3 leading-snug"
+                style={{
+                  background: "linear-gradient(90deg, #ec4899 0%, #f472b6 50%, #ec4899 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  wordBreak: "keep-all",
+                }}
+              >
+                <span className="inline-block whitespace-nowrap">もう相場には疲れた！</span><br />
+                <span className="inline-block whitespace-nowrap">そんなあなたのための&ldquo;ほったらかし投資&rdquo;</span><br />
+                <span className="inline-block whitespace-nowrap">情報配信サービス</span>
+              </h1>
               {step === "phone" && (
                 <p className="text-sm mt-4 leading-relaxed text-left text-white">
                   本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。
