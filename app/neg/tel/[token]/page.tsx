@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, use } from "react";
 import NetworkBackground from "../../components/NetworkBackground";
 
 type Step = "phone" | "verify" | "done";
 
-export default function NegTelPage({ params }: { params: { token: string } }) {
+export default function NegTelPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token: urlToken } = use(params);
   const [step, setStep] = useState<Step>("phone");
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
@@ -14,8 +15,6 @@ export default function NegTelPage({ params }: { params: { token: string } }) {
   const [error, setError] = useState("");
   const [topDisclaimerChecked, setTopDisclaimerChecked] = useState(true);
   const [ndaChecked, setNdaChecked] = useState(true);
-
-  const urlToken = params.token;
 
   const silverBorder = "linear-gradient(270deg, #FFFFFF 0%, #BDC3C9 51%, #FFFFFF 100%)";
   const btnRedGradient = "linear-gradient(90deg, #ec4899 0%, #f472b6 100%)";
@@ -179,7 +178,7 @@ export default function NegTelPage({ params }: { params: { token: string } }) {
                     <div className="text-xs leading-relaxed mb-3 overflow-y-auto pr-2" style={{ maxHeight: "120px", color: "#cccccc" }}>
                       <p>本配信サービスで提供される情報は、あくまで参考情報の提供を目的としたものであり、特定の銘柄・商品・案件への投資勧誘、または投資助言を行うものではございません。</p>
                       <p className="mt-2">配信内容に基づく投資判断および、その結果生じたいかなる損害・損失についても、当社および関係者は一切の責任を負いかねますので、あらかじめご了承ください。</p>
-                      <p className="mt-2">投資にあたっては、ご自身の判断と責任において、十分にご検討のうえ実行いただきますようお願いいたします。また、本サービスで提供する情報の正確性・完全性・最新性については万全を期しておりますが、これらを保証するものではありません。</p>
+                      <p className="mt-2">投資にあたっては、ご自身の判断と責任において、十分にご検討のうえ実行いただきますようお願いいたします。</p>
                     </div>
                     <label className="flex items-start gap-3 cursor-pointer">
                       <span onClick={() => setTopDisclaimerChecked(!topDisclaimerChecked)} className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-[3px] border-2 flex items-center justify-center transition-all" style={{ borderColor: topDisclaimerChecked ? "#ffffff" : "#555555", background: topDisclaimerChecked ? "#ffffff" : "transparent" }}>
@@ -192,8 +191,7 @@ export default function NegTelPage({ params }: { params: { token: string } }) {
                     <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎秘密保持契約文</p>
                     <div className="text-xs leading-relaxed mb-3 overflow-y-auto pr-2" style={{ maxHeight: "120px", color: "#cccccc" }}>
                       <p>本配信サービスを通じて提供される情報（以下「秘密情報」といいます）は、ご登録者ご本人のみを対象として配信されるものであり、内容の全部または一部を第三者へ開示、転載、複製、共有、転送、SNS等への投稿、その他あらゆる方法によって外部へ流出させる行為を固くお断りいたします。</p>
-                      <p className="mt-2">ご登録者は、本配信を受領した時点をもって、秘密情報を善良な管理者の注意義務をもって取り扱うことに同意するものとし、本サービスの目的以外で使用しないものとします。</p>
-                      <p className="mt-2">万一、秘密情報の漏洩、流用、目的外利用が確認された場合、当社は配信の即時停止、ならびに損害賠償請求その他必要な法的措置を講じる場合がございますので、あらかじめご了承ください。</p>
+                      <p className="mt-2">万一、秘密情報の漏洩、流用、目的外利用が確認された場合、当社は配信の即時停止、ならびに損害賠償請求その他必要な法的措置を講じる場合がございます。</p>
                     </div>
                     <label className="flex items-start gap-3 cursor-pointer">
                       <span onClick={() => setNdaChecked(!ndaChecked)} className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-[3px] border-2 flex items-center justify-center transition-all" style={{ borderColor: ndaChecked ? "#ffffff" : "#555555", background: ndaChecked ? "#ffffff" : "transparent" }}>
