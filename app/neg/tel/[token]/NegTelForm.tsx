@@ -108,7 +108,7 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
             <div className="p-[2px] rounded-[2px] shadow-2xl" style={borderStyle}>
               <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={cardStyle}>
                 <div className="mb-2 pt-6 pb-4">
-                  <div className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce" style={btnGradient}>
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full shadow-lg animate-bounce" style={btnGradient}>
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "#ffffff" }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -117,7 +117,7 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
                 <h1 className="text-xl font-extrabold mb-4" style={{ color: "#ffffff" }}>登録が完了しました</h1>
                 <div className="space-y-4 mb-6">
                   <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>
-                    投資のKAWARA版「"ほったらかし投資"情報配信サービス」へのお申し込みありがとうございます。
+                    投資のKAWARA版「&#34;ほったらかし投資&#34;情報配信サービス」へのお申し込みありがとうございます。
                   </p>
                   <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
                     <p style={{ color: "#cccccc" }}>
@@ -131,7 +131,7 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
           </div>
         </div>
         <p className="relative z-10 text-xs text-center py-4" style={{ color: "#888888" }}>
-          &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
+          &copy;2026 株式会社投資の&#34;KAWARA&#34;版.com
         </p>
       </div>
     );
@@ -150,10 +150,10 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
                 </span>
               </div>
               {step === "phone" && (
-                <p className="text-sm mt-4 leading-relaxed text-left text-white whitespace-pre-line">
-                  本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。{"
-
-"}なお、SMS認証が完了するまで配信は開始されませんので、あらかじめご了承ください。
+                <p className="text-sm mt-4 leading-relaxed text-left text-white">
+                  本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。
+                  <br /><br />
+                  なお、SMS認証が完了するまで配信は開始されませんので、あらかじめご了承ください。
                 </p>
               )}
               {step === "verify" && (
@@ -242,7 +242,7 @@ export default function NegTelForm({ urlToken }: { urlToken: string }) {
           </div>
         </div>
         <p className="text-xs text-center mt-6" style={silverTextGradient}>
-          &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
+          &copy;2026 株式会社投資の&#34;KAWARA&#34;版.com
         </p>
       </div>
     </div>
