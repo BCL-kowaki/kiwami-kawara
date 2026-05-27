@@ -292,11 +292,11 @@ export default function LivePage() {
                       borderLeft: "2px solid #b08a3e",
                     }}
                   >
-                    <ul className="space-y-2 list-disc pl-5" style={{ color: "#5a4838" }}>
-                      <li>iPS細胞の基礎技術と最新動向</li>
-                      <li>自家iPS細胞バンキングの仕組みと活用法</li>
-                      <li>iPS培養上清液による細胞活性化アプローチ</li>
-                      <li>最先端の施術体制とサービス概要</li>
+                    <ul className="space-y-3 list-disc pl-5" style={{ color: "#5a4838" }}>
+                      <li>そもそもiPS細胞とは何なのか？今、医療・ウェルネス領域で関心が高まっている理由とは？</li>
+                      <li>将来の医療や健康管理において、iPS細胞がどのように活用される可能性があるのか？</li>
+                      <li>人生100年時代に、なぜ健康寿命を意識することが大切なのか？</li>
+                      <li>一部の富裕層や経営者が関心を寄せる、次世代ウェルネス戦略とは？</li>
                     </ul>
                   </div>
                   <p>
