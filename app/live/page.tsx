@@ -275,9 +275,9 @@ export default function LivePage() {
               {step === "form" && (
                 <div className="text-sm sm:text-base mt-4 leading-loose text-left space-y-4" style={{ color: "#5a4838" }}>
                   <p>
-                    本配信は、KAWARA版が主催する
+                    本LIVE配信は「
                     <strong className="font-bold" style={{ color: "#2a1810" }}>次世代ウェルネス戦略</strong>
-                    に関するLIVE配信プログラムです。
+                    」をテーマにお届けします。
                   </p>
                   <p>
                     近年、
@@ -293,10 +293,10 @@ export default function LivePage() {
                     }}
                   >
                     <ul className="space-y-2 list-disc pl-5" style={{ color: "#5a4838" }}>
-                      <li>最新の再生医療・iPS細胞関連の動向と国内外の事例</li>
-                      <li>次世代ウェルネスにおける具体的な実践戦略</li>
-                      <li>健康寿命の延伸に向けた最新アプローチ</li>
-                      <li>視聴者からの質疑応答（予定）</li>
+                      <li>iPS細胞の基礎技術と最新動向</li>
+                      <li>自家iPS細胞バンキングの仕組みと活用法</li>
+                      <li>iPS培養上清液による細胞活性化アプローチ</li>
+                      <li>最先端の施術体制とサービス概要</li>
                     </ul>
                   </div>
                   <p>
