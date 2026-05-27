@@ -242,79 +242,31 @@ export default function LivePage() {
                   }}
                 >
                   <span className="inline-block whitespace-nowrap">次世代ウェルネス戦略</span><br />
-                  <span className="inline-block whitespace-nowrap">LIVE配信</span><br />
-                  <span className="inline-block whitespace-nowrap">視聴申し込み</span>
+                  <span className="inline-block whitespace-nowrap">LIVE配信 視聴申し込み</span>
                 </h1>
               )}
               {/* コピー */}
               {step === "form" && (
                 <div className="text-sm sm:text-base mt-4 leading-loose text-left text-white space-y-4">
                   <p>
-                    本音を教えてください。
-                    <br className="sm:hidden" />
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>
-                      「今までの健康法、納得できていますか？」
-                    </strong>
+                    本配信は、KAWARA版が主催する
+                    <strong className="font-bold">次世代ウェルネス戦略</strong>
+                    に関するLIVE配信プログラムです。
                   </p>
                   <p>
-                    サプリメント、ジム、食事制限、温活、腸活、、、様々な健康法に取り組んできたものの、
-                    <strong className="font-bold">「年々、疲れが取れにくい」「将来の健康に漠然とした不安がある」「何を信じて続ければいいのか分からない」</strong>
-                    と感じながら、、、。
+                    近年、
+                    <strong className="font-bold">iPS細胞や再生医療</strong>
+                    といった先端領域は、研究段階から実用化フェーズへと急速に移行しており、健康寿命や予防医療への関心が高まる中で、最新動向への注目が集まっています。
                   </p>
-                  <p>
-                    実際のところ、、
-                    <br className="sm:hidden" />
-                    <strong className="font-bold underline decoration-2 underline-offset-4">
-                      「これからの健康戦略、本当にこのままで大丈夫ですか？」
-                    </strong>
-                  </p>
-                  <ul className="space-y-1 pl-1 text-white">
-                    <li>「高額なサプリを飲み続けているが手応えがない」</li>
-                    <li>「ジムに通っても若い頃の体力が戻らない」</li>
-                    <li>「健康診断の数値が年々気になり始めた」</li>
-                    <li>「アンチエイジング商品を次々試している」</li>
-                    <li>「医療費が今後どこまで膨らむか心配」</li>
-                    <li>「親世代の介護を見て自分の将来が不安」</li>
+                  <p>本配信では、以下の内容をお届けします。</p>
+                  <ul className="space-y-1 pl-5 list-disc text-white">
+                    <li>最新の再生医療・iPS細胞関連の動向と国内外の事例</li>
+                    <li>次世代ウェルネスにおける具体的な実践戦略</li>
+                    <li>健康寿命の延伸に向けた最新アプローチ</li>
+                    <li>視聴者からの質疑応答（予定）</li>
                   </ul>
                   <p>
-                    このように、本来知っておくべき
-                    <strong className="font-bold underline decoration-2 underline-offset-4">&ldquo;次世代の健康戦略&rdquo;</strong>
-                    を見落として、
-                    <strong className="font-bold">情報のアップデートが遅れてしまっている</strong>
-                    ケースも少なくありません。
-                  </p>
-                  <p>
-                    そこで今回、KAWARA版では、
-                    <strong className="font-bold underline decoration-2 underline-offset-4">iPS細胞・再生医療をはじめとする最先端のウェルネス領域</strong>
-                    に関する情報を、
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>第一線の専門家からLIVE配信でお届けする視聴サービス</strong>
-                    を開始いたしました。
-                  </p>
-                  <p>
-                    投資のKAWARA版.comには
-                    <strong className="font-bold">約12万人の会員様</strong>
-                    がいらっしゃいます。そして近年、資産形成のご相談に加え、&ldquo;健康寿命&rdquo;や&ldquo;自分の身体への投資&rdquo;に関するご相談が急増しています。
-                  </p>
-                  <p>
-                    そんな中で、
-                    <strong className="font-bold">「最新の再生医療を知って将来設計が変わった」「自分の細胞を保管するという選択肢を知った」「健康情報の見方が根本から変わった」</strong>
-                    といった声を数多く頂戴しています。
-                  </p>
-                  <p>
-                    業界の最前線で活躍する専門家による
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「最新の再生医療動向」</strong>
-                    や
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「次世代ウェルネスの具体的な実践戦略」</strong>
-                    を、LIVE配信ならではの臨場感でお届けします！
-                  </p>
-                  <p>
-                    <strong className="font-bold">「こんな技術がすでに実用化されているのか？！」</strong>
-                    と驚かれるような最新事例も満載です。
-                  </p>
-                  <p>
-                    まだ視聴登録をされていない方は、この機会にぜひこうした
-                    <strong className="font-bold underline decoration-2 underline-offset-4">通常メディアには出てこない特別なLIVE配信</strong>
-                    にご参加ください。以下をご入力いただき、注意事項に同意のうえお申し込みください。
+                    配信URLおよび視聴に必要な情報は、ご登録のメールアドレス宛にお送りいたします。ご視聴をご希望の方は、以下のフォームにご入力のうえ、注意事項にご同意のうえお申し込みください。
                   </p>
                 </div>
               )}
