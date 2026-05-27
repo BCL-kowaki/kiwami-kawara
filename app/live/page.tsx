@@ -8,7 +8,7 @@ const DISCLAIMER_TEXT =
 
 type Step = "form" | "phone" | "verify" | "done";
 
-export default function NegPage() {
+export default function LivePage() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -184,7 +184,7 @@ export default function NegPage() {
                 </h1>
                 <div className="space-y-4 mb-6">
                   <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>
-                  投資のKAWARA版「“ほったらかし投資”情報配信サービス」へのお申し込みありがとうございます。
+                  「次世代ウェルネス戦略 LIVE配信」へのお申し込みありがとうございます。
                   </p>
                   <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
                     <p style={{ color: "#cccccc" }}>
@@ -241,9 +241,9 @@ export default function NegPage() {
                     wordBreak: "keep-all",
                   }}
                 >
-                  <span className="inline-block whitespace-nowrap">もう相場には疲れた！</span><br />
-                  <span className="inline-block whitespace-nowrap">そんなあなたのための&ldquo;ほったらかし投資&rdquo;</span><br />
-                  <span className="inline-block whitespace-nowrap">情報配信サービス</span>
+                  <span className="inline-block whitespace-nowrap">次世代ウェルネス戦略</span><br />
+                  <span className="inline-block whitespace-nowrap">LIVE配信</span><br />
+                  <span className="inline-block whitespace-nowrap">視聴申し込み</span>
                 </h1>
               )}
               {/* コピー */}
@@ -253,68 +253,68 @@ export default function NegPage() {
                     本音を教えてください。
                     <br className="sm:hidden" />
                     <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>
-                      「相場系投資って疲れませんか？」
+                      「今までの健康法、納得できていますか？」
                     </strong>
                   </p>
                   <p>
-                    日々の価格変動やニュース、SNSの情報に振り回され、
-                    <strong className="font-bold">「いつ売買すべきか分からない」「思うように成果が出ない」「含み損に不安を抱えている」</strong>
+                    サプリメント、ジム、食事制限、温活、腸活、、、様々な健康法に取り組んできたものの、
+                    <strong className="font-bold">「年々、疲れが取れにくい」「将来の健康に漠然とした不安がある」「何を信じて続ければいいのか分からない」</strong>
                     と感じながら、、、。
                   </p>
                   <p>
                     実際のところ、、
                     <br className="sm:hidden" />
                     <strong className="font-bold underline decoration-2 underline-offset-4">
-                      「相場系投資って心身ともに疲れませんか？」
+                      「これからの健康戦略、本当にこのままで大丈夫ですか？」
                     </strong>
                   </p>
                   <ul className="space-y-1 pl-1 text-white">
-                    <li>「トランプがまた戦争始めた！」</li>
-                    <li>「日本の金利が上がって株価落ちそう、、」</li>
-                    <li>「AIバブル崩壊するかも、、」</li>
-                    <li>「BTCは上がるとインフルエンサーが言ってたのに！」</li>
-                    <li>「XRPは金融革命じゃなかったの？！」</li>
-                    <li>「ゴールド落ちてるじゃん！安全資産じゃなかったの？！」</li>
+                    <li>「高額なサプリを飲み続けているが手応えがない」</li>
+                    <li>「ジムに通っても若い頃の体力が戻らない」</li>
+                    <li>「健康診断の数値が年々気になり始めた」</li>
+                    <li>「アンチエイジング商品を次々試している」</li>
+                    <li>「医療費が今後どこまで膨らむか心配」</li>
+                    <li>「親世代の介護を見て自分の将来が不安」</li>
                   </ul>
                   <p>
-                    このように、本来見極めるべき
-                    <strong className="font-bold underline decoration-2 underline-offset-4">&ldquo;投資そのものの構造&rdquo;</strong>
-                    を見落として
-                    <strong className="font-bold">自分でも気づいていない大きなリスク</strong>
-                    を抱えてしまっているケースも少なくありません。
+                    このように、本来知っておくべき
+                    <strong className="font-bold underline decoration-2 underline-offset-4">&ldquo;次世代の健康戦略&rdquo;</strong>
+                    を見落として、
+                    <strong className="font-bold">情報のアップデートが遅れてしまっている</strong>
+                    ケースも少なくありません。
                   </p>
                   <p>
                     そこで今回、KAWARA版では、
-                    <strong className="font-bold underline decoration-2 underline-offset-4">相場に依存しない&ldquo;非相場系投資&rdquo;</strong>
-                    、つまり
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>精神的な負荷がかかりにくい&ldquo;ほったらかし投資&rdquo;</strong>
-                    に関する情報配信サービスを開始いたしました。
+                    <strong className="font-bold underline decoration-2 underline-offset-4">iPS細胞・再生医療をはじめとする最先端のウェルネス領域</strong>
+                    に関する情報を、
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>第一線の専門家からLIVE配信でお届けする視聴サービス</strong>
+                    を開始いたしました。
                   </p>
                   <p>
                     投資のKAWARA版.comには
                     <strong className="font-bold">約12万人の会員様</strong>
-                    がいらっしゃいます。そして毎日、数十件を超える投資トラブルのご相談や技術的なサポートをご提供しています。
+                    がいらっしゃいます。そして近年、資産形成のご相談に加え、&ldquo;健康寿命&rdquo;や&ldquo;自分の身体への投資&rdquo;に関するご相談が急増しています。
                   </p>
                   <p>
-                    そんな中でたくさんの「詐欺」や「運用失敗」などネガティブなご相談を受ける中で、
-                    <strong className="font-bold">「運用成功した」「利回りが得られた」「複利でガンガン回している」</strong>
-                    といった成功事例も多々あるんです。
+                    そんな中で、
+                    <strong className="font-bold">「最新の再生医療を知って将来設計が変わった」「自分の細胞を保管するという選択肢を知った」「健康情報の見方が根本から変わった」</strong>
+                    といった声を数多く頂戴しています。
                   </p>
                   <p>
-                    12万人を超える会員様から得られた
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「過去に成功した投資事例」</strong>
+                    業界の最前線で活躍する専門家による
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「最新の再生医療動向」</strong>
                     や
-                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「現在進行形の成功投資事例」</strong>
-                    などポジティブな情報をお届けします！
+                    <strong className="font-bold underline decoration-2 underline-offset-4" style={{ color: "#f472b6" }}>「次世代ウェルネスの具体的な実践戦略」</strong>
+                    を、LIVE配信ならではの臨場感でお届けします！
                   </p>
                   <p>
-                    <strong className="font-bold">「こんな投資あるの？！」</strong>
-                    と思われるような特殊事例も満載です。
+                    <strong className="font-bold">「こんな技術がすでに実用化されているのか？！」</strong>
+                    と驚かれるような最新事例も満載です。
                   </p>
                   <p>
-                    まだ情報を受け取っていない方は、この機会にぜひこうした
-                    <strong className="font-bold underline decoration-2 underline-offset-4">表に出てこない特別な情報</strong>
-                    をご確認ください。以下をご入力いただき、注意事項に同意のうえお申し込みください。
+                    まだ視聴登録をされていない方は、この機会にぜひこうした
+                    <strong className="font-bold underline decoration-2 underline-offset-4">通常メディアには出てこない特別なLIVE配信</strong>
+                    にご参加ください。以下をご入力いただき、注意事項に同意のうえお申し込みください。
                   </p>
                 </div>
               )}
@@ -373,7 +373,7 @@ export default function NegPage() {
                     className={btnStyle}
                     style={btnGradient}
                   >
-                    {loading ? "送信中..." : "ほったらかし投資情報を受け取る"}
+                    {loading ? "送信中..." : "次世代ウェルネス戦略 LIVEを視聴申し込みする"}
                   </button>
                 </div>
               </form>

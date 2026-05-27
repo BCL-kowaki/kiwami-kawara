@@ -13,7 +13,7 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
   const parts = address.split("｜");
   const postalCode = parts[0] ?? "";
   const addressLine = parts.slice(1).filter(Boolean).join(" ");
-  let body = `【配信サービス申込】本人確認完了（“ほったらかし投資”情報配信サービス）\n\n`;
+  let body = `【LIVE配信申込】本人確認完了（次世代ウェルネス戦略LIVE配信）\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
@@ -26,7 +26,7 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
 
 function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
-  body += `この度は、投資のKAWARA版「“ほったらかし投資”情報配信サービス」に\n`;
+  body += `この度は「次世代ウェルネス戦略LIVE配信」に\n`;
   body += `お申し込みいただき、誠にありがとうございます。\n\n`;
   body += `情報の取扱いに関する注意事項へのご同意、\n`;
   body += `およびSMS認証によるご本人確認が完了いたしました。\n\n`;
@@ -85,8 +85,8 @@ export async function POST(request: NextRequest) {
       const sesClient = getSESClient();
       const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
       const userBody = formatUserCompletedBody(payload.name);
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【配信サービス申込】本人確認完了 ${payload.name} 様（“ほったらかし投資”情報配信サービス）`, adminBody);
-      await sendEmail(sesClient, fromEmail, payload.email, `【投資のKAWARA版】“ほったらかし投資”情報配信サービスのお申し込みを承りました`, userBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込】本人確認完了 ${payload.name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
+      await sendEmail(sesClient, fromEmail, payload.email, `【次世代ウェルネス戦略LIVE配信】視聴お申し込みを承りました`, userBody);
     }
 
     return NextResponse.json({ ok: true });

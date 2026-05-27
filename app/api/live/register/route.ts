@@ -11,7 +11,7 @@ const ADMIN_EMAILS = [
 
 function formatAdminBody(data: ReportRegistrationBody): string {
   const addressLine = [data.address1, data.address2].filter(Boolean).join(" ");
-  let body = `【配信サービス申込】受信データ（“ほったらかし投資”情報配信サービス）\n\n`;
+  let body = `【LIVE配信申込】受信データ（次世代ウェルネス戦略LIVE配信）\n\n`;
   body += `受信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
   body += `お名前: ${data.name}\n`;
   body += `メールアドレス: ${data.email}\n`;
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
       const adminBody = formatAdminBody({ ...data, name, email, postalCode: "", address1: "", address2: "", disclaimerAccepted: true });
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【配信サービス申込】${name} 様（“ほったらかし投資”情報配信サービス）`, adminBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込】${name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
     } else {
       console.log("[live/register] AWS not set, skipping email. Data:", { name, email });
     }
