@@ -1,10 +1,6 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import NetworkBackground from "../components/NetworkBackground";
-
-const DISCLAIMER_TEXT =
-  "本配信に含まれる情報は、ご登録者ご本人のみを対象として提供されるものであり、内容の全部または一部を第三者へ開示・転載・共有することを固くお断りいたします。万一、情報の漏洩または不正な流用が確認された場合は、配信の即時停止および法的措置を講じる場合がございますので、あらかじめご了承ください。";
 
 type Step = "form" | "phone" | "verify" | "done";
 
@@ -118,7 +114,7 @@ export default function LivePage() {
       try {
         const sender = typeof window !== "undefined" ? localStorage.getItem("sender_code") || "(none)" : "(none)";
         if (typeof window !== "undefined" && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
-          (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", "btc_report_verify_complete", {
+          (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", "live_verify_complete", {
             sender,
             email_domain: (email.split("@")[1] || "").toLowerCase(),
           });
@@ -133,78 +129,107 @@ export default function LivePage() {
     }
   };
 
-  // カラーテーマ: 黒ベース × シルバーテキストグラデーション × ピンク赤ボタン
-  const silverBorder = "linear-gradient(270deg, #FFFFFF 0%, #BDC3C9 51%, #FFFFFF 100%)";
-  const btnRedGradient = "linear-gradient(90deg, #ec4899 0%, #f472b6 100%)";
-
-  // テキストグラデーション用の共通スタイル
-  const silverTextGradient = {
-    background: "linear-gradient(90deg, #BDC3C9 0%, #FFFFFF 50%, #BDC3C9 100%)",
-    WebkitBackgroundClip: "text" as const,
-    WebkitTextFillColor: "transparent" as const,
-    backgroundClip: "text" as const,
+  // ===== MRT wellness 風配色 =====
+  // 背景: /wlns-bg.jpg（深紅の和紙テクスチャ）
+  // カード: 白
+  // 金グラデ: #c9b58a → #b08a3e（タイトル枠・ボタン）
+  // 深赤: #2b0305 / #a12324（タイトル・アイコン）
+  // 茶系: #5a4838 / #2a1810（本文）
+  const bgRootStyle: React.CSSProperties = {
+    backgroundImage: "url('/wlns-bg.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundColor: "#3d0f1d",
+    backgroundAttachment: "fixed",
   };
+
+  const cardStyle: React.CSSProperties = {
+    background: "#ffffff",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
+  };
+
+  const borderGradient: React.CSSProperties = {
+    background: "linear-gradient(135deg, #c9b58a 0%, #b08a3e 50%, #715419 100%)",
+  };
+
+  // ボタン: 金グラデ
+  const goldButtonStyle: React.CSSProperties = {
+    background: "linear-gradient(135deg, #715419 0%, #f9e3ab 50%, #715419 100%)",
+    color: "#141209",
+    letterSpacing: "0.2em",
+    border: "1px solid #b08a3e",
+  };
+
+  // アイコン: 深赤グラデ
+  const redIconStyle: React.CSSProperties = {
+    background: "linear-gradient(135deg, #2b0305 0%, #a12324 50%, #2b0305 100%)",
+    color: "#ffffff",
+  };
+
+  // タイトルテキスト: 深赤グラデ（クリップ）
+  const titleGradientClass = "bg-clip-text text-transparent";
+  const titleGradientStyle: React.CSSProperties = {
+    backgroundImage: "linear-gradient(135deg, #2b0305 0%, #a12324 50%, #2b0305 100%)",
+  };
+
+  const labelStyle: React.CSSProperties = { color: "#2a1810", letterSpacing: "0.02em" };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-[#BDC3C9] transition-all placeholder-gray-500";
-  const inputStyle = {
-    background: "#1a1a1a",
-    border: "1px solid #3a3a3a",
-    color: "white",
+    "w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-[#b08a3e] focus:outline-none transition-all placeholder-[#a89978]";
+  const inputStyle: React.CSSProperties = {
+    background: "#fffaf0",
+    border: "1px solid #c9b58a",
+    color: "#2a1810",
   };
-  const cardStyle = {
-    background: "linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%)",
-  };
-  const borderStyle = { background: silverBorder };
+
   const btnStyle =
-    "w-full py-4 rounded-full font-bold text-base transition-all shadow-lg text-white disabled:opacity-60 disabled:cursor-not-allowed";
-  const btnGradient = { background: btnRedGradient };
+    "w-4/5 sm:w-1/2 py-4 rounded-none font-bold text-base transition-all shadow-lg disabled:opacity-60 disabled:cursor-not-allowed";
 
   // 完了画面
   if (step === "done") {
     return (
-      <div className="min-h-screen flex flex-col relative overflow-hidden" style={{ background: "#050505" }}>
-        <NetworkBackground variant="silver" />
+      <div className="min-h-screen flex flex-col relative overflow-hidden" style={bgRootStyle}>
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="relative z-10 max-w-md w-full">
-            <div className="p-[2px] rounded-[2px] shadow-2xl" style={borderStyle}>
-              <div className="backdrop-blur-sm rounded-[2px] p-5 text-center" style={cardStyle}>
+            <div className="p-[2px] rounded-[2px] shadow-2xl" style={borderGradient}>
+              <div className="rounded-[2px] p-5 text-center" style={cardStyle}>
                 <div className="mb-2 pt-6 pb-4">
                   <div
                     className="inline-flex items-center justify-center w-15 h-15 rounded-full shadow-lg animate-bounce"
-                    style={btnGradient}
+                    style={redIconStyle}
                   >
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "#ffffff" }}>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                 </div>
-                <h1 className="text-xl font-extrabold mb-4" style={{ color: "#ffffff" }}>
-                  登録が完了しました
+                <h1 className="text-xl font-extrabold mb-4" style={{ color: "#5a1a2b" }}>
+                  お申し込みありがとうございました
                 </h1>
                 <div className="space-y-4 mb-6">
-                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>
-                  「次世代ウェルネス戦略 LIVE配信」へのお申し込みありがとうございます。
+                  <p className="text-sm leading-relaxed" style={{ color: "#5a4838" }}>
+                    「次世代ウェルネス戦略 LIVE配信」へのお申し込みを承りました。
                   </p>
-                  <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
-                    <p style={{ color: "#cccccc" }}>
-                      今後、ご登録いただいたメールアドレス宛に<br />順次情報をお届けしてまいります。<br />
-                      配信開始までいましばらくお待ちください。
+                  <div
+                    className="rounded-[2px] p-4 border text-sm"
+                    style={{ background: "#ede1cb", borderColor: "#c9b58a" }}
+                  >
+                    <p className="font-bold mb-1" style={{ color: "#3d0f1d" }}>
+                      配信に関するご案内
+                    </p>
+                    <p style={{ color: "#5a4838" }}>
+                      配信URLおよび視聴に必要な情報は、<br />
+                      ご登録いただいたメールアドレス宛に<br />
+                      順次お送りいたします。
                     </p>
                   </div>
                 </div>
-                <a
-                  href="/live/"
-                  className="inline-block mt-4 text-sm underline"
-                  style={{ color: "#BDC3C9" }}
-                >
-                  フォームトップへ戻る
-                </a>
               </div>
             </div>
           </div>
         </div>
-        <p className="relative z-10 text-xs text-center py-4" style={{ color: "#888888" }}>
+        <p className="relative z-10 text-xs text-center py-4" style={{ color: "#f5ecdc" }}>
           &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
         </p>
       </div>
@@ -212,17 +237,21 @@ export default function LivePage() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4 relative overflow-hidden" style={{ background: "#050505" }}>
-      <NetworkBackground variant="silver" />
+    <div className="min-h-screen py-8 px-4 relative overflow-hidden" style={bgRootStyle}>
       <div className="max-w-[640px] mx-auto relative z-10">
-        <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={borderStyle}>
-          <div className="backdrop-blur-sm rounded-[2px] p-4" style={cardStyle}>
+        <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={borderGradient}>
+          <div className="rounded-[2px] p-4 sm:p-6" style={cardStyle}>
             <div className="text-center mb-4">
               {/* バッジ */}
               <div className="inline-block mb-3">
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-bold"
-                  style={{ background: "rgba(189, 195, 201, 0.1)", color: "#FFFFFF", border: "1px solid rgba(189, 195, 201, 0.35)" }}
+                  style={{
+                    background: "rgba(176, 138, 62, 0.08)",
+                    color: "#5a1a2b",
+                    border: "1px solid #c9b58a",
+                    letterSpacing: "0.08em",
+                  }}
                 >
                   KAWARA版特別コンテンツ
                 </span>
@@ -231,13 +260,11 @@ export default function LivePage() {
               {/* タイトル */}
               {step === "form" && (
                 <h1
-                  className="text-lg sm:text-4xl mb-3 leading-snug"
+                  className={`text-2xl sm:text-4xl mb-3 leading-snug ${titleGradientClass}`}
                   style={{
-                    fontWeight: 900,
-                    background: "linear-gradient(90deg, #ec4899 0%, #f472b6 50%, #ec4899 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
+                    ...titleGradientStyle,
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
                     wordBreak: "keep-all",
                   }}
                 >
@@ -245,33 +272,43 @@ export default function LivePage() {
                   <span className="inline-block whitespace-nowrap">LIVE配信 視聴申し込み</span>
                 </h1>
               )}
+
               {/* コピー */}
               {step === "form" && (
-                <div className="text-sm sm:text-base mt-4 leading-loose text-left text-white space-y-4">
+                <div className="text-sm sm:text-base mt-4 leading-loose text-left space-y-4" style={{ color: "#5a4838" }}>
                   <p>
                     本配信は、KAWARA版が主催する
-                    <strong className="font-bold">次世代ウェルネス戦略</strong>
+                    <strong className="font-bold" style={{ color: "#2a1810" }}>次世代ウェルネス戦略</strong>
                     に関するLIVE配信プログラムです。
                   </p>
                   <p>
                     近年、
-                    <strong className="font-bold">iPS細胞や再生医療</strong>
+                    <strong className="font-bold" style={{ color: "#2a1810" }}>iPS細胞や再生医療</strong>
                     といった先端領域は、研究段階から実用化フェーズへと急速に移行しており、健康寿命や予防医療への関心が高まる中で、最新動向への注目が集まっています。
                   </p>
                   <p>本配信では、以下の内容をお届けします。</p>
-                  <ul className="space-y-1 pl-5 list-disc text-white">
-                    <li>最新の再生医療・iPS細胞関連の動向と国内外の事例</li>
-                    <li>次世代ウェルネスにおける具体的な実践戦略</li>
-                    <li>健康寿命の延伸に向けた最新アプローチ</li>
-                    <li>視聴者からの質疑応答（予定）</li>
-                  </ul>
+                  <div
+                    className="p-4 rounded-[2px]"
+                    style={{
+                      background: "rgba(176, 138, 62, 0.06)",
+                      borderLeft: "2px solid #b08a3e",
+                    }}
+                  >
+                    <ul className="space-y-2 list-disc pl-5" style={{ color: "#5a4838" }}>
+                      <li>最新の再生医療・iPS細胞関連の動向と国内外の事例</li>
+                      <li>次世代ウェルネスにおける具体的な実践戦略</li>
+                      <li>健康寿命の延伸に向けた最新アプローチ</li>
+                      <li>視聴者からの質疑応答（予定）</li>
+                    </ul>
+                  </div>
                   <p>
                     配信URLおよび視聴に必要な情報は、ご登録のメールアドレス宛にお送りいたします。ご視聴をご希望の方は、以下のフォームにご入力のうえ、注意事項にご同意のうえお申し込みください。
                   </p>
                 </div>
               )}
+
               {(step === "phone" || step === "verify") && (
-                <p className="text-sm mt-4 leading-relaxed text-left text-white whitespace-pre-line">
+                <p className="text-sm mt-4 leading-relaxed text-left whitespace-pre-line" style={{ color: "#5a4838" }}>
                   {step === "phone" &&
                     "本配信には機密情報が含まれる場合があるため、SMS認証によるご本人確認を必須とさせていただいております。これは、重複登録および第三者によるなりすましを防止する目的によるものです。\n\nなお、SMS認証が完了するまで配信は開始されませんので、あらかじめご了承ください。"
                   }
@@ -281,8 +318,11 @@ export default function LivePage() {
             </div>
 
             {error && (
-              <div className="mb-6 p-4 rounded-[2px] animate-pulse" style={{ background: "#1a1010", borderLeft: "4px solid #ef4444" }}>
-                <p className="font-medium" style={{ color: "#fca5a5" }}>{error}</p>
+              <div
+                className="mb-6 p-4 rounded-[2px] animate-pulse"
+                style={{ background: "#fcefe3", borderLeft: "4px solid #a12324" }}
+              >
+                <p className="font-medium" style={{ color: "#a12324" }}>{error}</p>
               </div>
             )}
 
@@ -290,8 +330,8 @@ export default function LivePage() {
               <form onSubmit={handleFormSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      お名前 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
+                      お名前 <span style={{ color: "#a12324" }}>（必須）</span>
                     </label>
                     <input
                       type="text"
@@ -304,8 +344,8 @@ export default function LivePage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      メールアドレス <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
+                      メールアドレス <span style={{ color: "#a12324" }}>（必須）</span>
                     </label>
                     <input
                       type="email"
@@ -318,14 +358,14 @@ export default function LivePage() {
                     />
                   </div>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
                     disabled={loading}
                     className={btnStyle}
-                    style={btnGradient}
+                    style={goldButtonStyle}
                   >
-                    {loading ? "送信中..." : "次世代ウェルネス戦略 LIVEを視聴申し込みする"}
+                    {loading ? "送信中..." : "視聴お申し込みへ進む"}
                   </button>
                 </div>
               </form>
@@ -334,41 +374,56 @@ export default function LivePage() {
             {step === "phone" && (
               <form onSubmit={handleSendSms}>
                 <div className="space-y-4 mb-4">
-                  <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
-                    <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎免責事項</p>
+                  <div
+                    className="p-4"
+                    style={{
+                      background: "rgba(176, 138, 62, 0.06)",
+                      borderLeft: "2px solid #b08a3e",
+                    }}
+                  >
+                    <p
+                      className="text-sm font-semibold mb-3 pb-2 border-b"
+                      style={{ color: "#5a1a2b", borderColor: "#c9b58a", letterSpacing: "0.08em" }}
+                    >
+                      ◼︎免責事項
+                    </p>
                     <div
                       className="text-xs leading-relaxed mb-3 overflow-y-auto pr-2"
-                      style={{ maxHeight: "120px", color: "#cccccc" }}
+                      style={{ maxHeight: "120px", color: "#5a4838" }}
                     >
-                      <p>本配信サービスで提供される情報は、あくまで参考情報の提供を目的としたものであり、特定の銘柄・商品・案件への投資勧誘、または投資助言を行うものではございません。</p>
-                      <p className="mt-2">配信内容に基づく投資判断および、その結果生じたいかなる損害・損失についても、当社および関係者は一切の責任を負いかねますので、あらかじめご了承ください。</p>
-                      <p className="mt-2">投資にあたっては、ご自身の判断と責任において、十分にご検討のうえ実行いただきますようお願いいたします。また、本サービスで提供する情報の正確性・完全性・最新性については万全を期しておりますが、これらを保証するものではありません。</p>
+                      <p>本配信サービスで提供される情報は、あくまで参考情報の提供を目的としたものであり、特定の銘柄・商品・案件への投資勧誘、または投資助言、医療行為・診断・治療の代替を行うものではございません。</p>
+                      <p className="mt-2">配信内容に基づく判断および、その結果生じたいかなる損害・損失についても、当社および関係者は一切の責任を負いかねますので、あらかじめご了承ください。</p>
+                      <p className="mt-2">健康・医療に関する判断は、ご自身の責任において、必要に応じて医療専門家にご相談のうえ実行いただきますようお願いいたします。</p>
                     </div>
                     <label className="flex items-start gap-3 cursor-pointer">
-                      <span
-                        onClick={() => setTopDisclaimerChecked(!topDisclaimerChecked)}
-                        className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-[3px] border-2 flex items-center justify-center transition-all"
-                        style={{
-                          borderColor: topDisclaimerChecked ? "#ffffff" : "#555555",
-                          background: topDisclaimerChecked ? "#ffffff" : "transparent",
-                        }}
-                      >
-                        {topDisclaimerChecked && (
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="#000000" viewBox="0 0 24 24" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        )}
-                      </span>
-                      <span className="text-sm" style={silverTextGradient}>
-                        上記免責事項に同意する <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                      <input
+                        type="checkbox"
+                        checked={topDisclaimerChecked}
+                        onChange={(e) => setTopDisclaimerChecked(e.target.checked)}
+                        className="mt-0.5 w-4 h-4 rounded"
+                        style={{ accentColor: "#b08a3e" }}
+                      />
+                      <span className="text-sm" style={{ color: "#2a1810" }}>
+                        上記免責事項に同意する <span style={{ color: "#a12324" }}>（必須）</span>
                       </span>
                     </label>
                   </div>
-                  <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
-                    <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎秘密保持契約文</p>
+                  <div
+                    className="p-4"
+                    style={{
+                      background: "rgba(176, 138, 62, 0.06)",
+                      borderLeft: "2px solid #b08a3e",
+                    }}
+                  >
+                    <p
+                      className="text-sm font-semibold mb-3 pb-2 border-b"
+                      style={{ color: "#5a1a2b", borderColor: "#c9b58a", letterSpacing: "0.08em" }}
+                    >
+                      ◼︎秘密保持契約文
+                    </p>
                     <div
                       className="text-xs leading-relaxed mb-3 overflow-y-auto pr-2"
-                      style={{ maxHeight: "120px", color: "#cccccc" }}
+                      style={{ maxHeight: "120px", color: "#5a4838" }}
                     >
                       <p>本配信サービスを通じて提供される情報（以下「秘密情報」といいます）は、ご登録者ご本人のみを対象として配信されるものであり、内容の全部または一部を第三者へ開示、転載、複製、共有、転送、SNS等への投稿、その他あらゆる方法によって外部へ流出させる行為を固くお断りいたします。</p>
                       <p className="mt-2">ご登録者は、本配信を受領した時点をもって、秘密情報を善良な管理者の注意義務をもって取り扱うことに同意するものとし、本サービスの目的以外で使用しないものとします。</p>
@@ -376,30 +431,23 @@ export default function LivePage() {
                       <p className="mt-2">なお、本契約は本サービスへのご登録時点から、配信終了後も継続して効力を有するものとします。</p>
                     </div>
                     <label className="flex items-start gap-3 cursor-pointer">
-                      <span
-                        onClick={() => setNdaChecked(!ndaChecked)}
-                        className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-[3px] border-2 flex items-center justify-center transition-all"
-                        style={{
-                          borderColor: ndaChecked ? "#ffffff" : "#555555",
-                          background: ndaChecked ? "#ffffff" : "transparent",
-                        }}
-                      >
-                        {ndaChecked && (
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="#000000" viewBox="0 0 24 24" strokeWidth={3}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        )}
-                      </span>
-                      <span className="text-sm" style={silverTextGradient}>
-                        上記秘密保持契約に同意する <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須）</span>
+                      <input
+                        type="checkbox"
+                        checked={ndaChecked}
+                        onChange={(e) => setNdaChecked(e.target.checked)}
+                        className="mt-0.5 w-4 h-4 rounded"
+                        style={{ accentColor: "#b08a3e" }}
+                      />
+                      <span className="text-sm" style={{ color: "#2a1810" }}>
+                        上記秘密保持契約に同意する <span style={{ color: "#a12324" }}>（必須）</span>
                       </span>
                     </label>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
-                      電話番号 <span style={{ color: "#f472b6", WebkitTextFillColor: "#f472b6" }}>（必須・SMS受信可能な番号）</span>
+                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
+                      電話番号 <span style={{ color: "#a12324" }}>（必須・SMS受信可能な番号）</span>
                     </label>
                     <input
                       type="tel"
@@ -410,11 +458,18 @@ export default function LivePage() {
                       style={inputStyle}
                       placeholder="09012345678"
                     />
-                    <p className="text-xs mt-1" style={silverTextGradient}>ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。</p>
+                    <p className="text-xs mt-1" style={{ color: "#7a6a52" }}>
+                      ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。
+                    </p>
                   </div>
                 </div>
-                <div className="mt-6">
-                  <button type="submit" disabled={loading || !reportToken || !topDisclaimerChecked || !ndaChecked} className={btnStyle} style={btnGradient}>
+                <div className="mt-6 flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={loading || !reportToken || !topDisclaimerChecked || !ndaChecked}
+                    className={btnStyle}
+                    style={goldButtonStyle}
+                  >
                     {loading ? "送信中..." : "承認コードを送信"}
                   </button>
                 </div>
@@ -425,7 +480,7 @@ export default function LivePage() {
               <form onSubmit={handleVerify}>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                    <label className="block text-sm font-semibold mb-2" style={labelStyle}>
                       承認コード（6桁）
                     </label>
                     <input
@@ -439,20 +494,27 @@ export default function LivePage() {
                       placeholder="123456"
                     />
                   </div>
-                  <p className="text-xs" style={silverTextGradient}>
+                  <p className="text-xs" style={{ color: "#7a6a52" }}>
                     承認コードが届かなかった方は、【再送信】ボタンを押してください。
                   </p>
                 </div>
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                  <button type="submit" disabled={loading || !reportToken} className={btnStyle} style={btnGradient}>
+                <div className="mt-6 flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={loading || !reportToken}
+                    className={btnStyle}
+                    style={goldButtonStyle}
+                  >
                     {loading ? "承認中..." : "承認する"}
                   </button>
+                </div>
+                <div className="mt-3 flex flex-col sm:flex-row gap-3 justify-center">
                   <button
                     type="button"
                     onClick={handleResendSms}
                     disabled={loading}
                     className="text-sm py-3 px-4 rounded-[2px] border"
-                    style={{ borderColor: "#3a3a3a", ...silverTextGradient }}
+                    style={{ borderColor: "#c9b58a", color: "#5a1a2b", background: "#fffaf0" }}
                   >
                     再送信
                   </button>
@@ -460,7 +522,7 @@ export default function LivePage() {
                     type="button"
                     onClick={() => setStep("phone")}
                     className="text-sm py-3 px-4 rounded-[2px] border"
-                    style={{ borderColor: "#3a3a3a", ...silverTextGradient }}
+                    style={{ borderColor: "#c9b58a", color: "#5a1a2b", background: "#fffaf0" }}
                   >
                     電話番号を変更
                   </button>
@@ -469,7 +531,7 @@ export default function LivePage() {
             )}
           </div>
         </div>
-        <p className="text-xs text-center mt-6" style={silverTextGradient}>
+        <p className="text-xs text-center mt-6" style={{ color: "#f5ecdc" }}>
           &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
         </p>
       </div>
