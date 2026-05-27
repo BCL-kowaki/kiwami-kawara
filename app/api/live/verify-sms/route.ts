@@ -26,12 +26,13 @@ function formatVerifiedAdminBody(name: string, email: string, address: string, p
 
 function formatUserCompletedBody(name: string): string {
   let body = `${name} 様\n\n`;
-  body += `この度は「次世代ウェルネス戦略LIVE配信」に\n`;
-  body += `お申し込みいただき、誠にありがとうございます。\n\n`;
-  body += `情報の取扱いに関する注意事項へのご同意、\n`;
-  body += `およびSMS認証によるご本人確認が完了いたしました。\n\n`;
-  body += `今後、順次情報を配信してまいりますので、配信開始まで\n`;
-  body += `いましばらくお待ちください。\n\n`;
+  body += `この度は「次世代ウェルネス戦略LIVE配信」への\n`;
+  body += `お申し込み、誠にありがとうございます。\n\n`;
+  body += `SMS認証によるご本人確認が完了いたしました。\n\n`;
+  body += `つきましては、LIVE配信の視聴ページURLおよび視聴IDを、\n`;
+  body += `後日ご登録のメールアドレス宛にお送りいたします。\n\n`;
+  body += `配信を見逃さないよう、メールの受信を忘れずに\n`;
+  body += `ご確認くださいますようお願いいたします。\n\n`;
   body += `株式会社投資の"KAWARA"版.ｃｏｍ\n`;
   body += `（本メールは自動送信です）\n`;
   return body;

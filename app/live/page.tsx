@@ -219,9 +219,12 @@ export default function LivePage() {
                       配信に関するご案内
                     </p>
                     <p style={{ color: "#5a4838" }}>
-                      配信URLおよび視聴に必要な情報は、<br />
-                      ご登録いただいたメールアドレス宛に<br />
-                      順次お送りいたします。
+                      LIVE配信の視聴ページURLおよび視聴IDは、<br />
+                      ご登録のメールアドレス宛にお送りいたします。
+                    </p>
+                    <p className="mt-3 text-xs" style={{ color: "#a12324" }}>
+                      配信を見逃さないよう<br />
+                      受信メールを必ずご確認ください。
                     </p>
                   </div>
                 </div>
@@ -292,11 +295,13 @@ export default function LivePage() {
                       borderLeft: "2px solid #b08a3e",
                     }}
                   >
-                    <ul className="space-y-3 list-disc pl-5" style={{ color: "#5a4838" }}>
-                      <li>そもそもiPS細胞とは何なのか？今、医療・ウェルネス領域で関心が高まっている理由とは？</li>
-                      <li>将来の医療や健康管理において、iPS細胞がどのように活用される可能性があるのか？</li>
-                      <li>人生100年時代に、なぜ健康寿命を意識することが大切なのか？</li>
-                      <li>一部の富裕層や経営者が関心を寄せる、次世代ウェルネス戦略とは？</li>
+                    <ul className="space-y-3 list-decimal pl-6" style={{ color: "#5a4838" }}>
+                      <li>そもそもiPS細胞とは何なのか？なぜ今、次世代医療・ウェルネス領域で注目されているのか？</li>
+                      <li>疲れが抜けない、眠りが浅い、回復が遅い、若い頃のような気力が出ない、その不調の裏側にある&ldquo;老化の本当の正体&rdquo;とは？</li>
+                      <li>未来で医療の常識を変える、iPS細胞を使った&ldquo;今から使える根本アプローチ&rdquo;とは？</li>
+                      <li>世界基準の技術と実績を裏付ける、最強の権威を持った企業とは？</li>
+                      <li>人生100年時代に、なぜ健康寿命を伸ばすことが最大の投資になるのか？</li>
+                      <li>一部の富裕層や経営者が注目し始めている、次世代ウェルネス戦略の具体的手法とは？</li>
                     </ul>
                   </div>
                   <p>
@@ -372,41 +377,7 @@ export default function LivePage() {
             {step === "phone" && (
               <form onSubmit={handleSendSms}>
                 <div className="space-y-4 mb-4">
-                  <div
-                    className="p-4"
-                    style={{
-                      background: "rgba(176, 138, 62, 0.06)",
-                      borderLeft: "2px solid #b08a3e",
-                    }}
-                  >
-                    <p
-                      className="text-sm font-semibold mb-3 pb-2 border-b"
-                      style={{ color: "#5a1a2b", borderColor: "#c9b58a", letterSpacing: "0.08em" }}
-                    >
-                      ◼︎免責事項
-                    </p>
-                    <div
-                      className="text-xs leading-relaxed mb-3 overflow-y-auto pr-2"
-                      style={{ maxHeight: "120px", color: "#5a4838" }}
-                    >
-                      <p>本配信サービスで提供される情報は、あくまで参考情報の提供を目的としたものであり、特定の銘柄・商品・案件への投資勧誘、または投資助言、医療行為・診断・治療の代替を行うものではございません。</p>
-                      <p className="mt-2">配信内容に基づく判断および、その結果生じたいかなる損害・損失についても、当社および関係者は一切の責任を負いかねますので、あらかじめご了承ください。</p>
-                      <p className="mt-2">健康・医療に関する判断は、ご自身の責任において、必要に応じて医療専門家にご相談のうえ実行いただきますようお願いいたします。</p>
-                    </div>
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={topDisclaimerChecked}
-                        onChange={(e) => setTopDisclaimerChecked(e.target.checked)}
-                        className="mt-0.5 w-4 h-4 rounded"
-                        style={{ accentColor: "#b08a3e" }}
-                      />
-                      <span className="text-sm" style={{ color: "#2a1810" }}>
-                        上記免責事項に同意する <span style={{ color: "#a12324" }}>（必須）</span>
-                      </span>
-                    </label>
-                  </div>
-                  <div
+<div
                     className="p-4"
                     style={{
                       background: "rgba(176, 138, 62, 0.06)",
@@ -464,7 +435,7 @@ export default function LivePage() {
                 <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    disabled={loading || !reportToken || !topDisclaimerChecked || !ndaChecked}
+                    disabled={loading || !reportToken || !ndaChecked}
                     className={btnStyle}
                     style={goldButtonStyle}
                   >
