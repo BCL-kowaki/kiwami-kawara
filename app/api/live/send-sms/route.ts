@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
       name: payload.name,
       address: payload.address,
       phone: normalizedPhone,
+      sender: payload.sender,
     });
 
     return NextResponse.json({ ok: true, token: newToken });

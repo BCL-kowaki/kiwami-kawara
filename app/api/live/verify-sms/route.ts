@@ -9,12 +9,13 @@ const ADMIN_EMAILS = [
   "mailmagazine.entry@gmail.com",
 ];
 
-function formatVerifiedAdminBody(name: string, email: string, address: string, phone: string): string {
+function formatVerifiedAdminBody(name: string, email: string, address: string, phone: string, sender: string): string {
   const parts = address.split("｜");
   const postalCode = parts[0] ?? "";
   const addressLine = parts.slice(1).filter(Boolean).join(" ");
   let body = `【LIVE配信申込】本人確認完了（次世代ウェルネス戦略LIVE配信）\n\n`;
   body += `完了日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
+  body += `流入元: ${sender || "(none)"}\n`;
   body += `お名前: ${name}\n`;
   body += `メールアドレス: ${email}\n`;
   body += `郵便番号: ${postalCode}\n`;
@@ -84,9 +85,11 @@ export async function POST(request: NextRequest) {
     if (accessKeyId && secretAccessKey) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
-      const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone);
+      const senderValue = payload.sender || "";
+      const senderSuffix = senderValue ? `/${senderValue}` : "";
+      const adminBody = formatVerifiedAdminBody(payload.name, payload.email, payload.address, payload.phone, senderValue);
       const userBody = formatUserCompletedBody(payload.name);
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込】本人確認完了 ${payload.name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込${senderSuffix}】本人確認完了 ${payload.name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
       await sendEmail(sesClient, fromEmail, payload.email, `【次世代ウェルネス戦略LIVE配信】視聴お申し込みを承りました`, userBody);
     }
 

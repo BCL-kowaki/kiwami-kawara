@@ -8,6 +8,7 @@ export interface ReportTokenPayload {
   name: string;
   address: string;
   phone?: string;
+  sender?: string;
   exp: number;
 }
 

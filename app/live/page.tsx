@@ -22,6 +22,7 @@ export default function LivePage() {
     setError("");
     setLoading(true);
     try {
+      const sender = typeof window !== "undefined" ? (localStorage.getItem("sender_code") || "") : "";
       const res = await fetch("/api/live/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,6 +33,7 @@ export default function LivePage() {
           address1: "",
           address2: "",
           disclaimerAccepted,
+          sender,
         }),
       });
       const json = await res.json();

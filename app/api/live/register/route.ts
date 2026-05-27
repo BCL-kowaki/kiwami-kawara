@@ -9,10 +9,11 @@ const ADMIN_EMAILS = [
   "mailmagazine.entry@gmail.com",
 ];
 
-function formatAdminBody(data: ReportRegistrationBody): string {
+function formatAdminBody(data: ReportRegistrationBody, sender: string): string {
   const addressLine = [data.address1, data.address2].filter(Boolean).join(" ");
   let body = `【LIVE配信申込】受信データ（次世代ウェルネス戦略LIVE配信）\n\n`;
   body += `受信日時: ${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}\n`;
+  body += `流入元: ${sender || "(none)"}\n`;
   body += `お名前: ${data.name}\n`;
   body += `メールアドレス: ${data.email}\n`;
   body += `郵便番号: ${data.postalCode || ""}\n`;
@@ -23,10 +24,11 @@ function formatAdminBody(data: ReportRegistrationBody): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const data: ReportRegistrationBody = await request.json();
+    const data: ReportRegistrationBody & { sender?: string } = await request.json();
 
     const name = (data.name || "").trim();
     const email = (data.email || "").trim().toLowerCase();
+    const sender = ((data.sender as string) || "").trim();
 
     if (!name) {
       return NextResponse.json({ ok: false, message: "名前を入力してください。" }, { status: 400 });
@@ -38,17 +40,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: false, message: "情報の取扱いに関する注意事項に同意してください。" }, { status: 400 });
     }
 
-    const token = signReportToken({ email, name, address: "" });
+    const token = signReportToken({ email, name, address: "", sender });
+
+    const senderSuffix = sender ? `/${sender}` : "";
 
     const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
     const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
     if (accessKeyId && secretAccessKey) {
       const fromEmail = getFromEmail();
       const sesClient = getSESClient();
-      const adminBody = formatAdminBody({ ...data, name, email, postalCode: "", address1: "", address2: "", disclaimerAccepted: true });
-      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込】${name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
+      const adminBody = formatAdminBody({ ...data, name, email, postalCode: "", address1: "", address2: "", disclaimerAccepted: true }, sender);
+      await sendEmail(sesClient, fromEmail, ADMIN_EMAILS, `【LIVE配信申込${senderSuffix}】${name} 様（次世代ウェルネス戦略LIVE配信）`, adminBody);
     } else {
-      console.log("[live/register] AWS not set, skipping email. Data:", { name, email });
+      console.log("[live/register] AWS not set, skipping email. Data:", { name, email, sender });
     }
 
     return NextResponse.json({ ok: true, token });
