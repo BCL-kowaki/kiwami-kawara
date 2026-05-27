@@ -204,3 +204,33 @@ textarea::placeholder {
     transform: scale(1.1);
   }
 }
+
+/* ===== wlns ライトテーマ（金色×深赤×ベージュ）===== */
+.theme-wlns input,
+.theme-wlns select,
+.theme-wlns textarea {
+  color: #2a1810 !important;
+  background-color: #fffaf0 !important;
+  border: 1px solid #c9b58a !important;
+}
+
+.theme-wlns input::placeholder,
+.theme-wlns textarea::placeholder {
+  color: #a89978 !important;
+}
+
+.theme-wlns input:-webkit-autofill,
+.theme-wlns input:-webkit-autofill:hover,
+.theme-wlns input:-webkit-autofill:focus,
+.theme-wlns input:-webkit-autofill:active,
+.theme-wlns select:-webkit-autofill,
+.theme-wlns select:-webkit-autofill:hover,
+.theme-wlns select:-webkit-autofill:focus,
+.theme-wlns select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #fffaf0 inset !important;
+  -webkit-text-fill-color: #2a1810 !important;
+  box-shadow: 0 0 0 1000px #fffaf0 inset !important;
+  caret-color: #2a1810 !important;
+  background-color: #fffaf0 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

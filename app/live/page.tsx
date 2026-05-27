@@ -189,7 +189,7 @@ export default function LivePage() {
   // 完了画面
   if (step === "done") {
     return (
-      <div className="min-h-screen flex flex-col relative overflow-hidden" style={bgRootStyle}>
+      <div className="theme-wlns min-h-screen flex flex-col relative overflow-hidden" style={bgRootStyle}>
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="relative z-10 max-w-md w-full">
             <div className="p-[2px] rounded-[2px] shadow-2xl" style={borderGradient}>
@@ -237,7 +237,7 @@ export default function LivePage() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4 relative overflow-hidden" style={bgRootStyle}>
+    <div className="theme-wlns min-h-screen py-8 px-4 relative overflow-hidden" style={bgRootStyle}>
       <div className="max-w-[640px] mx-auto relative z-10">
         <div className="p-[2px] rounded-[2px] shadow-2xl mb-6" style={borderGradient}>
           <div className="rounded-[2px] p-4 sm:p-6" style={cardStyle}>
@@ -257,21 +257,19 @@ export default function LivePage() {
                 </span>
               </div>
 
-              {/* タイトル */}
-              {step === "form" && (
-                <h1
-                  className={`text-2xl sm:text-4xl mb-3 leading-snug ${titleGradientClass}`}
-                  style={{
-                    ...titleGradientStyle,
-                    fontWeight: 700,
-                    letterSpacing: "0.05em",
-                    wordBreak: "keep-all",
-                  }}
-                >
-                  <span className="inline-block whitespace-nowrap">次世代ウェルネス戦略</span><br />
-                  <span className="inline-block whitespace-nowrap">LIVE配信 視聴申し込み</span>
-                </h1>
-              )}
+              {/* タイトル（全ステップ共通） */}
+              <h1
+                className={`text-2xl sm:text-4xl mb-3 leading-snug ${titleGradientClass}`}
+                style={{
+                  ...titleGradientStyle,
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  wordBreak: "keep-all",
+                }}
+              >
+                <span className="inline-block whitespace-nowrap">次世代ウェルネス戦略</span><br />
+                <span className="inline-block whitespace-nowrap">LIVE配信 視聴申し込み</span>
+              </h1>
 
               {/* コピー */}
               {step === "form" && (
