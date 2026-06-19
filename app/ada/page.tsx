@@ -242,7 +242,7 @@ export default function AdaPage() {
                 </h1>
               )}
               {/* コピー */}
-              <p className="text-sm mt-3 leading-relaxed text-left text-white">
+              <p className="text-base mt-3 leading-relaxed text-left text-white">
                 {step === "form" && (
                   <>
                     当レポートはADAホルダーにとって非常に重要です。<br /><br />
