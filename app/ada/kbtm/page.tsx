@@ -144,7 +144,7 @@ export default function AdaKbtmPage() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-[#BDC3C9] transition-all placeholder-gray-500";
+    "w-full px-4 py-3 rounded-[2px] focus:ring-2 focus:ring-[#BDC3C9] transition-all placeholder-gray-500 text-lg";
   const inputStyle = {
     background: "#1a1a1a",
     border: "1px solid #3a3a3a",
@@ -155,7 +155,7 @@ export default function AdaKbtmPage() {
   };
   const borderStyle = { background: silverBorder };
   const btnStyle =
-    "w-full py-4 rounded-full font-bold text-base transition-all shadow-lg text-white disabled:opacity-60 disabled:cursor-not-allowed";
+    "w-full py-4 rounded-full font-bold text-lg transition-all shadow-lg text-white disabled:opacity-60 disabled:cursor-not-allowed";
   const btnGradient = { background: btnRedGradient };
 
   // 完了画面
@@ -177,14 +177,14 @@ export default function AdaKbtmPage() {
                     </svg>
                   </div>
                 </div>
-                <h1 className="text-xl font-extrabold mb-4" style={{ color: "#ffffff" }}>
+                <h1 className="text-2xl font-extrabold mb-4" style={{ color: "#ffffff" }}>
                   登録が完了しました
                 </h1>
                 <div className="space-y-4 mb-6">
-                  <p className="text-sm leading-relaxed text-left" style={{ color: "#d4d4d4" }}>
+                  <p className="text-base leading-relaxed text-left" style={{ color: "#d4d4d4" }}>
                   投資のKAWARA版ADA特別レポートのお申し込みありがとうございます。
                   </p>
-                  <div className="rounded-[2px] p-4 border text-xs" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
+                  <div className="rounded-[2px] p-4 border text-sm" style={{ background: "#151515", borderColor: "#2a2a2a" }}>
                     <p style={{ color: "#cccccc" }}>
                       ご登録内容確認後、2〜3日以内に<br />担当スタッフよりご連絡させていただきます。<br />
                       お届けまで今しばらくお待ちください。
@@ -193,7 +193,7 @@ export default function AdaKbtmPage() {
                 </div>
                 <a
                   href="/ada/kbtm/"
-                  className="inline-block mt-4 text-sm underline"
+                  className="inline-block mt-4 text-base underline"
                   style={{ color: "#BDC3C9" }}
                 >
                   フォームトップへ戻る
@@ -202,7 +202,7 @@ export default function AdaKbtmPage() {
             </div>
           </div>
         </div>
-        <p className="relative z-10 text-xs text-center py-4" style={{ color: "#888888" }}>
+        <p className="relative z-10 text-sm text-center py-4" style={{ color: "#888888" }}>
           &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
         </p>
       </div>
@@ -219,7 +219,7 @@ export default function AdaKbtmPage() {
               {/* バッジ */}
               <div className="inline-block mb-3">
                 <span
-                  className="inline-block px-3 py-1 rounded-full text-xs font-bold"
+                  className="inline-block px-3 py-1 rounded-full text-sm font-bold"
                   style={{ background: "rgba(189, 195, 201, 0.1)", color: "#FFFFFF", border: "1px solid rgba(189, 195, 201, 0.35)" }}
                 >
                   KAWARA版特別レポート
@@ -229,7 +229,7 @@ export default function AdaKbtmPage() {
               {/* タイトル */}
               {step === "form" && (
                 <h1
-                  className="text-base sm:text-2xl mb-2"
+                  className="text-lg sm:text-3xl mb-2"
                   style={{
                     fontWeight: 900,
                     background: "linear-gradient(90deg, #FFFFFF 0%, #eeeeee 50%, #FFFFFF 100%)",
@@ -238,11 +238,11 @@ export default function AdaKbtmPage() {
                     backgroundClip: "text",
                   }}
                 >
-                  カルダノ（ADA）崩壊のカウントダウン<br />「構造的に選ばれなくなった資産」
+                  カルダノ（ADA）崩壊の<br />カウントダウン<br />「構造的に選ばれなくなった資産」
                 </h1>
               )}
               {/* コピー */}
-              <p className="text-xs mt-3 leading-relaxed text-left text-white">
+              <p className="text-sm mt-3 leading-relaxed text-left text-white">
                 {step === "form" && (
                   <>
                     当レポートはADAホルダーにとって非常に重要です。<br /><br />
@@ -271,7 +271,7 @@ export default function AdaKbtmPage() {
               <form onSubmit={handleFormSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                    <label className="block text-base font-semibold mb-2" style={silverTextGradient}>
                       お名前 <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須）</span>
                     </label>
                     <input
@@ -285,7 +285,7 @@ export default function AdaKbtmPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                    <label className="block text-base font-semibold mb-2" style={silverTextGradient}>
                       メールアドレス <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須）</span>
                     </label>
                     <input
@@ -316,8 +316,8 @@ export default function AdaKbtmPage() {
               <form onSubmit={handleSendSms}>
                 <div className="space-y-4">
                   <div className="rounded-[2px] p-4 border" style={{ background: "#0e0e0e", borderColor: "#2a2a2a" }}>
-                    <p className="text-sm font-bold mb-2" style={silverTextGradient}>◼︎免責事項</p>
-                    <p className="text-xs leading-relaxed mb-4" style={silverTextGradient}>
+                    <p className="text-base font-bold mb-2" style={silverTextGradient}>◼︎免責事項</p>
+                    <p className="text-sm leading-relaxed mb-4" style={silverTextGradient}>
                       {DISCLAIMER_TEXT}
                     </p>
                     <label className="flex items-start gap-3 cursor-pointer">
@@ -335,13 +335,13 @@ export default function AdaKbtmPage() {
                           </svg>
                         )}
                       </span>
-                      <span className="text-sm" style={silverTextGradient}>
+                      <span className="text-base" style={silverTextGradient}>
                         上記免責事項に同意する <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須）</span>
                       </span>
                     </label>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                    <label className="block text-base font-semibold mb-2" style={silverTextGradient}>
                       電話番号 <span style={{ color: "#f87171", WebkitTextFillColor: "#f87171" }}>（必須・SMS受信可能な番号）</span>
                     </label>
                     <input
@@ -353,7 +353,7 @@ export default function AdaKbtmPage() {
                       style={inputStyle}
                       placeholder="09012345678"
                     />
-                    <p className="text-xs mt-1" style={silverTextGradient}>ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。</p>
+                    <p className="text-sm mt-1" style={silverTextGradient}>ハイフンなしで入力（例: 09012345678）。入力後、承認コードをSMSでお送りします。</p>
                   </div>
                 </div>
                 <div className="mt-6">
@@ -368,7 +368,7 @@ export default function AdaKbtmPage() {
               <form onSubmit={handleVerify}>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold mb-2" style={silverTextGradient}>
+                    <label className="block text-base font-semibold mb-2" style={silverTextGradient}>
                       承認コード（6桁）
                     </label>
                     <input
@@ -382,7 +382,7 @@ export default function AdaKbtmPage() {
                       placeholder="123456"
                     />
                   </div>
-                  <p className="text-xs" style={silverTextGradient}>
+                  <p className="text-sm" style={silverTextGradient}>
                     承認コードが届かなかった方は、【再送信】ボタンを押してください。
                   </p>
                 </div>
@@ -394,7 +394,7 @@ export default function AdaKbtmPage() {
                     type="button"
                     onClick={handleResendSms}
                     disabled={loading}
-                    className="text-sm py-3 px-4 rounded-[2px] border"
+                    className="text-base py-3 px-4 rounded-[2px] border"
                     style={{ borderColor: "#3a3a3a", ...silverTextGradient }}
                   >
                     再送信
@@ -402,7 +402,7 @@ export default function AdaKbtmPage() {
                   <button
                     type="button"
                     onClick={() => setStep("phone")}
-                    className="text-sm py-3 px-4 rounded-[2px] border"
+                    className="text-base py-3 px-4 rounded-[2px] border"
                     style={{ borderColor: "#3a3a3a", ...silverTextGradient }}
                   >
                     電話番号を変更
@@ -412,7 +412,7 @@ export default function AdaKbtmPage() {
             )}
           </div>
         </div>
-        <p className="text-xs text-center mt-6" style={silverTextGradient}>
+        <p className="text-sm text-center mt-6" style={silverTextGradient}>
           &copy;2026 株式会社投資の&quot;KAWARA&quot;版.com
         </p>
       </div>
